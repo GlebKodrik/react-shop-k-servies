@@ -1,0 +1,89 @@
+.header {
+    background-color: #9DB1D4;
+    min-width: 100%;
+}
+
+.header img {
+    width: 140px;
+    height: auto;
+}
+
+.headerLogo {
+    height: auto;
+}
+.headerCenter{
+    margin: 0 auto;
+    padding: 15px 30px 5px;
+}
+.headerWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerMenu {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.headerMenu :last-child {
+    margin-right: 0;
+}
+
+.headerItem {
+    text-align: center;
+    position: relative;
+    margin-bottom: -17px;
+    padding-bottom: 17px;
+    margin-right: 80px;
+}
+
+.headerProfileFocus {
+    font-size: 16px;
+    color: #000;
+    line-height: 22px;
+    position: absolute;
+    top: 85px;
+    box-shadow: 0 0 20px rgb(208 215 215);
+    display: block;
+    width: 180px;
+    background: #fff;
+    border-radius: 4px;
+    text-align: center;
+    cursor: default;
+    border: none;
+    padding: 0;
+    right: 9999px;
+    z-index: 10001;
+    transition: all 1ms ease-out .2s;
+}
+.menuWrapper{
+    text-align: left;
+    padding: 10px 15px;
+}
+.MenuRight{
+    right: calc(50% - 90px);
+}
+.menuLeft :before{
+    border-style: solid;
+    border-width: 0 9px 10px 9px;
+    border-color: transparent transparent #fff transparent;
+    content: '';
+    height: 0;
+    position: absolute;
+    right: calc(50% - 9px);
+    top: -10px;
+    width: 0;
+}
+.menuLeftTitle{
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e8e8e8;
+}
+.menuLeft > li:last-child{
+    padding-top: 15px;
+}
+.menuLeft > li > ul > li{
+    width: fit-content;
+    cursor: pointer;
+}

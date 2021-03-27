@@ -1,0 +1,28 @@
+.lavelMain{
+    background: #f6f6f6;
+}
+.headerSectionItem{
+    padding: 0 10px;
+    display: flex;
+}
+.headerSectionItem :first-child{
+    margin-left: 0;
+}
+.headerItem{
+    padding: 10px 15px;
+    font-size: 20px;
+    margin-left: 50px;
+}
+.headerItem :hover{
+    color: #919193;
+}
+.ItemInline{
+    display: flex;
+}
+.ItemName{
+    margin-left: 4px;
+    padding-top: 5px;
+}
+.ItemIcon{
+    font-size: 38px;
+}
