@@ -7,7 +7,7 @@ import {PrivateRouter} from "./components/Route/PrivateRouter";
 import {ProfileRoute} from "./components/Profile/ProfileRoute";
 import {Footer} from "./components/Footer/Footer";
 import {NotFound} from "./components/NotFould/NotFound";
-
+//PrivateRouter компонента
 const App = (props) => {
     return (
         <div className="app">

@@ -1,9 +1,11 @@
 .lavelMain{
-    background: #f6f6f6;
+    margin-top: 8px;
+    background: transparent;
 }
 .headerSectionItem{
     padding: 0 10px;
     display: flex;
+    justify-content: center;
 }
 .headerSectionItem :first-child{
     margin-left: 0;
@@ -14,9 +16,10 @@
     margin-left: 50px;
 }
 .headerItem :hover{
-    color: #919193;
+    color: #0290d9;
 }
 .ItemInline{
+    color: black;
     display: flex;
 }
 .ItemName{

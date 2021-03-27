@@ -3,14 +3,13 @@ import s from './ProfileMain.module.css';
 import {Button} from "@material-ui/core";
 import {useForm} from "react-hook-form";
 import {ProfileItem} from "./ProfileItem/ProfileItem";
-import noAvatar from "./../../../img/noavatar.png";
+import noAvatar from "../../../assets/img/noavatar.png";
 import {useDispatch, useSelector} from "react-redux";
 import {savePhoto} from "../../../Redux/profileReducer";
 import {getAvatar} from "../../../Redux/profile-selector";
 
 export const Profile = (props) => {
     const [edit, setEdit] = useState(false);
-    const [focus, setFocus] = useState(false);
     const {register, handleSubmit, errors} = useForm();
     const dispatch = useDispatch();
     const avatar = useSelector(getAvatar);
@@ -51,7 +50,7 @@ export const Profile = (props) => {
                             <Button type={"button"} onClick={toggle} variant="contained" color="secondary">
                                 Редактировать
                             </Button>
-                            : <Button type={"submit"} variant="contained" color="secondary">
+                            : <Button type={"submit"} onClick={toggle} variant="contained" color="secondary">
                                 Сохранить
                             </Button>
                         }
