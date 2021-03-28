@@ -2,14 +2,10 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 import s from './../Profile.module.css';
 import cn from "classnames";
+import {array} from "../../../common/paths";
 
 export const ProfileNavigation = (props) => {
-    const array = [
-        {name: "Профиль", path: "details", icon: "account_circle"},
-        {name: "Корзина", path: "basket", icon: "shopping_cart"},
-        {name: "Финансы", path: "purchases", icon: "account_balance_wallet"},
-        {name: "Обратная связь", path: "communications", icon: "email"}
-    ]
+
     return <div className={s.lavelMain}>
         <div className="container">
             <div className={s.headerSectionItem}>

@@ -4,6 +4,7 @@ import {NavLink, useHistory} from "react-router-dom";
 import cn from "classnames";
 import {useDispatch} from "react-redux";
 import {logOut} from "../../../Redux/authReducer";
+import {array} from "../../../common/paths";
 
 export const HeaderItems = (props) => {
     const [focus, setFocus] = useState(false);
@@ -18,14 +19,14 @@ export const HeaderItems = (props) => {
             <div className={s.headerMenu}>
                 <div className={s.headerItem}>
                     <NavLink to='/'>
-                        <div className="material-icons" style={{fontSize: 40}}>location_on</div>
+                        <div className="material-icons" style={{fontSize: 40, color: "red"}}>location_on</div>
                         <div>Мы находимся</div>
                     </NavLink>
                 </div>
 
                 {props.isAuth && <div className={s.headerItem}>
                     <NavLink to='/profile/basket'>
-                        <div className="material-icons" style={{fontSize: 40}}>shopping_basket</div>
+                        <div className="material-icons" style={{fontSize: 40, color: "#3b5ca8"}}>shopping_basket</div>
                         <div>Корзина</div>
                     </NavLink>
                 </div>}
@@ -33,7 +34,7 @@ export const HeaderItems = (props) => {
                 <div className={s.headerItem} onMouseEnter={() => setFocus(true)}
                      onMouseLeave={() => setFocus(false)}>
                     <NavLink to={!props.isAuth ? "/login" : "/profile"}>
-                        <div className="material-icons" style={{fontSize: 40}}>account_circle</div>
+                        <div className="material-icons" style={{fontSize: 40, color: "#8f939c"}}>account_circle</div>
                         <div>{!props.isAuth ? "Войти" : "Профиль"}</div>
                     </NavLink>
                     {props.isAuth && <div className={cn(s.headerProfileFocus, {
@@ -43,7 +44,9 @@ export const HeaderItems = (props) => {
                             <ul className={s.menuLeft}>
                                 <li className={s.menuLeftTitle}>
                                     <ul>
-                                        <li><NavLink to={"/profile"}>Профиль</NavLink></li>
+                                        {array.map(a => {
+                                            return <li><NavLink to={"/profile/" + a.path}>{a.name}</NavLink></li>
+                                        })}
                                     </ul>
                                 </li>
                                 <li>

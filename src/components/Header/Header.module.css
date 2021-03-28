@@ -1,6 +1,6 @@
 .header {
-    background-color: #9DB1D4;
     min-width: 100%;
+    box-shadow: 0px 4px 19px -6px rgba(34, 60, 80, 0.36);
 }
 
 .header img {
