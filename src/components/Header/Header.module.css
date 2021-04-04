@@ -7,7 +7,9 @@
     width: 140px;
     height: auto;
 }
-
+.headerExit{
+    color: #8f939c;
+}
 .headerLogo {
     height: auto;
 }
