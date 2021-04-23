@@ -4,10 +4,10 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import { ProfileNavigation } from "./ProfileNavigation/ProfileNavigation";
 import { NotFound } from "../NotFould/NotFound";
 import { Communications } from "./Communications/Communications";
-
+import s from "./Profile.module.css";
 export const ProfileRoute = () => {
   return (
-    <div>
+    <div className={s.profileMain}>
       <div>
         <ProfileNavigation />
         <Switch>

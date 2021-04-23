@@ -1,0 +1,43 @@
+.categories{
+    margin-top: 40px;
+}
+.categoriesWrapp{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 15px 30px 5px;
+}
+.categoriesItem{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: calc(25% - 10px);
+    box-shadow: 0 5px 25px rgb(30 31 33 / 12%);
+    padding: 20px;
+    height: calc(100% - 40px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.categoriesContentImg img{
+    max-width: 100px;
+    max-height: 80px;
+}
+.categoriesContentImg{
+    margin: 0 auto 10px;
+}
+.categoriesName{
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+}
+.categoriesItem:hover{
+    color: #0290D9;
+}
+.categoriesTitle{
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}

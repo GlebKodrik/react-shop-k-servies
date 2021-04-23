@@ -29,6 +29,9 @@
     justify-content: flex-end;
     align-items: center;
 }
+.headerItem:hover {
+    border-bottom: 1px solid gray;
+}
 .headerMenu :last-child {
     margin-right: 0;
 }
@@ -67,7 +70,7 @@
 .MenuRight{
     right: calc(50% - 90px);
 }
-.menuLeft :before{
+.menuLeft:before{
     border-style: solid;
     border-width: 0 9px 10px 9px;
     border-color: transparent transparent #fff transparent;
@@ -88,4 +91,8 @@
 .menuLeft > li > ul > li{
     width: fit-content;
     cursor: pointer;
+}
+.menuLeft > li > ul > li:hover{
+    color: #0290D9;
+    border-bottom: 1px solid gray;
 }

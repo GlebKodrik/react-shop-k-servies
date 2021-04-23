@@ -1,0 +1,29 @@
+.SliderSwipe{
+    text-align: center;
+}
+.SliderSwipe img{
+    max-height: 352px;
+    width: 100%;
+}
+.sliderContent{
+    position: relative;
+}
+.sliderShadow{
+    position: absolute;
+    top: 0;
+    right: -14px;
+    display: flex;
+    align-items: center;
+    width: 14px;
+    height: 100%;
+}
+.sliderShadow__first{
+    height: calc(100% - 10px);
+    background-color: #b3b3b7;
+    width: 7px;
+}
+.sliderShadow__last{
+    height: calc(100% - 20px);
+    background-color: #dfdfe1;
+    width: 7px;
+}

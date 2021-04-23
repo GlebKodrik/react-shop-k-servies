@@ -1,0 +1,10 @@
+.wrap{
+    display: flex;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #DFDFE1;
+    margin-bottom: 20px;
+}
+.subText{
+    text-align: center;
+    font-size: 14px;
+}

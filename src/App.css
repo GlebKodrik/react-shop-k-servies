@@ -1,3 +1,4 @@
+@import '~antd/dist/antd.css';
 * {
     box-sizing: border-box;
 }
@@ -60,7 +61,12 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-
+.app{
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 .container{
     margin: 0 auto;
     min-width: 978px;
