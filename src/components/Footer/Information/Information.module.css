@@ -5,6 +5,7 @@
     margin-bottom: 20px;
 }
 .subText{
+    cursor: default;
     text-align: center;
     font-size: 14px;
 }

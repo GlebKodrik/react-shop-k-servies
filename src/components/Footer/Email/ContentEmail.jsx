@@ -1,5 +1,5 @@
-import s from "../../Footer.module.css";
-import { InputField } from "../../../../common/model";
+import s from "../Footer.module.css";
+import { InputField } from "../../../common/model";
 import { useState } from "react";
 import { createMuiTheme } from "@material-ui/core/styles";
 import validator from "validator";
@@ -23,14 +23,6 @@ export const ContentEmail = () => {
     }
   };
 
-  const theme = createMuiTheme({
-    palette: {
-      primary: {
-        main: "#B3B3B7",
-      },
-    },
-  });
-
   const handleClick = () => {
     setSuccess(true);
     console.log(email);
@@ -42,18 +34,18 @@ export const ContentEmail = () => {
         <div className={s.email_body}>
           {!success && (
             <InputField
+              color="secondary"
               error={errorActive}
               helperText={errorActive && "Некорректный email"}
               onBlur={() => setErrorActive(false)}
               onChange={(event) => validateEmail(event)}
               label={"Мой e-mail"}
-              {...{ theme }}
             />
           )}
           {!success && (
             <button
               onClick={handleClick}
-              className={cn(s.button_main, s.button)}
+              className={cn("button", s.button)}
               disabled={disabled}
             >
               Подписатсья

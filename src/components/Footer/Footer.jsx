@@ -1,5 +1,5 @@
 import s from "./Footer.module.css";
-import { ContentEmail } from "./Content/Email/ContentEmail";
+import { ContentEmail } from "./Email/ContentEmail";
 import { Information } from "./Information/Information";
 
 export const Footer = () => {

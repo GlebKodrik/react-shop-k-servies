@@ -1,0 +1,26 @@
+.popup_wrap{
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+}
+.title{
+    margin-bottom: 40px;
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 700;
+    color: #151528;
+}
+.button:hover{
+    color: #3F51B5;
+    border:1px solid #3F51B5;
+}
+.subtext{
+    margin-top: 10px;
+    margin-bottom: 35px;
+}
+.addName{
+    margin-bottom: 40px;
+}
+.checkboxes{
+    margin-bottom: 30px;
+}

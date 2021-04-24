@@ -1,3 +1,28 @@
+.title{
+    cursor: default;
+    margin-bottom: 12px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
+}
+.navigation__item{
+    margin-bottom: 10px;
+}
+.navigation__item a{
+    color: #878791;
+    font-size: 16px;
+    line-height: 24px;
+}
+.navigation__item a:hover{
+    color: #02A5DF;
+}
 .menu{
-    text-align: center;
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+.buyers{
+    width: calc(45% - 2*8px);
 }
