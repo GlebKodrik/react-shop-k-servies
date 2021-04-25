@@ -19,6 +19,7 @@
     margin-left: 50px;
 }
 .headerItem :hover{
+    transition: color .3s;
     color: #0290d9;
 }
 .ItemInline{

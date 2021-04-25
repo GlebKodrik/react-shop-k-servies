@@ -1,7 +1,6 @@
 import s from "../Footer.module.css";
 import { InputField } from "../../../common/model";
 import { useState } from "react";
-import { createMuiTheme } from "@material-ui/core/styles";
 import validator from "validator";
 import cn from "classnames";
 

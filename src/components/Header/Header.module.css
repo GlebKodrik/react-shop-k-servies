@@ -32,6 +32,9 @@
 .headerItem:hover {
     border-bottom: 1px solid gray;
 }
+.link:hover{
+    color:#3EA4F8
+}
 .headerMenu :last-child {
     margin-right: 0;
 }
@@ -92,7 +95,8 @@
     width: fit-content;
     cursor: pointer;
 }
-.menuLeft > li > ul > li:hover{
-    color: #0290D9;
+.menuLeft > li > ul > li:hover,
+.menuLeft > li > ul > li > a:hover{
+    color: #3EA4F8;
     border-bottom: 1px solid gray;
 }

@@ -1,4 +1,6 @@
-@import '~antd/dist/antd.css';
+:root{
+    --text-color: #3EA4F8;
+}
 * {
     box-sizing: border-box;
 }
@@ -54,6 +56,7 @@ a{
     list-style: none;
     text-decoration: none;
     color: #000;
+    transition: color .3s;
 }
 
 input::-webkit-outer-spin-button,
@@ -81,8 +84,9 @@ input::-webkit-inner-spin-button {
 }
 
 .button{
+    font-size: 15px;
     border-radius: 100px;
-    padding: 6px 24px;
+    padding: 10px 20px;
     margin-left: 0;
     cursor: pointer;
     border: 1px solid #C8C8CB;

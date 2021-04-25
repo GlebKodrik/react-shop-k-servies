@@ -19,7 +19,7 @@ export const HeaderItems = (props) => {
     <div>
       <div className={s.headerMenu}>
         <div className={s.headerItem}>
-          <NavLink to="/">
+          <NavLink to="/" className={s.link}>
             <div
               className="material-icons"
               style={{ fontSize: 40, color: "red" }}
@@ -31,7 +31,7 @@ export const HeaderItems = (props) => {
         </div>
         {props.isAuth && (
           <div className={s.headerItem}>
-            <NavLink to="/profile/basket">
+            <NavLink to="/profile/basket" className={s.link}>
               <div
                 className="material-icons"
                 style={{ fontSize: 40, color: "#3b5ca8" }}
@@ -48,7 +48,10 @@ export const HeaderItems = (props) => {
           onMouseEnter={() => setFocus(true)}
           onMouseLeave={() => setFocus(false)}
         >
-          <NavLink to={!props.isAuth ? "/login" : "/profile/details"}>
+          <NavLink
+            to={!props.isAuth ? "/login" : "/profile/details"}
+            className={s.link}
+          >
             <div
               className="material-icons"
               style={{ fontSize: 40, color: "#8f939c" }}
