@@ -62,7 +62,6 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 .app{
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
