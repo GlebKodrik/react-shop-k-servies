@@ -12,6 +12,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Backdrop from "@material-ui/core/Backdrop";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
+import { Container } from "@material-ui/core";
 
 export const Contacts = () => {
   const useStyles = makeStyles((theme) => ({
@@ -19,6 +20,7 @@ export const Contacts = () => {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
+      outline: "none",
     },
     paper: {
       position: "relative",
@@ -30,6 +32,7 @@ export const Contacts = () => {
         "0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%), 0 9px 28px 8px rgb(0 0 0 / 5%)",
       pointerEvents: "auto",
       padding: "30px",
+      outline: "none",
     },
     closeButton: {
       position: "absolute",
@@ -37,6 +40,7 @@ export const Contacts = () => {
       top: theme.spacing(1),
       color: theme.palette.grey[500],
     },
+    modalStyle: {},
   }));
 
   const classes = useStyles();
@@ -68,7 +72,7 @@ export const Contacts = () => {
         <button className={styleButton}>Задать вопрос</button>
       </div>
       <div className={s.iconSocial}>
-        <a href="https://vk.com/k.glebka" target={"_blank"}>
+        <a href="https://vk.com/k.glebka" target="_blank">
           <img src={vk} alt="Вконтакте" />
         </a>
         <a href="https://www.instagram.com/" target={"_blank"}>

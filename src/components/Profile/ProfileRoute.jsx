@@ -7,7 +7,7 @@ import { Communications } from "./Communications/Communications";
 import s from "./Profile.module.css";
 export const ProfileRoute = () => {
   return (
-    <div className={s.profileMain}>
+    <div className={s.main}>
       <div>
         <ProfileNavigation />
         <Switch>

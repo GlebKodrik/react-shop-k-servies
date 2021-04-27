@@ -1,7 +1,7 @@
-.profileData{
+.dataWrap{
     width: 714px;
 }
-.profileDataTitle{
+.dataWrapTitle{
     color: #000;
     font-weight: 400;
     display: block;
@@ -30,17 +30,17 @@
     margin-bottom: 10px;
     border: 1px solid #e8e8e8;
 }
-.profileEditData{
+.editData{
     display: flex;
     justify-content: space-between;
 }
-.profile__avatar{
+.avatar{
     position: relative;
     margin: 0 auto;
     width: 150px;
     height: 150px;
 }
-.profile__avatar:before{
+.avatar:before{
     content: "";
     display: block;
     width: 24px;
@@ -52,13 +52,13 @@
     border-radius: 50%;
     background: #cb11ab url(data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2212%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M4.625%201.897c.047-.066.1-.146.166-.255l.141-.231.056-.092C5.54.415%205.942%200%206.667%200h2.666c.725%200%201.127.415%201.68%201.319l.055.092.14.231c.068.109.12.19.167.255.031.043.059.078.08.103h1.878a2%202%200%20012%202v6a2%202%200%2001-2%202H2.667a2%202%200%2001-2-2V4a2%202%200%20012-2h1.877c.022-.025.05-.06.08-.103zM2.667%203.333A.667.667%200%20002%204v6c0%20.368.298.667.667.667h10.666A.667.667%200%200014%2010V4a.667.667%200%2000-.667-.667h-2c-.443%200-.741-.242-1.04-.658a5.58%205.58%200%2001-.219-.332l-.15-.248-.05-.08c-.301-.494-.483-.682-.54-.682H6.666c-.058%200-.24.188-.542.681l-.048.08-.151.249c-.082.133-.15.237-.219.333-.299.415-.597.657-1.04.657h-2zm10.666%201.334a.667.667%200%2011-1.333%200%20.667.667%200%20011.333%200zm-8.666%202a3.333%203.333%200%20106.666%200%203.333%203.333%200%2000-6.666%200zm5.333%200a2%202%200%2011-4%200%202%202%200%20014%200z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E) no-repeat center;
 }
-.profile__avatar img{
+.avatar img{
     border-radius: 50%;
 }
-.profile__avatar input{
+.avatar input{
     display: none;
 }
-.profilePhoto__text{
+.photo__text{
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -75,14 +75,14 @@
     width: 96px;
 }
 
-.profilePhoto__label:before{
+.photo__label:before{
     content: "";
     display: inline-block;
     vertical-align: middle;
     height: 100%;
 }
 
-.profilePhoto__label{
+.photo__label{
     -webkit-transition: opacity .5s ease 0s;
     transition: opacity .5s ease 0s;
     position: absolute;
@@ -99,6 +99,6 @@
     opacity: 0;
 
 }
-.profilePhoto__label:hover{
+.photo__label:hover{
     opacity: 1;
 }

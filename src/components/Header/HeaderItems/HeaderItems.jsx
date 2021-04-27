@@ -17,8 +17,8 @@ export const HeaderItems = (props) => {
   };
   return (
     <div>
-      <div className={s.headerMenu}>
-        <div className={s.headerItem}>
+      <div className={s.menu}>
+        <div className={s.item}>
           <NavLink to="/" className={s.link}>
             <div
               className="material-icons"
@@ -30,7 +30,7 @@ export const HeaderItems = (props) => {
           </NavLink>
         </div>
         {props.isAuth && (
-          <div className={s.headerItem}>
+          <div className={s.item}>
             <NavLink to="/profile/basket" className={s.link}>
               <div
                 className="material-icons"
@@ -44,7 +44,7 @@ export const HeaderItems = (props) => {
         )}
 
         <div
-          className={s.headerItem}
+          className={s.item}
           onMouseEnter={() => setFocus(true)}
           onMouseLeave={() => setFocus(false)}
         >
@@ -58,11 +58,14 @@ export const HeaderItems = (props) => {
             >
               account_circle
             </div>
-            <div>{!props.isAuth ? "Войти" : "Профиль"}</div>
+            <div className={s.entrance}>
+              {!props.isAuth ? "Войти" : "Профиль"}
+            </div>
           </NavLink>
+
           {props.isAuth && (
             <div
-              className={cn(s.headerProfileFocus, {
+              className={cn(s.profileFocus, {
                 [s.MenuRight]: focus,
               })}
             >
@@ -71,11 +74,11 @@ export const HeaderItems = (props) => {
                   <ul className={s.menuLeft}>
                     <li className={s.menuLeftTitle}>
                       <ul>
-                        {array.map((a) => {
+                        {array.map((item) => {
                           return (
                             <li>
-                              <NavLink to={"/profile/" + a.path}>
-                                {a.name}
+                              <NavLink to={"/profile/" + item.path}>
+                                {item.name}
                               </NavLink>
                             </li>
                           );
@@ -83,7 +86,7 @@ export const HeaderItems = (props) => {
                       </ul>
                     </li>
                     <li>
-                      <ul className={s.headerExit}>
+                      <ul className={s.exit}>
                         <li onClick={redirectOut}>Выйти</li>
                       </ul>
                     </li>

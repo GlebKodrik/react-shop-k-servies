@@ -13,12 +13,14 @@ const theme = createMuiTheme({
   },
 });
 
-export const InputField = ({ style, ...props }) => {
+export const InputField = ({ defaultValue: value, ...props }) => {
   return (
     <ThemeProvider theme={theme}>
-      <TextField {...props} />
+      <TextField {...props} value={value} />
     </ThemeProvider>
   );
 };
 
-export const IMaskPhoneInput = IMaskMixin((props) => <InputField {...props} />);
+export const IMaskPhoneInput = IMaskMixin(({ ...props }) => {
+  return <InputField {...props} />;
+});

@@ -2,44 +2,46 @@
     min-width: 100%;
     box-shadow: 0px 4px 19px -6px rgba(34, 60, 80, 0.36);
 }
-
+.entrance{
+    position: relative;
+}
 .header img {
     width: 140px;
     height: auto;
 }
-.headerExit{
+.exit{
     color: #8f939c;
 }
-.headerLogo {
+.logo {
     height: auto;
 }
-.headerCenter{
+.center{
     margin: 0 auto;
     padding: 15px 30px 5px;
 }
-.headerWrap {
+.wrap {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.headerMenu {
+.menu {
     flex-wrap: wrap;
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
-.headerItem:hover {
+.item:hover {
     border-bottom: 1px solid gray;
 }
 .link:hover{
     color:#3EA4F8
 }
-.headerMenu :last-child {
+.menu :last-child {
     margin-right: 0;
 }
 
-.headerItem {
+.item {
     text-align: center;
     position: relative;
     margin-bottom: -17px;
@@ -47,12 +49,12 @@
     margin-right: 80px;
 }
 
-.headerProfileFocus {
+.profileFocus {
     font-size: 16px;
     color: #000;
     line-height: 22px;
     position: absolute;
-    top: 85px;
+    top: 84px;
     box-shadow: 0 0 20px rgb(208 215 215);
     display: block;
     width: 180px;
@@ -62,7 +64,6 @@
     cursor: default;
     border: none;
     padding: 0;
-    right: 9999px;
     z-index: 10001;
     transition: all 1ms ease-out .2s;
 }
@@ -98,5 +99,5 @@
 .menuLeft > li > ul > li:hover,
 .menuLeft > li > ul > li > a:hover{
     color: #3EA4F8;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #C6C6C7;
 }
