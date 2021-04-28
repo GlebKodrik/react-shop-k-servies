@@ -1,6 +1,7 @@
 import { TextField } from "@material-ui/core";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { IMaskMixin } from "react-imask";
+import React from "react";
 
 const theme = createMuiTheme({
   palette: {
@@ -13,13 +14,13 @@ const theme = createMuiTheme({
   },
 });
 
-export const InputField = ({ defaultValue: value, ...props }) => {
+export const InputField = React.forwardRef((props, ref) => {
   return (
     <ThemeProvider theme={theme}>
-      <TextField {...props} value={value} />
+      <TextField {...props} ref={ref} />
     </ThemeProvider>
   );
-};
+});
 
 export const IMaskPhoneInput = IMaskMixin(({ ...props }) => {
   return <InputField {...props} />;

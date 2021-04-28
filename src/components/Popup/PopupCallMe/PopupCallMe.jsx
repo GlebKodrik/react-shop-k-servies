@@ -1,73 +1,77 @@
 import s from "./PopupCallMe.module.css";
 import { IMaskPhoneInput, InputField } from "../../../common/model";
-import * as Yup from "yup";
 import React, { useState } from "react";
 import cn from "classnames";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import { useFormik } from "formik";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { Checkbox } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 export const PopupCallMe = (props) => {
-  const [showDescr, setShowDescr] = useState(false);
-  const [value, setValue] = useState("order");
-
-  const handleChangeCheck = (event) => {
-    setValue(event.target.value);
-  };
-
-  const initialValues = {
-    phone: "",
-    firstName: "",
-    description: "",
-  };
-
-  const validationSchema = Yup.object().shape({
-    phone: Yup.string()
+  const SignupSchema = yup.object().shape({
+    phone: yup
+      .string()
       .transform((value) => {
         return value.replace(/[^0-9]/g, "");
       })
       .min(11, "Некорректный номер телефона")
       .required("Обязательное поле"),
-    firstName: Yup.string()
+    firstName: yup
+      .string()
       .required("Обязательное поле")
       .matches(/^[A-Za-zА-Яа-яЁё]+$/, "Недопустимое имя")
       .min(2, "Недопустимое имя")
-      .max(15, "Недопустимое имя")
-      .typeError("Некорректное тип"),
+      .max(15, "Недопустимое имя"),
   });
+  const [showDescr, setShowDescr] = useState(false);
+  const [value, setValue] = useState("order");
+  const useStyles = makeStyles((theme) => ({
+    label: {
+      lineHeight: 1.2,
+    },
+  }));
 
-  const { register, handleSubmit, errors } = useForm({
-    validationSchema,
+  const {
+    register,
+    handleSubmit,
+    reset,
+    control,
+    formState: { errors },
+  } = useForm({
+    defaultValues: { checkedData: true },
+    resolver: yupResolver(SignupSchema),
+    mode: "onTouched",
   });
 
   const onSubmit = (values) => {
-    console.log("Form data", values);
+    console.log(values);
+    reset();
   };
 
-  // const formik = useFormik({
-  //   initialValues,
-  //   onSubmit,
-  //   validationSchema,
-  // });
+  const handleChangeCheck = (event) => {
+    setValue(event.target.value);
+  };
 
+  const classes = useStyles();
   return (
     <div className={s.popup_wrap}>
       <div className={s.title}>Перезвонить мне</div>
-      <form onSubmit={formik.handleSubmit} noValidate autoComplete="off">
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <IMaskPhoneInput
             autoFocus
             fullWidth
-            name={"phone"}
             mask={"+{7} (000) 000-00-00"}
             color="primary"
             label={"Телефон"}
             placeholder={"+7 (950) 356-55-44"}
-            error={!!formik.errors.phone && formik.touched.phone}
-            helperText={formik.touched.phone && formik.errors.phone}
-            {...formik.getFieldProps("phone")}
+            error={!!errors.phone}
+            helperText={errors.phone && errors.phone.message}
+            {...register("phone")}
           />
           <div className={s.subtext}>
             Оператор перезвонит в течение 1 часа (с 9:00 до 21:00 по местному
@@ -82,9 +86,9 @@ export const PopupCallMe = (props) => {
             type={"text"}
             label={"Моё имя"}
             placeholder={"Глеб"}
-            error={!!formik.errors.firstName && formik.touched.firstName}
-            helperText={formik.touched.firstName && formik.errors.firstName}
-            {...formik.getFieldProps("firstName")}
+            error={!!errors.firstName}
+            helperText={errors.firstName && errors.firstName.message}
+            {...register("firstName")}
           />
         </div>
 
@@ -115,13 +119,36 @@ export const PopupCallMe = (props) => {
             maxLength={1000}
             autoComplete={"off"}
             name={"description"}
-            {...formik.getFieldProps("description")}
+            {...register("description")}
           />
         )}
+
+        <Controller
+          name={"checkedData"}
+          control={control}
+          render={({ field: { onChange, value } }) => {
+            return (
+              <FormControlLabel
+                classes={{
+                  label: classes.label,
+                }}
+                control={
+                  <Checkbox
+                    onChange={(e) => {
+                      onChange(!value);
+                    }}
+                    checked={value}
+                    color="primary"
+                  />
+                }
+                label="Соглашаюсь с условиями обработки персональных данных"
+              />
+            );
+          }}
+        />
+
         <div className={s.wrapButton}>
-          <button type={"submit"} className={cn("button", s.button)}>
-            Отправить
-          </button>
+          <button className={cn("button", s.button)}>Отправить</button>
         </div>
       </form>
     </div>
