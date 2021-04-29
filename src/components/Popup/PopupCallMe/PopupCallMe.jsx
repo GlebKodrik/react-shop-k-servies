@@ -8,18 +8,19 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { Checkbox } from "@material-ui/core";
+import { Checkbox, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import InputMask from "react-input-mask";
 
 export const PopupCallMe = (props) => {
   const SignupSchema = yup.object().shape({
     phone: yup
       .string()
+      .required("Обязательное поле")
       .transform((value) => {
         return value.replace(/[^0-9]/g, "");
       })
-      .min(11, "Некорректный номер телефона")
-      .required("Обязательное поле"),
+      .min(11, "Некорректный номер телефона"),
     firstName: yup
       .string()
       .required("Обязательное поле")
@@ -42,7 +43,8 @@ export const PopupCallMe = (props) => {
     control,
     formState: { errors },
   } = useForm({
-    defaultValues: { checkedData: true },
+    defaultValues: { checkedData: true, phone: "" },
+    shouldFocusError: false,
     resolver: yupResolver(SignupSchema),
     mode: "onTouched",
   });
@@ -62,17 +64,32 @@ export const PopupCallMe = (props) => {
       <div className={s.title}>Перезвонить мне</div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <IMaskPhoneInput
-            autoFocus
-            fullWidth
-            mask={"+{7} (000) 000-00-00"}
-            color="primary"
-            label={"Телефон"}
-            placeholder={"+7 (950) 356-55-44"}
-            error={!!errors.phone}
-            helperText={errors.phone && errors.phone.message}
-            {...register("phone")}
+          <Controller
+            control={control}
+            name={"phone"}
+            render={({ field: { onBlur, onChange, value, ref } }) => {
+              return (
+                <InputMask
+                  mask="+7 (999) 999 99 99"
+                  maskChar=" "
+                  value={value}
+                  onChange={onChange}
+                  onBlur={onBlur}
+                  ref={ref}
+                >
+                  {() => (
+                    <InputField
+                      label={"Телефон"}
+                      placeholder={"+7 (950) 356-55-44"}
+                      error={!!errors.phone}
+                      helperText={errors.phone && errors.phone.message}
+                    />
+                  )}
+                </InputMask>
+              );
+            }}
           />
+
           <div className={s.subtext}>
             Оператор перезвонит в течение 1 часа (с 9:00 до 21:00 по местному
             времени)
@@ -81,7 +98,6 @@ export const PopupCallMe = (props) => {
 
         <div className={s.addName}>
           <InputField
-            fullWidth
             name={"firstName"}
             type={"text"}
             label={"Моё имя"}
@@ -122,30 +138,31 @@ export const PopupCallMe = (props) => {
             {...register("description")}
           />
         )}
-
-        <Controller
-          name={"checkedData"}
-          control={control}
-          render={({ field: { onChange, value } }) => {
-            return (
-              <FormControlLabel
-                classes={{
-                  label: classes.label,
-                }}
-                control={
-                  <Checkbox
-                    onChange={(e) => {
-                      onChange(!value);
-                    }}
-                    checked={value}
-                    color="primary"
-                  />
-                }
-                label="Соглашаюсь с условиями обработки персональных данных"
-              />
-            );
-          }}
-        />
+        <div>
+          <Controller
+            name={"checkedData"}
+            control={control}
+            render={({ field: { onChange, value } }) => {
+              return (
+                <FormControlLabel
+                  classes={{
+                    label: classes.label,
+                  }}
+                  control={
+                    <Checkbox
+                      onChange={(e) => {
+                        onChange(!value);
+                      }}
+                      checked={value}
+                      color="primary"
+                    />
+                  }
+                  label="Соглашаюсь с условиями обработки персональных данных"
+                />
+              );
+            }}
+          />
+        </div>
 
         <div className={s.wrapButton}>
           <button className={cn("button", s.button)}>Отправить</button>
