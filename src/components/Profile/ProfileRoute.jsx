@@ -1,7 +1,7 @@
 import React from "react";
 import { Profile } from "./Profile/Profile";
 import { Redirect, Route, Switch } from "react-router-dom";
-import { Navigation } from "./ProfileNavigation/Navigation";
+import { Navigation } from "./Navigation/Navigation";
 import { NotFound } from "../NotFould/NotFound";
 import { AppealRoute } from "./Appeal/AppealRoute";
 export const ProfileRoute = () => {

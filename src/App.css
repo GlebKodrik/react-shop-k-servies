@@ -1,5 +1,5 @@
 :root{
-    --main-text-color: #02A5DF;
+    --main-text-color: #0290D9;
     --main-wrap-padding: 15px 30px 30px;
 }
 * {
@@ -67,6 +67,10 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+.title{
+    font-size: 32px;
+    font-weight: 700;
 }
 .app{
     display: flex;

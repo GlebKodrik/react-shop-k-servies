@@ -1,0 +1,15 @@
+.title{
+    margin-bottom: 20px;
+    text-align: center;
+}
+.title span{
+    color: var(--main-text-color);
+}
+.requisites ul{
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+.requisites p{
+    font-weight: 700;
+    margin-bottom: 5px;
+}
