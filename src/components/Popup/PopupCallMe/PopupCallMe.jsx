@@ -1,5 +1,5 @@
 import s from "./PopupCallMe.module.css";
-import { IMaskPhoneInput, InputField } from "../../../common/model";
+import { InputField } from "../../../common/model";
 import React, { useState } from "react";
 import cn from "classnames";
 import Radio from "@material-ui/core/Radio";
@@ -8,26 +8,28 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { Checkbox, TextField } from "@material-ui/core";
+import { Checkbox } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import InputMask from "react-input-mask";
+import { MaskPhone } from "../../../common/mask";
+
+const SignupSchema = yup.object().shape({
+  phone: yup
+    .string()
+    .required("Обязательное поле")
+    .transform((value) => {
+      return value.replace(/[^0-9]/g, "");
+    })
+    .min(11, "Некорректный номер телефона"),
+  firstName: yup
+    .string()
+    .required("Обязательное поле")
+    .matches(/^[a-zа-яё\s]+$/i, "Недопустимое имя")
+    .min(2, "Недопустимое имя")
+    .max(15, "Недопустимое имя"),
+});
 
 export const PopupCallMe = (props) => {
-  const SignupSchema = yup.object().shape({
-    phone: yup
-      .string()
-      .required("Обязательное поле")
-      .transform((value) => {
-        return value.replace(/[^0-9]/g, "");
-      })
-      .min(11, "Некорректный номер телефона"),
-    firstName: yup
-      .string()
-      .required("Обязательное поле")
-      .matches(/^[A-Za-zА-Яа-яЁё]+$/, "Недопустимое имя")
-      .min(2, "Недопустимое имя")
-      .max(15, "Недопустимое имя"),
-  });
   const [showDescr, setShowDescr] = useState(false);
   const [value, setValue] = useState("order");
   const useStyles = makeStyles((theme) => ({
@@ -35,7 +37,6 @@ export const PopupCallMe = (props) => {
       lineHeight: 1.2,
     },
   }));
-
   const {
     register,
     handleSubmit,
@@ -60,34 +61,16 @@ export const PopupCallMe = (props) => {
 
   const classes = useStyles();
   return (
-    <div className={s.popup_wrap}>
-      <div className={s.title}>Перезвонить мне</div>
+    <div className={"popupWrap"}>
+      <div className={"popupTitle"}>Перезвонить мне</div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <Controller
+          <MaskPhone
+            name="phone"
             control={control}
-            name={"phone"}
-            render={({ field: { onBlur, onChange, value, ref } }) => {
-              return (
-                <InputMask
-                  mask="+7 (999) 999 99 99"
-                  maskChar=" "
-                  value={value}
-                  onChange={onChange}
-                  onBlur={onBlur}
-                  ref={ref}
-                >
-                  {() => (
-                    <InputField
-                      label={"Телефон"}
-                      placeholder={"+7 (950) 356-55-44"}
-                      error={!!errors.phone}
-                      helperText={errors.phone && errors.phone.message}
-                    />
-                  )}
-                </InputMask>
-              );
-            }}
+            errors={errors}
+            label={"Телефон"}
+            placeholder={"+7 (995) 599 31 20"}
           />
 
           <div className={s.subtext}>
@@ -131,10 +114,9 @@ export const PopupCallMe = (props) => {
         {showDescr && (
           <textarea
             minLength={0}
-            className={s.textarea}
+            className={"popupTextarea"}
             maxLength={1000}
             autoComplete={"off"}
-            name={"description"}
             {...register("description")}
           />
         )}
@@ -164,8 +146,8 @@ export const PopupCallMe = (props) => {
           />
         </div>
 
-        <div className={s.wrapButton}>
-          <button className={cn("button", s.button)}>Отправить</button>
+        <div className={"popupWrapButton"}>
+          <button className={cn("button", "popupButton")}>Отправить</button>
         </div>
       </form>
     </div>

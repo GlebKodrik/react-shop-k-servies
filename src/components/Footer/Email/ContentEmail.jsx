@@ -1,6 +1,6 @@
 import s from "../Footer.module.css";
 import { InputField } from "../../../common/model";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import cn from "classnames";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -13,6 +13,7 @@ const SignupSchema = yup.object().shape({
 export const ContentEmail = () => {
   const [success, setSuccess] = useState(false);
   const [boole, setboole] = useState(true);
+
   const {
     handleSubmit,
     clearErrors,
@@ -28,6 +29,7 @@ export const ContentEmail = () => {
     console.log(values);
     setSuccess(true);
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={s.email_content}>
       <div className={cn(s.email, { [s.email_center]: success })}>
@@ -42,7 +44,6 @@ export const ContentEmail = () => {
                   return (
                     <InputField
                       label={"Мой e-mail"}
-                      color="secondary"
                       error={!!errors.email}
                       helperText={errors.email?.message}
                       onBlur={() => clearErrors()}

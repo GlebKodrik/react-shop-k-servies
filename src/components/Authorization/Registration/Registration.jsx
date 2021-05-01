@@ -7,6 +7,10 @@ import { useDispatch } from "react-redux";
 import { Button, TextField } from "@material-ui/core";
 import { logIn } from "../../../Redux/authReducer";
 import { UseFormControl } from "../FormControl";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { MaskPhone } from "../../../common/mask";
+import { InputField } from "../../../common/model";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,9 +33,40 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Registration = (props) => {
+const SignupSchema = yup.object().shape({
+  email: yup.string().required("Обязательное поле").email("Некорректный email"),
+  password: yup
+    .string()
+    .required("Обязательное поле")
+    .min(6, "Не менее 6 символов")
+    .max(15, "Не более 15 сиволов"),
+  name: yup
+    .string()
+    .required("Обязательное поле")
+    .matches(/^[a-zа-яё\s]+$/i, "Недопустимое имя")
+    .min(2, "Некорректное имя")
+    .max(30, "Некорректное имя"),
+  phone: yup
+    .string()
+    .required("Обязательное поле")
+    .transform((value) => {
+      return value.replace(/[^0-9]/g, "");
+    })
+    .min(11, "Некорректный номер телефона"),
+});
+
+export const Registration = () => {
   const dispatch = useDispatch();
-  const { register, handleSubmit, errors } = useForm();
+
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(SignupSchema),
+    mode: "onTouched",
+  });
 
   const onSubmit = (data) => {
     console.log(data);
@@ -44,41 +79,37 @@ export const Registration = (props) => {
       <form
         onSubmit={handleSubmit(onSubmit)}
         className={classes.root}
-        autoComplete="off"
+        autoComplete="on"
+        noValidate
       >
         <TextField
           required
-          type={"email"}
-          label={"E-mail"}
+          label="Имя"
           variant="outlined"
-          name={"email"}
-          inputRef={register({
-            required: true,
-            minLength: { value: 5, message: "Некорректный email" },
-            maxLength: { value: 30, message: "Слишком длинный email" },
-          })}
-          error={errors.email ? true : false}
-          helperText={errors.email && errors.email.message}
+          error={!!errors.name}
+          helperText={errors.name && errors.name.message}
+          {...register("name")}
         />
 
         <TextField
-          label="Телефон"
+          required
+          label={"E-mail"}
           variant="outlined"
-          name="phone"
-          inputRef={register}
+          error={!!errors.email}
+          helperText={errors.email && errors.email.message}
+          {...register("email")}
         />
 
-        <UseFormControl
-          register={{
-            required: true,
-            minLength: {
-              value: 6,
-              message: "Слишком мало символов(Минимальное 6сим)",
-            },
-            maxLength: { value: 15, message: "Слишком длинный пароль" },
-          }}
+        <MaskPhone
+          name="phone"
+          control={control}
           errors={errors}
+          variant="outlined"
+          label={"Телефон"}
+          placeholder={"+7 (995) 599 31 20"}
         />
+
+        <UseFormControl name="password" control={control} errors={errors} />
 
         <div className={classes.button}>
           <Button type={"submit"} variant={"outlined"} color={"primary"}>

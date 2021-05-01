@@ -12,8 +12,8 @@ export const HeaderItems = (props) => {
   const history = useHistory();
 
   const redirectOut = () => {
-    history.push("/");
     dispatch(logOut());
+    history.push("/");
   };
   return (
     <div>

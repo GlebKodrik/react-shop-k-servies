@@ -16,7 +16,7 @@
     line-height: 24px;
 }
 .navigation__item a:hover{
-    color: #02A5DF;
+    color: var(--main-text-color)
 }
 .menu{
     width: 30%;

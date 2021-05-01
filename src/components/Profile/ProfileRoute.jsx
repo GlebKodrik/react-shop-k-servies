@@ -1,21 +1,20 @@
 import React from "react";
 import { Profile } from "./Profile/Profile";
 import { Redirect, Route, Switch } from "react-router-dom";
-import { ProfileNavigation } from "./ProfileNavigation/ProfileNavigation";
+import { Navigation } from "./ProfileNavigation/Navigation";
 import { NotFound } from "../NotFould/NotFound";
-import { Communications } from "./Communications/Communications";
-import s from "./Profile.module.css";
+import { AppealRoute } from "./Appeal/AppealRoute";
 export const ProfileRoute = () => {
   return (
-    <div className={s.main}>
+    <div>
       <div>
-        <ProfileNavigation />
+        <Navigation />
         <Switch>
           <Redirect exact from="/" to="/" />
           <Route path="/profile/details" render={() => <Profile />} />
           <Route
             path="/profile/communications"
-            render={() => <Communications />}
+            render={() => <AppealRoute />}
           />
           <Route path="/profile/*" render={() => <NotFound />} />
         </Switch>

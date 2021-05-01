@@ -1,0 +1,52 @@
+.popup_wrap{
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+}
+.title{
+    margin-bottom: 40px;
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 700;
+    color: #151528;
+}
+.wrapButton{
+    text-align: end;
+    margin-top: 20px;
+}
+.button:hover{
+    color: #3F51B5;
+    border:1px solid #3F51B5;
+}
+.subtext{
+    margin-top: 10px;
+    margin-bottom: 35px;
+}
+.addName{
+    margin-bottom: 40px;
+}
+.checkboxes{
+    margin-bottom: 30px;
+}
+.subTextarea{
+
+}
+.subTextarea:after{
+    content: '*';
+}
+.textarea{
+    outline: none;
+    border: 1px solid #dfdfe1;
+    border-radius: 3px;
+    transition: all .3s;
+    font-size: 20px;
+    max-width: 100%;
+    min-width: 100%;
+    padding: 10px;
+    min-height: 150px;
+    max-height: 300px;
+    margin-bottom: 30px;
+}
+.textarea:focus{
+    border: 1px solid #3F51B5;
+}

@@ -8,8 +8,17 @@ import {
   OutlinedInput,
 } from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
+import { useController } from "react-hook-form";
 
-export const UseFormControl = ({ register, errors }) => {
+export const UseFormControl = ({ control, name, errors }) => {
+  const {
+    field: { ref, ...inputProps },
+  } = useController({
+    name,
+    control,
+    defaultValue: "",
+  });
+
   const [values, setValues] = useState({
     amount: "",
     password: "",
@@ -18,10 +27,6 @@ export const UseFormControl = ({ register, errors }) => {
     showPassword: false,
   });
 
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
-
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
   };
@@ -29,16 +34,14 @@ export const UseFormControl = ({ register, errors }) => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-
   return (
-    <FormControl variant="outlined" error={errors.password ? true : false}>
+    <FormControl variant="outlined" error={!!errors.password}>
       <InputLabel required>Пароль</InputLabel>
       <OutlinedInput
-        name={"password"}
-        id="outlined-adornment-password"
+        autoComplete="on"
+        {...inputProps}
+        inputRef={ref}
         type={values.showPassword ? "text" : "password"}
-        inputRef={register}
-        onChange={handleChange("password")}
         endAdornment={
           <InputAdornment position="end">
             <IconButton

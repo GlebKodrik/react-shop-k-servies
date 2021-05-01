@@ -12,7 +12,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Backdrop from "@material-ui/core/Backdrop";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
-import { Container } from "@material-ui/core";
+import { PopupQuestion } from "../../../Popup/PopupQuestion/PopupQuestion";
 
 export const Contacts = () => {
   const useStyles = makeStyles((theme) => ({
@@ -45,8 +45,15 @@ export const Contacts = () => {
 
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+  const [popupQues, setPopupQues] = useState(false);
 
   const handleOpen = () => {
+    setPopupQues(false);
+    setOpen(true);
+  };
+
+  const openPopupQues = () => {
+    setPopupQues(true);
     setOpen(true);
   };
 
@@ -69,13 +76,23 @@ export const Contacts = () => {
         <button className={styleButton} onClick={handleOpen}>
           Позвонить мне
         </button>
-        <button className={styleButton}>Задать вопрос</button>
+        <button className={styleButton} onClick={openPopupQues}>
+          Задать вопрос
+        </button>
       </div>
       <div className={s.iconSocial}>
-        <a href="https://vk.com/k.glebka" target="_blank">
+        <a
+          href="https://vk.com/k.glebka"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img src={vk} alt="Вконтакте" />
         </a>
-        <a href="https://www.instagram.com/" target={"_blank"}>
+        <a
+          href="https://www.instagram.com/"
+          target={"_blank"}
+          rel="noopener noreferrer"
+        >
           <img src={inst} alt="Инстаграмм" />
         </a>
       </div>
@@ -103,7 +120,7 @@ export const Contacts = () => {
                 <CloseIcon />
               </IconButton>
             ) : null}
-            <PopupCallMe />
+            {!popupQues ? <PopupCallMe /> : <PopupQuestion />}
           </div>
         </Fade>
       </Modal>

@@ -15,7 +15,7 @@ export const NotFound = () => {
           <div className={s.text}>
             <div className={s.title}>По Вашему запросу ничего не найдено</div>
             <NavLink to={"/"}>
-              <Button variant="contained" color="secondary">
+              <Button variant="outlined" color="primary">
                 На главную
               </Button>
             </NavLink>

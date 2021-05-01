@@ -1,24 +1,20 @@
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import { HeaderContainer } from "./components/Header/HeaderContainer";
-import { LoginContainer } from "./components/Authorization/Login/LoginContainer";
-import { RegisterContainer } from "./components/Authorization/Registration/RegistrationContainer";
-import { PrivateRouter } from "./components/Route/PrivateRouter";
-import { ProfileRoute } from "./components/Profile/ProfileRoute";
+import { AuthContainer } from "./components/Authorization/AuthContainer";
 import { Footer } from "./components/Footer/Footer";
 import { NotFound } from "./components/NotFould/NotFound";
-import { Main } from "./components/Main/Main";
+import { MainRouter } from "./components/Main/MainRouter";
 //PrivateRouter компонента
-const App = (props) => {
+const App = () => {
   return (
     <div className="app">
       <HeaderContainer />
       <div className="app-content">
         <Switch>
-          <Route exact path="/" render={() => <Main />} />
-          <Route path="/login" render={() => <LoginContainer />} />
-          <Route path="/register" render={() => <RegisterContainer />} />
-          <PrivateRouter path="/profile" component={ProfileRoute} />
+          <Route path="/login" render={() => <AuthContainer login />} />
+          <Route path="/register" render={() => <AuthContainer />} />
+          <Route path="/" render={() => <MainRouter />} />
           <Route path="*" render={() => <NotFound />} />
         </Switch>
       </div>

@@ -1,13 +1,13 @@
 .categories{
     margin-top: 40px;
 }
-.categoriesWrapp{
+.wrapp{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding: 15px 30px 5px;
 }
-.categoriesItem{
+.item{
     margin-left: 10px;
     margin-bottom: 10px;
     flex-grow: 0;
@@ -21,22 +21,22 @@
     align-items: center;
     text-align: center;
 }
-.categoriesContentImg img{
+.contentImg img{
     max-width: 100px;
     max-height: 80px;
 }
-.categoriesContentImg{
+.contentImg{
     margin: 0 auto 10px;
 }
-.categoriesName{
+.name{
     justify-content: center;
     text-align: center;
     font-size: 16px;
 }
-.categoriesItem:hover{
-    color: #0290D9;
+.item:hover{
+    color: var(--main-text-color);
 }
-.categoriesTitle{
+.title{
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 20px;

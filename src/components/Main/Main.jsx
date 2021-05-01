@@ -6,7 +6,7 @@ export const Main = () => {
   return (
     <div className={s.Main}>
       <div className="container">
-        <div className={s.MainWrapper}>
+        <div className={s.wrapper}>
           <Slider />
           <Categories />
         </div>

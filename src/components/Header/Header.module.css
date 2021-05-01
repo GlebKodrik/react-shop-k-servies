@@ -35,7 +35,7 @@
     border-bottom: 1px solid gray;
 }
 .link:hover{
-    color:#3EA4F8
+    color: var(--main-text-color);
 }
 .menu :last-child {
     margin-right: 0;
@@ -98,6 +98,6 @@
 }
 .menuLeft > li > ul > li:hover,
 .menuLeft > li > ul > li > a:hover{
-    color: #3EA4F8;
+    color: var(--main-text-color);
     border-bottom: 1px solid #C6C6C7;
 }

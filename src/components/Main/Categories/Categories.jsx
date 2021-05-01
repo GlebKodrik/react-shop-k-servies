@@ -6,17 +6,17 @@ export const Categories = () => {
   return (
     <div className={s.categories}>
       <div className="container">
-        <div className={s.categoriesTitle}>Категории</div>
-        <div className={s.categoriesWrapp}>
+        <div className={s.title}>Категории</div>
+        <div className={s.wrapp}>
           {/*Item*/}
           {categories.map((item) => {
             return (
-              <NavLink to="/" className={s.categoriesItem}>
-                <div className={s.categoriesContent}>
-                  <div className={s.categoriesContentImg}>
+              <NavLink to="/" className={s.item}>
+                <div className={s.content}>
+                  <div className={s.contentImg}>
                     <img src={item.image} alt="" />
                   </div>
-                  <div className={s.categoriesName}>{item.name}</div>
+                  <div className={s.name}>{item.name}</div>
                 </div>
               </NavLink>
             );
