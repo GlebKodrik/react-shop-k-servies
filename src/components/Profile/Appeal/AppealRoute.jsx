@@ -32,7 +32,7 @@ export const AppealRoute = () => {
       </div>
       <Switch>
         <Route exact path={match.path} render={() => <Appeal />} />
-        <Route path={`${match.url}/archive`} render={() => <Archive />} />
+        <Route path={`${match.path}/archive`} render={() => <Archive />} />
         <Route path="/*" render={() => <NotFound />} />
       </Switch>
     </div>
