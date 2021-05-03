@@ -4,7 +4,7 @@ import { Main } from "./Main";
 import { ProfileRoute } from "../Profile/ProfileRoute";
 import { PrivateRouter } from "../Route/PrivateRouter";
 import s from "./Main.module.css";
-import { ServicesRouter } from "./Services/ServicesRouter";
+import { ServicesRouter } from "../Footer/Information/Menu/Services/ServicesRouter";
 
 export const MainRouter = () => {
   return (

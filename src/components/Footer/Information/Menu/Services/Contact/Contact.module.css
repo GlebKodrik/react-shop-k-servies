@@ -1,0 +1,17 @@
+.title{
+    margin-bottom: 20px;
+}
+.appeal{
+    width: calc(100%/12*5.999 - 20px);
+    background: #BE3690 linear-gradient(89.65deg, #E56B31 2.39%, #BE3690 99.79%);
+    color: #fff;
+}
+.appealTitle{
+    margin-bottom: 12px;
+}
+.block{
+    min-height: 400px;
+    padding: 28px 32px 32px;
+    border-radius: 16px;
+    box-shadow: 0 4px 32px rgb(0 0 0 / 6%);
+}

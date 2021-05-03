@@ -1,0 +1,146 @@
+.company{
+    margin-bottom: 40px;
+}
+.companyTitle{
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+.companyText{
+    padding: 77px 116px 95px;
+}
+.companyText h2{
+    max-width: 680px;
+    font-size: 70px;
+    line-height: 92px;
+    color: #ffffff;
+    font-weight: bold;
+    margin-bottom: 36px;
+}
+.companyText h2 span{
+    color: var(--main-text-color);
+}
+.companyText p{
+    max-width: 450px;
+    color: #ffffff;
+}
+.companyItem{
+    min-height: 300px;
+    max-height: 500px;
+    border-radius: 50px;
+    background-image: linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),url(../../../../../../assets/img/services/about/about.jpg);
+    width: 100%;
+    height: 470px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.advantagesTitle{
+    font-size: 46px;
+    text-align: center;
+    margin-bottom: 48px;
+}
+.advantagesItem{
+    width: 23%;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.advantagesTop{
+    min-height: 360px;
+    padding: 16px 24px;
+    margin-bottom: 32px;
+    box-sizing: content-box;
+    background-color: #f2f2f2;
+    border-radius: 20px;
+    transition: background-color 0.2s, background-size 0.2s;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+}
+.advantagesImgMoney{
+    background-size: 80% auto;
+    background-image: url(../../../../../../assets/img/services/about/money.png)
+}
+.advantagesImgBox{
+    background-size: 100% auto;
+    background-image: url(../../../../../../assets/img/services/about/box.png)
+}
+.advantagesImgStaff{
+    background-size: 100% auto;
+    background-image: url(../../../../../../assets/img/services/about/job.png)
+}
+.advantagesImgServices{
+    background-size: 100% auto;
+    background-image: url(../../../../../../assets/img/services/about/services.png)
+}
+.advantagesItem:hover .advantagesImgBox{
+    background-size: 105% auto;
+    background-color: rgba(2, 144, 217, 0.6);
+}
+.advantagesItem:hover .advantagesImgMoney{
+    background-color: #F2A064;
+    background-size: 85% auto;
+
+}
+.advantagesItem:hover .advantagesImgServices{
+    background-size: 105% auto;
+    background-color: #EE9F3D;
+}
+.advantagesItem:hover .advantagesImgStaff{
+    background-size: 105% auto;
+    background-color: var(--main-text-color);
+
+}
+
+.advantagesTopText{
+    transition: color 0.2s;
+    font-size: 28px;
+}
+.advantagesItem:hover .advantagesTopText{
+    color: #fff;
+}
+.advantagesItem:hover .advantagesBottomTitle{
+    color: var(--main-text-color);
+}
+.advantagesWrap{
+    padding: 0 48px;
+    display: flex;
+    justify-content: space-between;
+
+}
+.advantagesBottomTitle{
+    font-weight: bold;
+    font-size: 46px;
+    line-height: 60px;
+    transition: color 0.1s;
+    margin: 0 0 4px;
+}
+.advantagesBottomSub{
+    color: #8b8b8b;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+}
+.advantages{
+    margin-bottom: 40px;
+}
+.info{
+    font-size: 18px;
+}
+.info{
+    font-size: 18px;
+}
+.infoArticle{
+    margin-bottom: 20px;
+}
+.infoTextWidth{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.infoList{
+    margin-bottom: 20px;
+}
+.infoList li:before {
+    content: '- ';
+    left: 0;
+}

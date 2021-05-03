@@ -3,7 +3,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { InputField } from "../../../common/model";
+import { InputField } from "../../../common/inputMaterial";
 import cn from "classnames";
 
 const SignupSchema = yup.object().shape({

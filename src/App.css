@@ -1,6 +1,6 @@
 :root{
     --main-text-color: #0290D9;
-    --main-wrap-padding: 15px 30px 30px;
+    --main-wrap-padding: 30px;
 }
 * {
     box-sizing: border-box;

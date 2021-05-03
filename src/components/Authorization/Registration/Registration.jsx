@@ -10,7 +10,7 @@ import { UseFormControl } from "../FormControl";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { MaskPhone } from "../../../common/mask";
-import { InputField } from "../../../common/model";
+import { InputField } from "../../../common/inputMaterial";
 
 const useStyles = makeStyles((theme) => ({
   root: {

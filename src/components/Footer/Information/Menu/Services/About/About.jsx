@@ -22,62 +22,51 @@ export const About = () => {
         <div className={cn("title", s.advantagesTitle)}>Наши преимущества</div>
         <div className={s.advantagesWrap}>
           <div className={s.advantagesItem}>
-            <div className={s.advantagesTop}>
+            <div className={cn("title", s.advantagesTop, s.advantagesImgMoney)}>
+              <h3 className={s.advantagesTopText}>Выгодные цены</h3>
+            </div>
+            <div>
+              <div className={s.advantagesBottomTitle}>Наши цены</div>
+              <p className={s.advantagesBottomSub}>подойдут всем</p>
+            </div>
+          </div>
+          <div className={s.advantagesItem}>
+            <div className={cn("title", s.advantagesTop, s.advantagesImgBox)}>
               <h3 className={s.advantagesTopText}>
-                Быстрая <br /> доставка
+                Удобная <br /> доставка
               </h3>
             </div>
             <div>
-              <div className={s.advantagesBottomTitle}>Более 80%</div>
+              <div className={s.advantagesBottomTitle}>Все клиенты</div>
               <p className={s.advantagesBottomSub}>
-                доставляется
-                <br />
-                на следующий день
+                довольны <br />
+                нашей доставкой
               </p>
             </div>
           </div>
           <div className={s.advantagesItem}>
-            <div className={s.advantagesTop}>
+            <div
+              className={cn("title", s.advantagesTop, s.advantagesImgServices)}
+            >
               <h3 className={s.advantagesTopText}>
-                Быстрая <br /> доставка
+                Разнообразие <br /> услуг
               </h3>
             </div>
             <div>
-              <div className={s.advantagesBottomTitle}>Более 80%</div>
+              <div className={s.advantagesBottomTitle}>Мы</div>
               <p className={s.advantagesBottomSub}>
-                доставляется
-                <br />
-                на следующий день
+                предлагаем большое <br /> количество услуг
               </p>
             </div>
           </div>
           <div className={s.advantagesItem}>
-            <div className={s.advantagesTop}>
-              <h3 className={s.advantagesTopText}>
-                Быстрая <br /> доставка
-              </h3>
+            <div className={cn("title", s.advantagesTop, s.advantagesImgStaff)}>
+              <h3 className={s.advantagesTopText}>Персонал</h3>
             </div>
             <div>
-              <div className={s.advantagesBottomTitle}>Более 80%</div>
+              <div className={s.advantagesBottomTitle}>Каждый</div>
               <p className={s.advantagesBottomSub}>
-                доставляется
-                <br />
-                на следующий день
-              </p>
-            </div>
-          </div>
-          <div className={s.advantagesItem}>
-            <div className={s.advantagesTop}>
-              <h3 className={s.advantagesTopText}>
-                Быстрая <br /> доставка
-              </h3>
-            </div>
-            <div>
-              <div className={s.advantagesBottomTitle}>Более 80%</div>
-              <p className={s.advantagesBottomSub}>
-                доставляется
-                <br />
-                на следующий день
+                сотрудник <br /> профессионал своего дела
               </p>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import s from "../Footer.module.css";
-import { InputField } from "../../../common/model";
+import { InputField } from "../../../common/inputMaterial";
 import { useState } from "react";
 import cn from "classnames";
 import { useForm, Controller } from "react-hook-form";

@@ -1,5 +1,5 @@
 import s from "./PopupCallMe.module.css";
-import { InputField } from "../../../common/model";
+import { InputField } from "../../../common/inputMaterial";
 import React, { useState } from "react";
 import cn from "classnames";
 import Radio from "@material-ui/core/Radio";
@@ -10,7 +10,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Checkbox } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import InputMask from "react-input-mask";
 import { MaskPhone } from "../../../common/mask";
 
 const SignupSchema = yup.object().shape({

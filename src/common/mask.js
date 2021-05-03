@@ -1,5 +1,5 @@
 import InputMask from "react-input-mask";
-import { InputField } from "./model";
+import { InputField } from "./inputMaterial";
 import { useController } from "react-hook-form";
 import React from "react";
 

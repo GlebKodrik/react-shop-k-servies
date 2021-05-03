@@ -1,5 +1,5 @@
 import s from "./Appeal.module.css";
-import { InputField } from "../../../common/model";
+import { InputField } from "../../../common/inputMaterial";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
