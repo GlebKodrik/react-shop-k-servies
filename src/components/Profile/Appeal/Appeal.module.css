@@ -30,7 +30,7 @@
     );
     width: 10px;
 }
-.active>a{
+.active a{
     color: #fff;
 }
 .wrap{
