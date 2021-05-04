@@ -6,7 +6,8 @@ import { PopupQuestion } from "../../../../../Popup/PopupQuestion/PopupQuestion"
 import { PopupCallMe } from "../../../../../Popup/PopupCallMe/PopupCallMe";
 
 export const Contact = () => {
-  const [open, setOpen] = useState({ value: false, callMe: false });
+  const [open, setOpen] = useState(false);
+  const [callMe, setCallMe] = useState(false);
   return (
     <div>
       <div className={cn("title", s.title)}>Контакты</div>
@@ -18,14 +19,20 @@ export const Contact = () => {
               Если у Вас возник вопрос – <br />{" "}
               <span
                 className={s.underline}
-                onClick={() => setOpen({ value: true, callMe: false })}
+                onClick={() => {
+                  setCallMe(false);
+                  setOpen(true);
+                }}
               >
                 напишите нам
               </span>{" "}
             </p>
             <button
               className={s.button}
-              onClick={() => setOpen({ value: true, callMe: true })}
+              onClick={() => {
+                setCallMe(true);
+                setOpen(true);
+              }}
             >
               Позвонить мне
             </button>
@@ -39,11 +46,9 @@ export const Contact = () => {
 
             <div className={s.appealIcon}></div>
           </div>
-          <div></div>
           <ModalPopup
-            component={open.callMe ? PopupCallMe : PopupQuestion}
-            open={open.value}
-            {...{ setOpen }}
+            component={callMe ? PopupCallMe : PopupQuestion}
+            {...{ setOpen, open }}
           />
         </div>
         <div className={s.blahWrap}>
