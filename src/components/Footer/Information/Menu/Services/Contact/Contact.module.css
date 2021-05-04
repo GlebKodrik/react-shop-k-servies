@@ -1,7 +1,13 @@
+.wrap{
+    display: flex;
+    justify-content: space-between;
+}
 .title{
     margin-bottom: 20px;
 }
 .appeal{
+    min-height: 400px;
+    position: relative;
     width: calc(100%/12*5.999 - 20px);
     background: #BE3690 linear-gradient(89.65deg, #E56B31 2.39%, #BE3690 99.79%);
     color: #fff;
@@ -10,8 +16,69 @@
     margin-bottom: 12px;
 }
 .block{
-    min-height: 400px;
     padding: 28px 32px 32px;
     border-radius: 16px;
     box-shadow: 0 4px 32px rgb(0 0 0 / 6%);
+}
+.underline{
+    border-bottom: 1px solid;
+    cursor: pointer;
+}
+.underline a{
+    color: #fff;
+}
+.appealText{
+    margin-bottom: 50px;
+}
+.appealIcon{
+    display: block;
+    width: 182px;
+    height: 217px;
+    position: absolute;
+    top: 45px;
+    right: 75px;
+    background-image: url(../../../../../../assets/img/services/sound.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.button{
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    padding: 13px 18px 11px 18px;
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+    border-radius: 8px;
+    margin-bottom: 66px;
+}
+.blahWrap{
+    flex-basis: 49%;
+}
+.blah{
+    position: relative;
+    min-height: 190px;
+    margin-bottom: 20px;
+}
+.blah:last-child{
+    margin: 0;
+}
+.blahTitle{
+    font-size: 28px;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+.blahSubTitle{
+    color: #8b8b8b;
+    font-size: 16px;
+    line-height: 22px;
+}
+.blahAdress{
+    font-size: 16px;
+}
+.linkEmail{
+    position: absolute;
+    bottom: 32px;
+    left: 32px;
+    color: var(--main-text-color);
 }
