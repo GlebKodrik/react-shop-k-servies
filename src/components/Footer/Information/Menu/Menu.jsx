@@ -9,7 +9,7 @@ export const Menu = () => {
         <div className={s.title}>Покупателям</div>
         <ul>
           <li className={s.navigation__item}>
-            <NavLink to="/services/">Где мы находимся</NavLink>
+            <NavLink to="/services/location">Где мы находимся</NavLink>
           </li>
           <li className={s.navigation__item}>
             <NavLink to="/services/guarantee">Гарантия</NavLink>

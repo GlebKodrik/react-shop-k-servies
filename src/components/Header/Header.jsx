@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./Header.module.css";
 import { NavLink } from "react-router-dom";
-import { HeaderItems } from "./HeaderItems/HeaderItems";
+import { Menu } from "./Menu/Menu";
 import cn from "classnames";
 
 export const Header = ({ logo, ...props }) => {
@@ -14,7 +14,7 @@ export const Header = ({ logo, ...props }) => {
               <img src={logo} alt="Логотип" />
             </NavLink>
           </div>
-          <HeaderItems {...props} />
+          <Menu {...props} />
         </div>
       </div>
     </header>

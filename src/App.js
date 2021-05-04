@@ -5,7 +5,7 @@ import { AuthContainer } from "./components/Authorization/AuthContainer";
 import { Footer } from "./components/Footer/Footer";
 import { NotFound } from "./components/NotFould/NotFound";
 import { MainRouter } from "./components/Main/MainRouter";
-//PrivateRouter компонента
+
 const App = () => {
   return (
     <div className="app">

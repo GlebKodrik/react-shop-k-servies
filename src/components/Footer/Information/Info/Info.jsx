@@ -28,10 +28,10 @@ export const Info = () => {
     <div className={s.contacts}>
       <div className={s.title}>Контакты</div>
       <div className={s.adress}>
-        <NavLink to={"/"}>Адрес магазина</NavLink>
+        <NavLink to={"/services/location"}>Адрес магазина</NavLink>
       </div>
       <div className={s.wrap_phone}>
-        <a href="tel:PHONE_NUM"> +7(995)599-31-30</a>
+        <a href="tel:PHONE_NUM"> +7 (995) 599-31-30</a>
         <PhoneIphoneIcon />
       </div>
       <div className={s.wrap_button}>

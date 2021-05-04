@@ -73,8 +73,10 @@ h3,h1{
     margin: 0;
 }
 .title{
+    cursor: default;
     font-size: 32px;
     font-weight: 700;
+    margin-bottom: 20px;
 }
 .app{
     display: flex;
@@ -113,6 +115,7 @@ h3,h1{
     padding: 40px;
 }
 .popupTitle{
+    cursor: default;
     margin-bottom: 40px;
     font-size: 32px;
     line-height: 32px;
@@ -158,3 +161,37 @@ h3,h1{
 .subTextarea:after{
     content: '*';
 }
+/*Ymap*/
+ymaps[class$=map] ymaps[class*="balloon "] {
+    -webkit-box-shadow: 0 0 20px rgb(0 0 0 / 10%);
+    box-shadow: 0 0 20px rgb(0 0 0 / 10%);
+    border-radius: 8px;
+}
+ymaps[class$=map] ymaps[class*=balloon__layout] {
+    border-radius: 8px;
+}
+ymaps[class$=map] ymaps[class*=balloon__close]+ymaps[class*=balloon__content] {
+    margin-right: 0;
+    padding: 24px;
+}
+.balloon-content-title{
+    color: #000;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 700;
+    margin: 0 0 20px;
+}
+.balloon-content-info{
+    margin-bottom: 12px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #8b8b8b;
+}
+.balloon-content-info:last-child{
+    margin-bottom: 0;
+}
+.balloon-content-info span{
+    color: black;
+}
+/*EndYmap*/

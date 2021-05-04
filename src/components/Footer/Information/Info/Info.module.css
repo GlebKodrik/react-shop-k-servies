@@ -12,7 +12,7 @@
 }
 .adress a{
     font-size: 18px;
-    color: #02A5DF;
+    color: var(--main-text-color);
 }
 .adress a:hover{
     color:#5F74B7;
@@ -34,8 +34,8 @@
 }
 
 .button:hover{
-    border: 1px solid #02A5DF;
-    color: #02A5DF;
+    border: 1px solid var(--main-text-color);
+    color: var(--main-text-color);
 }
 .wrap_button button:last-child{
     margin-left: 10px;

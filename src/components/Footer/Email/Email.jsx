@@ -5,14 +5,14 @@ import cn from "classnames";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useTheme } from "@material-ui/core";
 
 const SignupSchema = yup.object().shape({
   email: yup.string().email("Некорректный email").required("Обязательное поле"),
 });
 
-export const ContentEmail = () => {
+export const Email = () => {
   const [success, setSuccess] = useState(false);
-  const [boole, setboole] = useState(true);
 
   const {
     handleSubmit,
@@ -30,6 +30,8 @@ export const ContentEmail = () => {
     setSuccess(true);
   };
 
+  const theme = useTheme();
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={s.email_content}>
       <div className={cn(s.email, { [s.email_center]: success })}>
@@ -44,6 +46,9 @@ export const ContentEmail = () => {
                   return (
                     <InputField
                       label={"Мой e-mail"}
+                      color={
+                        errors.email ? theme.palette.error.main : "secondary"
+                      }
                       error={!!errors.email}
                       helperText={errors.email?.message}
                       onBlur={() => clearErrors()}

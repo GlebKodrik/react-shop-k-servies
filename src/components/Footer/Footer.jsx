@@ -1,5 +1,5 @@
 import s from "./Footer.module.css";
-import { ContentEmail } from "./Email/ContentEmail";
+import { Email } from "./Email/Email";
 import { Information } from "./Information/Information";
 
 export const Footer = () => {
@@ -7,7 +7,7 @@ export const Footer = () => {
     <footer className={s.footer}>
       <div className="container">
         <div className={s.wrap}>
-          <ContentEmail />
+          <Email />
           <Information />
         </div>
       </div>
