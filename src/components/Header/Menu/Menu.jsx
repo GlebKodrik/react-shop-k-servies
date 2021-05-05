@@ -4,7 +4,6 @@ import { NavLink, useHistory } from "react-router-dom";
 import cn from "classnames";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../../Redux/authReducer";
-import { array } from "../../../common/paths";
 import { ShowMenu } from "./ShowMenu";
 
 export const Menu = (props) => {
@@ -17,63 +16,69 @@ export const Menu = (props) => {
     history.push("/");
   };
   return (
-    <div>
+    <>
       <div className={s.menu}>
-        <NavLink to="/services/location" className={s.link}>
-          <div className={s.item}>
-            <div
-              className="material-icons"
-              style={{ fontSize: 40, color: "red" }}
-            >
-              location_on
-            </div>
-            <div>Мы находимся</div>
-          </div>
-        </NavLink>
-        {props.isAuth && (
-          <NavLink to="/profile/basket" className={s.link}>
-            <div className={s.item}>
+        <div className={s.item}>
+          <NavLink to="/services/location" className={s.link}>
+            <div>
               <div
                 className="material-icons"
-                style={{ fontSize: 40, color: "#3b5ca8" }}
+                style={{ fontSize: 40, color: "red" }}
               >
-                shopping_basket
+                location_on
               </div>
-              <div>Корзина</div>
+              <div>Мы находимся</div>
             </div>
           </NavLink>
-        )}
-        <NavLink
-          to={!props.isAuth ? "/login" : "/profile/details"}
-          className={s.link}
-        >
-          <div
-            className={s.item}
-            onMouseEnter={() => setFocus(true)}
-            onMouseLeave={() => setFocus(false)}
-          >
-            <div
-              className="material-icons"
-              style={{ fontSize: 40, color: "#8f939c" }}
-            >
-              account_circle
-            </div>
-            <div className={s.entrance}>
-              {!props.isAuth ? "Войти" : "Профиль"}
-            </div>
+        </div>
 
-            {props.isAuth && (
-              <div
-                className={cn(s.profileFocus, {
-                  [s.MenuRight]: focus,
-                })}
-              >
-                {focus && <ShowMenu redirectOut={redirectOut} />}
+        {props.isAuth && (
+          <div className={s.item}>
+            <NavLink to="/profile/basket" className={s.link}>
+              <div>
+                <div
+                  className="material-icons"
+                  style={{ fontSize: 40, color: "#3b5ca8" }}
+                >
+                  shopping_basket
+                </div>
+                <div>Корзина</div>
               </div>
-            )}
+            </NavLink>
           </div>
-        </NavLink>
+        )}
+        <div
+          className={s.item}
+          onMouseEnter={() => setFocus(true)}
+          onMouseLeave={() => setFocus(false)}
+        >
+          <NavLink
+            to={!props.isAuth ? "/login" : "/profile/details"}
+            className={s.link}
+          >
+            <div>
+              <div
+                className="material-icons"
+                style={{ fontSize: 40, color: "#8f939c" }}
+              >
+                account_circle
+              </div>
+              <div className={s.entrance}>
+                {!props.isAuth ? "Войти" : "Профиль"}
+              </div>
+            </div>
+          </NavLink>
+          {props.isAuth && (
+            <div
+              className={cn(s.profileFocus, s.profilePosition, {
+                [s.MenuRight]: focus,
+              })}
+            >
+              {focus && <ShowMenu redirectOut={redirectOut} />}
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };

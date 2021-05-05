@@ -31,7 +31,7 @@ export const Slider = () => {
       >
         {SliderData.map((slider) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide key={slider.id}>
               <div className={s.swipe}>
                 <img src={slider.image} alt="Слайдер" />
               </div>

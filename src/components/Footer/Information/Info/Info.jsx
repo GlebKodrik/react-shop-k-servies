@@ -2,12 +2,10 @@ import s from "./Info.module.css";
 import { NavLink } from "react-router-dom";
 import cn from "classnames";
 import PhoneIphoneIcon from "@material-ui/icons/PhoneIphone";
-import vk from "./../../../../assets/img/icons/vk1.png";
-import inst from "./../../../../assets/img/icons/inst.png";
 import { useState } from "react";
 import { PopupCallMe } from "../../../Popup/PopupCallMe/PopupCallMe";
 import { PopupQuestion } from "../../../Popup/PopupQuestion/PopupQuestion";
-import { ModalPopup } from "../../../../common/modaPopup";
+import { ModalPopup } from "../../../../common/modalPopup";
 
 export const Info = () => {
   const [open, setOpen] = useState(false);
@@ -41,22 +39,6 @@ export const Info = () => {
         <button className={styleButton} onClick={openPopupQues}>
           Задать вопрос
         </button>
-      </div>
-      <div className={s.iconSocial}>
-        <a
-          href="https://vk.com/k.glebka"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src={vk} alt="Вконтакте" />
-        </a>
-        <a
-          href="https://www.instagram.com/"
-          target={"_blank"}
-          rel="noopener noreferrer"
-        >
-          <img src={inst} alt="Инстаграмм" />
-        </a>
       </div>
       <ModalPopup
         component={!popupQues ? PopupCallMe : PopupQuestion}

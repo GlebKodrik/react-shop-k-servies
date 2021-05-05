@@ -1,11 +1,10 @@
 import s from "../Footer.module.css";
-import { InputField } from "../../../common/inputMaterial";
 import { useState } from "react";
 import cn from "classnames";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useTheme } from "@material-ui/core";
+import { TextField, useTheme } from "@material-ui/core";
 
 const SignupSchema = yup.object().shape({
   email: yup.string().email("Некорректный email").required("Обязательное поле"),
@@ -44,7 +43,7 @@ export const Email = () => {
                 name="email"
                 render={({ field: { onChange, value, ref } }) => {
                   return (
-                    <InputField
+                    <TextField
                       label={"Мой e-mail"}
                       color={
                         errors.email ? theme.palette.error.main : "secondary"

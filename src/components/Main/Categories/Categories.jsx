@@ -10,8 +10,8 @@ export const Categories = () => {
         {/*Item*/}
         {categories.map((item) => {
           return (
-            <NavLink to="/" className={s.item}>
-              <div className={s.content}>
+            <NavLink to="/" className={s.item} key={item.id}>
+              <div>
                 <div className={s.contentImg}>
                   <img src={item.image} alt="" />
                 </div>

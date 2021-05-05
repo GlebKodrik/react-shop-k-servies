@@ -5,14 +5,14 @@ import React from "react";
 
 export const ShowMenu = (props) => {
   return (
-    <div>
+    <>
       <div className={s.menuWrapper}>
         <ul className={s.menuLeft}>
           <li className={s.menuLeftTitle}>
             <ul>
               {array.map((item) => {
                 return (
-                  <li>
+                  <li key={item.id}>
                     <NavLink to={"/profile/" + item.path}>{item.name}</NavLink>
                   </li>
                 );
@@ -26,6 +26,6 @@ export const ShowMenu = (props) => {
           </li>
         </ul>
       </div>
-    </div>
+    </>
   );
 };

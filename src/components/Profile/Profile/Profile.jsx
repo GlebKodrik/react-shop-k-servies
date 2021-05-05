@@ -11,12 +11,20 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 const SignupSchema = yup.object().shape({
-  email: yup.string().required("Обязательное поле").email("Некорректный email"),
-  password: yup
+  phone: yup
     .string()
     .required("Обязательное поле")
-    .min(6, "Не менее 6 символов")
-    .max(15, "Не более 15 сиволов"),
+    .transform((value) => {
+      return value.replace(/[^0-9]/g, "");
+    })
+    .min(11, "Некорректный номер телефона"),
+  email: yup.string().required("Обязательное поле").email("Некорректный email"),
+  name: yup
+    .string()
+    .required("Обязательное поле")
+    .matches(/^[a-zа-яё\s]+$/i, "Недопустимое имя")
+    .min(2, "Недопустимое имя")
+    .max(15, "Недопустимое имя"),
 });
 
 export const Profile = (props) => {
@@ -27,13 +35,13 @@ export const Profile = (props) => {
   const {
     register,
     handleSubmit,
-    watch,
+    control,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(SignupSchema),
     mode: "onTouched",
   });
-  console.log(watch["email"]);
+
   const onSubmit = (data) => {
     debugger;
     console.log(data);
@@ -47,7 +55,7 @@ export const Profile = (props) => {
     }
   };
   return (
-    <div>
+    <>
       <div className={["wrapContainer", s.dataWrap].join(" ")}>
         <div>
           <div className={s.avatar}>
@@ -81,11 +89,7 @@ export const Profile = (props) => {
                   Редактировать
                 </Button>
               ) : (
-                <Button
-                  type={"submit"}
-                  onClick={() => setEdit(!edit)}
-                  variant="contained"
-                >
+                <Button type={!edit ? "button" : "submit"} variant="contained">
                   Сохранить
                 </Button>
               )}
@@ -93,6 +97,7 @@ export const Profile = (props) => {
           </div>
           <ProfileForm
             {...{
+              control,
               edit,
               register,
               errors,
@@ -100,6 +105,6 @@ export const Profile = (props) => {
           />
         </form>
       </div>
-    </div>
+    </>
   );
 };

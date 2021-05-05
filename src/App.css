@@ -134,7 +134,7 @@ h3,h1{
     padding: 10px;
 }
 .popupTextarea:focus{
-    border: 1px solid #3F51B5;
+    border: 1px solid var(--main-text-color);
 }
 .popupWrapButton{
     text-align: end;

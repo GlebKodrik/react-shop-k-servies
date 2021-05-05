@@ -3,7 +3,7 @@ import s from "./About.module.css";
 
 export const About = () => {
   return (
-    <div>
+    <>
       <section className={s.company}>
         <div className={s.companyItem}>
           <div className={s.companyText}>
@@ -128,6 +128,6 @@ export const About = () => {
           </p>
         </div>
       </section>
-    </div>
+    </>
   );
 };

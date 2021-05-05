@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import s from "./NotFound.module.css";
+import React from "react";
+import cn from "classnames";
 export const NotFound = () => {
   return (
     <div className={s.wrap}>
@@ -13,7 +15,9 @@ export const NotFound = () => {
             />
           </div>
           <div className={s.text}>
-            <div className={s.title}>По Вашему запросу ничего не найдено</div>
+            <div className={cn(s.title, "title")}>
+              По Вашему запросу ничего не найдено
+            </div>
             <NavLink to={"/"}>
               <Button variant="outlined" color="primary">
                 На главную

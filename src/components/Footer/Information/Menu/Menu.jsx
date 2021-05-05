@@ -12,10 +12,22 @@ export const Menu = () => {
             <NavLink to="/services/location">Где мы находимся</NavLink>
           </li>
           <li className={s.navigation__item}>
-            <NavLink to="/services/guarantee">Гарантия</NavLink>
+            <a
+              href="https://vk.com/k.glebka"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Мы вконтакте
+            </a>
           </li>
           <li className={s.navigation__item}>
-            <NavLink to="/services/info-product">Информация о товарах</NavLink>
+            <a
+              href="https://www.instagram.com/"
+              target={"_blank"}
+              rel="noopener noreferrer"
+            >
+              Мы в инстаграмме
+            </a>
           </li>
         </ul>
       </div>

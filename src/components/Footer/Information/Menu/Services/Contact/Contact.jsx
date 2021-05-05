@@ -1,6 +1,6 @@
 import s from "./Contact.module.css";
 import cn from "classnames";
-import { ModalPopup } from "../../../../../../common/modaPopup";
+import { ModalPopup } from "../../../../../../common/modalPopup";
 import { useState } from "react";
 import { PopupQuestion } from "../../../../../Popup/PopupQuestion/PopupQuestion";
 import { PopupCallMe } from "../../../../../Popup/PopupCallMe/PopupCallMe";
@@ -9,7 +9,7 @@ export const Contact = () => {
   const [open, setOpen] = useState(false);
   const [callMe, setCallMe] = useState(false);
   return (
-    <div>
+    <>
       <div className={cn("title", s.title)}>Контакты</div>
       <div className={s.wrap}>
         <div className={cn(s.appeal, s.block)}>
@@ -72,6 +72,6 @@ export const Contact = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };

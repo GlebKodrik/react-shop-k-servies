@@ -9,11 +9,9 @@ export const Header = ({ logo, ...props }) => {
     <header className={s.header}>
       <div className={cn("container", s.center)}>
         <div className={s.wrap}>
-          <div>
-            <NavLink className={s.logo} to="/">
-              <img src={logo} alt="Логотип" />
-            </NavLink>
-          </div>
+          <NavLink className={s.logo} to="/">
+            <img src={logo} alt="Логотип" />
+          </NavLink>
           <Menu {...props} />
         </div>
       </div>

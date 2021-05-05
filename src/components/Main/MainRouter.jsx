@@ -8,7 +8,7 @@ import { ServicesRouter } from "../Footer/Information/Menu/Services/ServicesRout
 
 export const MainRouter = () => {
   return (
-    <div>
+    <>
       <div className={s.Main}>
         <div className="container">
           <div className={s.wrapper}>
@@ -21,6 +21,6 @@ export const MainRouter = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };

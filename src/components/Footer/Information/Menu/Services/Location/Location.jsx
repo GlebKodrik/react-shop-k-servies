@@ -13,7 +13,7 @@ export const Location = () => {
     geometry: [59.850292, 30.202546],
     properties: {
       balloonContent: `<div class="balloon-content">
-<h3 class="balloon-content-title">Партнерский&nbsp;пункт выдачи</h3>
+<h3 class="balloon-content-title">Информация</h3>
 <div class="balloon-content-info">Адрес: <span>г.Санкт-Петербург, ул. Маршала Захарова, д.27, к.2</span></div>
 <div class="balloon-content-info">Режим работы: <span>Ежедневно 09:00-21:00</span></div></div>`,
     },
@@ -22,7 +22,7 @@ export const Location = () => {
   };
 
   return (
-    <div>
+    <>
       <div className="title">Где мы находимся</div>
       <div className={s.subTitle}>
         <b>Адрес:</b> 198330, г.Санкт-Петербург, ул. Маршала Захарова, д.27,
@@ -41,6 +41,6 @@ export const Location = () => {
           </Map>
         </YMaps>
       </div>
-    </div>
+    </>
   );
 };

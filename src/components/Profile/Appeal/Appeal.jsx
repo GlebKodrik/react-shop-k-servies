@@ -1,10 +1,10 @@
 import s from "./Appeal.module.css";
-import { InputField } from "../../../common/inputMaterial";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import React from "react";
 import cn from "classnames";
+import { TextField } from "@material-ui/core";
 
 const SignupSchema = yup.object().shape({
   subject: yup
@@ -33,12 +33,12 @@ export const Appeal = () => {
   };
 
   return (
-    <div>
+    <>
       <div className={s.wrap}>
         <div onSubmit={handleSubmit(onSubmit)} className={s.form}>
           <form noValidate autoComplete={"on"}>
             <div className={s.formInput}>
-              <InputField
+              <TextField
                 required
                 type={"text"}
                 label={"Тема обращения"}
@@ -106,6 +106,6 @@ export const Appeal = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };

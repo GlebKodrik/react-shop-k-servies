@@ -7,7 +7,7 @@ import { Location } from "./Location/Location";
 
 export const ServicesRouter = () => {
   return (
-    <div>
+    <>
       <Switch>
         <Route path="/services/about" render={() => <About />} />
         <Route path="/services/requisites" render={() => <Requisites />} />
@@ -19,6 +19,6 @@ export const ServicesRouter = () => {
         />
         <Route path="*" render={() => <NotFound />} />
       </Switch>
-    </div>
+    </>
   );
 };

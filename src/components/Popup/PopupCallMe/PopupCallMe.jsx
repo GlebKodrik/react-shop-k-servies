@@ -1,5 +1,4 @@
 import s from "./PopupCallMe.module.css";
-import { InputField } from "../../../common/inputMaterial";
 import React, { useState } from "react";
 import cn from "classnames";
 import Radio from "@material-ui/core/Radio";
@@ -8,7 +7,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { Checkbox } from "@material-ui/core";
+import { Checkbox, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { MaskPhone } from "../../../common/mask";
 
@@ -79,7 +78,7 @@ export const PopupCallMe = (props) => {
         </div>
 
         <div className={s.addName}>
-          <InputField
+          <TextField
             name={"firstName"}
             type={"text"}
             label={"Моё имя"}

@@ -3,8 +3,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { InputField } from "../../../common/inputMaterial";
 import cn from "classnames";
+import { TextField } from "@material-ui/core";
 
 const SignupSchema = yup.object().shape({
   name: yup
@@ -44,7 +44,7 @@ export const PopupQuestion = () => {
       <div className={"popupTitle"}>Обратная связь</div>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <div className={s.name}>
-          <InputField
+          <TextField
             required
             type={"text"}
             label={"Имя"}
@@ -54,7 +54,7 @@ export const PopupQuestion = () => {
           />
         </div>
         <div className={s.subject}>
-          <InputField
+          <TextField
             required
             type={"text"}
             label={"Тема обращения"}
@@ -81,7 +81,7 @@ export const PopupQuestion = () => {
         </div>
 
         <div>
-          <InputField
+          <TextField
             required
             label={"Email"}
             error={!!errors.email}
