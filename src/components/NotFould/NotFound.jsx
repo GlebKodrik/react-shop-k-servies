@@ -11,7 +11,7 @@ export const NotFound = () => {
           <div className={s.img}>
             <img
               src="https://ctoetotakoe.ru/wp-content/uploads/2016/05/404-not-found.png"
-              alt=""
+              alt="Ошибка 404"
             />
           </div>
           <div className={s.text}>

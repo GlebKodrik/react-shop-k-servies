@@ -1,5 +1,4 @@
 import s from "../Header.module.css";
-import { array } from "../../../common/paths";
 import { NavLink } from "react-router-dom";
 import React from "react";
 
@@ -10,13 +9,18 @@ export const ShowMenu = (props) => {
         <ul className={s.menuLeft}>
           <li className={s.menuLeftTitle}>
             <ul>
-              {array.map((item) => {
-                return (
-                  <li key={item.id}>
-                    <NavLink to={"/profile/" + item.path}>{item.name}</NavLink>
-                  </li>
-                );
-              })}
+              <li>
+                <NavLink to={"/profile/details"}>Профиль</NavLink>
+              </li>
+              <li>
+                <NavLink to={"/profile/basket"}>Корзина</NavLink>
+              </li>
+              <li>
+                <NavLink to={"/profile/purchases"}>Финансы</NavLink>
+              </li>
+              <li>
+                <NavLink to={"/profile/communications"}>Обратная связь</NavLink>
+              </li>
             </ul>
           </li>
           <li>

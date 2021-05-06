@@ -3,9 +3,15 @@ import s from "../Profile.module.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { MaskPhone } from "../../../../common/mask";
 import { TextField } from "@material-ui/core";
+import FaceOutlinedIcon from "@material-ui/icons/FaceOutlined";
+import PhoneIphoneOutlinedIcon from "@material-ui/icons/PhoneIphoneOutlined";
+import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
 
 export const ProfileForm = ({ edit, register, errors, control }) => {
-  const useStyles = makeStyles((theme) => ({
+  const useStyles = makeStyles(() => ({
+    icon: {
+      fontSize: 26,
+    },
     dataInfo: {
       marginRight: "10px",
       width: "66%",
@@ -30,7 +36,7 @@ export const ProfileForm = ({ edit, register, errors, control }) => {
             <span className={s.dataInfo}> Кодрик Глеб Михайлович</span>
           )}
           <div>
-            <i className="material-icons red-text">create</i>
+            <FaceOutlinedIcon className={classes.icon} />
           </div>
         </label>
         <label className={s.dataItem}>
@@ -47,9 +53,7 @@ export const ProfileForm = ({ edit, register, errors, control }) => {
           ) : (
             <span className={s.dataInfo}>89955993130</span>
           )}
-          <div>
-            <i className="material-icons red-text">stay_current_portrait</i>
-          </div>
+          <PhoneIphoneOutlinedIcon className={classes.icon} />
         </label>
         <label className={s.dataItem}>
           <span className={s.dataTitle}>Email</span>
@@ -65,9 +69,7 @@ export const ProfileForm = ({ edit, register, errors, control }) => {
           ) : (
             <span className={s.dataInfo}> kodrikgleb2@mail.ru</span>
           )}
-          <div>
-            <i className="material-icons red-text">mail_outline</i>
-          </div>
+          <EmailOutlinedIcon className={classes.icon} />
         </label>
       </div>
     </>

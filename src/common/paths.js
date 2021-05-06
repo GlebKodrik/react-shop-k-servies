@@ -1,10 +1,3 @@
-export const array = [
-  { id: 1, name: "Профиль", path: "details", icon: "account_circle" },
-  { id: 2, name: "Корзина", path: "basket", icon: "shopping_cart" },
-  { id: 3, name: "Финансы", path: "purchases", icon: "account_balance_wallet" },
-  { id: 4, name: "Обратная связь", path: "communications", icon: "email" },
-];
-
 export const categories = [
   {
     id: 1,

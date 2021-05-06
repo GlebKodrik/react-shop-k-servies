@@ -5,6 +5,17 @@ import cn from "classnames";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../../Redux/authReducer";
 import { ShowMenu } from "./ShowMenu";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
+import { blue, red } from "@material-ui/core/colors";
+import ShoppingBasketOutlinedIcon from "@material-ui/icons/ShoppingBasketOutlined";
+import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
+import { makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles({
+  root: {
+    fontSize: 40,
+  },
+});
 
 export const Menu = (props) => {
   const [focus, setFocus] = useState(false);
@@ -15,18 +26,17 @@ export const Menu = (props) => {
     dispatch(logOut());
     history.push("/");
   };
+  const classes = useStyles();
   return (
     <>
       <div className={s.menu}>
         <div className={s.item}>
           <NavLink to="/services/location" className={s.link}>
             <div>
-              <div
-                className="material-icons"
-                style={{ fontSize: 40, color: "red" }}
-              >
-                location_on
-              </div>
+              <LocationOnIcon
+                style={{ color: red[500] }}
+                classes={{ root: classes.root }}
+              />
               <div>Мы находимся</div>
             </div>
           </NavLink>
@@ -36,12 +46,10 @@ export const Menu = (props) => {
           <div className={s.item}>
             <NavLink to="/profile/basket" className={s.link}>
               <div>
-                <div
-                  className="material-icons"
-                  style={{ fontSize: 40, color: "#3b5ca8" }}
-                >
-                  shopping_basket
-                </div>
+                <ShoppingBasketOutlinedIcon
+                  classes={{ root: classes.root }}
+                  style={{ color: blue[700] }}
+                />
                 <div>Корзина</div>
               </div>
             </NavLink>
@@ -57,12 +65,10 @@ export const Menu = (props) => {
             className={s.link}
           >
             <div>
-              <div
-                className="material-icons"
-                style={{ fontSize: 40, color: "#8f939c" }}
-              >
-                account_circle
-              </div>
+              <AccountCircleOutlinedIcon
+                classes={{ root: classes.root }}
+                style={{ color: "#8f939c" }}
+              />
               <div className={s.entrance}>
                 {!props.isAuth ? "Войти" : "Профиль"}
               </div>

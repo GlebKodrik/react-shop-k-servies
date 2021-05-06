@@ -79,17 +79,22 @@ export const Profile = (props) => {
             <div>
               {!edit ? (
                 <Button
+                  variant="outlined"
+                  color="primary"
                   type={"button"}
                   onClick={(e) => {
                     e.preventDefault();
                     setEdit(!edit);
                   }}
-                  variant="contained"
                 >
                   Редактировать
                 </Button>
               ) : (
-                <Button type={!edit ? "button" : "submit"} variant="contained">
+                <Button
+                  type={!edit ? "button" : "submit"}
+                  variant="outlined"
+                  color="primary"
+                >
                   Сохранить
                 </Button>
               )}
