@@ -34,7 +34,7 @@ export const ProfileForm = ({ edit, register, errors, control }) => {
               {...register("name")}
             />
           ) : (
-            <span className={s.dataInfo}> Кодрик Глеб Михайлович</span>
+            <span className={s.dataInfo}>Кодрик Глеб Михайлович</span>
           )}
           <div>
             <FaceOutlinedIcon className={classes.icon} />

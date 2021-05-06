@@ -31,7 +31,7 @@ export const Profile = (props) => {
   const [edit, setEdit] = useState(false);
   const dispatch = useDispatch();
   const avatar = useSelector(getAvatar);
-
+  debugger;
   const {
     register,
     handleSubmit,
@@ -43,7 +43,6 @@ export const Profile = (props) => {
   });
 
   const onSubmit = (data) => {
-    debugger;
     console.log(data);
     setEdit(!edit);
   };

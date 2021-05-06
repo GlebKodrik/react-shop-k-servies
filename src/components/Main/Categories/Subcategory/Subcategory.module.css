@@ -1,0 +1,25 @@
+.header{
+    padding-bottom: 30px;
+    background-color: initial;
+}
+.headerSwitch a{
+    color: #5d5d64;
+    cursor: pointer;
+    transition: color .1s ease;
+    line-height: 20px;
+    font-size: 14px;
+}
+.headerSwitch{
+    margin-bottom: 25px;
+}
+.headerTitle{
+    font-size: 2.1rem;
+    font-weight: 600;
+}
+.headerSubTitle{
+    font-weight: 400;
+    margin-left: 10px;
+    font-size: 2.1rem;
+    line-height: 1.2;
+    color: #b3b3b7;
+}

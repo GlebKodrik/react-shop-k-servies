@@ -1,5 +1,5 @@
 import { Slider } from "./Slider/Slider";
-import { Categories } from "./Categories/Categories";
+import { Categories } from "./Categories/Category/Categories";
 
 export const Main = () => {
   return (
