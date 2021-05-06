@@ -11,6 +11,7 @@ export const ProfileForm = ({ edit, register, errors, control }) => {
   const useStyles = makeStyles(() => ({
     icon: {
       fontSize: 26,
+      color: "#636363",
     },
     dataInfo: {
       marginRight: "10px",
