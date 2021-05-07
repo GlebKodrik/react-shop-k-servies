@@ -10,7 +10,7 @@ export const ShowMenu = (props) => {
           <li className={s.menuLeftTitle}>
             <ul>
               <li>
-                <NavLink to={"/profile/details"}>Профиль</NavLink>
+                <NavLink to={"/"}>Главная</NavLink>
               </li>
               <li>
                 <NavLink to={"/profile/basket"}>Корзина</NavLink>

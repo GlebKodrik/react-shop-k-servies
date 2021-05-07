@@ -1,9 +1,14 @@
 import s from "./Categories.module.css";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { cardCategory } from "../../../../Redux/productsReducer";
 
 export const Categories = () => {
+  const dispatch = useDispatch();
   const categories = useSelector((state) => state.products.categories);
+  const handleClick = (id) => {
+    dispatch(cardCategory(id));
+  };
   return (
     <div className={s.categories}>
       <div className={s.title}>Категории</div>
@@ -14,6 +19,7 @@ export const Categories = () => {
               to={`/category/${item.path}`}
               className={s.item}
               key={item.id}
+              onClick={() => handleClick(item.id)}
             >
               <div>
                 <div className={s.contentImg}>
