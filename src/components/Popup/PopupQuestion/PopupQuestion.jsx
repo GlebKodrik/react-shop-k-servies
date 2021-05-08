@@ -5,22 +5,18 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import cn from "classnames";
 import { TextField } from "@material-ui/core";
+import {
+  descriptionValidation,
+  emailValidation,
+  nameValidation,
+  subjectValidation,
+} from "../../../common/validations";
 
 const SignupSchema = yup.object().shape({
-  name: yup
-    .string()
-    .required("Обязательное поле")
-    .matches(/^[a-zа-яё\s]+$/i, "Недопустимое имя")
-    .min(2, "Некорректное имя")
-    .max(30, "Некорректное имя"),
-  subject: yup
-    .string()
-    .required("Обязательное поле")
-    .matches(/^[a-zа-яё\s]+$/i, "Только буквы")
-    .min(4, "Тема должна состоять более 3 символов")
-    .max(30, "Тема должна состоять не более 30 символов"),
-  email: yup.string().required("Обязательное поле").email("Некорректный email"),
-  description: yup.string().required("Обязательное поле").max(2000),
+  ...emailValidation,
+  ...nameValidation,
+  ...subjectValidation,
+  ...descriptionValidation,
 });
 
 export const PopupQuestion = () => {

@@ -5,7 +5,7 @@ import { ProfileRoute } from "../Profile/ProfileRoute";
 import { PrivateRouter } from "../Route/PrivateRouter";
 import s from "./Main.module.css";
 import { ServicesRouter } from "../Footer/Information/Menu/Services/ServicesRouter";
-import { CategoryRouter } from "./Categories/CategoryRouter";
+import { Subcategory } from "./Categories/Subcategory/Subcategory";
 
 export const MainRouter = () => {
   return (
@@ -16,7 +16,8 @@ export const MainRouter = () => {
             <PrivateRouter path="/profile" component={ProfileRoute} />
             <Route exact path="/" render={() => <Main />} />
             <Route path="/services" render={() => <ServicesRouter />} />
-            <Route path="/category" render={() => <CategoryRouter />} />
+            <Route path="/category/:url" render={() => <Subcategory />} />
+            <Route path="/product/:id" render={() => <>Hello</>} />
             <Route path="*" render={() => <NotFound />} />
           </Switch>
         </div>

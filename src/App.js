@@ -8,7 +8,9 @@ import { MainRouter } from "./components/Main/MainRouter";
 import { ScrollToTop } from "./common/ScrollToTop";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core";
 
-import React from "react";
+import React, { useEffect } from "react";
+import { getCategories } from "./Redux/productsReducer";
+import { useDispatch, useSelector } from "react-redux";
 
 const theme = createMuiTheme({
   props: {
@@ -31,6 +33,12 @@ const theme = createMuiTheme({
 });
 
 const App = () => {
+  const dispatch = useDispatch();
+  const categories = useSelector((state) => state.products.categories);
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [dispatch]);
+
   return (
     <Route>
       <ThemeProvider theme={theme}>
@@ -38,12 +46,16 @@ const App = () => {
         <div className="app">
           <HeaderContainer />
           <div className="app-content">
-            <Switch>
-              <Route path="/login" render={() => <AuthContainer login />} />
-              <Route path="/register" render={() => <AuthContainer />} />
-              <Route path="/" render={() => <MainRouter />} />
-              <Route path="*" render={() => <NotFound />} />
-            </Switch>
+            {categories.length ? (
+              <Switch>
+                <Route path="/login" render={() => <AuthContainer login />} />
+                <Route path="/register" render={() => <AuthContainer />} />
+                <Route path="/" render={() => <MainRouter />} />
+                <Route path="*" render={() => <NotFound />} />
+              </Switch>
+            ) : (
+              <>loading</>
+            )}
           </div>
           <Footer />
         </div>

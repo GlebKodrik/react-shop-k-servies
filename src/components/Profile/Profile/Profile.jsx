@@ -9,22 +9,16 @@ import { savePhoto } from "../../../Redux/profileReducer";
 import { getAvatar } from "../../../Redux/profile-selector";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import {
+  emailValidation,
+  nameValidation,
+  phoneValidation,
+} from "../../../common/validations";
 
 const SignupSchema = yup.object().shape({
-  phone: yup
-    .string()
-    .required("Обязательное поле")
-    .transform((value) => {
-      return value.replace(/[^0-9]/g, "");
-    })
-    .min(11, "Некорректный номер телефона"),
-  email: yup.string().required("Обязательное поле").email("Некорректный email"),
-  name: yup
-    .string()
-    .required("Обязательное поле")
-    .matches(/^[a-zа-яё\s]+$/i, "Недопустимое имя")
-    .min(2, "Недопустимое имя")
-    .max(15, "Недопустимое имя"),
+  ...phoneValidation,
+  ...emailValidation,
+  ...nameValidation,
 });
 
 export const Profile = (props) => {

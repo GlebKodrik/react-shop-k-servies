@@ -14,6 +14,10 @@ import {
 import { UseFormControl } from "../FormControl";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import {
+  emailValidation,
+  passwordValidation,
+} from "../../../common/validations";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,12 +36,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SignupSchema = yup.object().shape({
-  email: yup.string().required("Обязательное поле").email("Некорректный email"),
-  password: yup
-    .string()
-    .required("Обязательное поле")
-    .min(6, "Не менее 6 символов")
-    .max(15, "Не более 15 сиволов"),
+  ...passwordValidation,
+  ...emailValidation,
 });
 
 export const Login = () => {

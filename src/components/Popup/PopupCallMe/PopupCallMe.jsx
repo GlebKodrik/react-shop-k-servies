@@ -10,23 +10,12 @@ import * as yup from "yup";
 import { Checkbox, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { MaskPhone } from "../../../common/mask";
+import { nameValidation, phoneValidation } from "../../../common/validations";
 
 const SignupSchema = yup.object().shape({
-  phone: yup
-    .string()
-    .required("Обязательное поле")
-    .transform((value) => {
-      return value.replace(/[^0-9]/g, "");
-    })
-    .min(11, "Некорректный номер телефона"),
-  firstName: yup
-    .string()
-    .required("Обязательное поле")
-    .matches(/^[a-zа-яё\s]+$/i, "Недопустимое имя")
-    .min(2, "Недопустимое имя")
-    .max(15, "Недопустимое имя"),
+  ...phoneValidation,
+  ...nameValidation,
 });
-
 export const PopupCallMe = (props) => {
   const [showDescr, setShowDescr] = useState(false);
   const [value, setValue] = useState("order");
@@ -79,13 +68,11 @@ export const PopupCallMe = (props) => {
 
         <div className={s.addName}>
           <TextField
-            name={"firstName"}
-            type={"text"}
             label={"Моё имя"}
             placeholder={"Глеб"}
-            error={!!errors.firstName}
-            helperText={errors.firstName && errors.firstName.message}
-            {...register("firstName")}
+            error={!!errors.name}
+            helperText={errors.name && errors.name.message}
+            {...register("name")}
           />
         </div>
 

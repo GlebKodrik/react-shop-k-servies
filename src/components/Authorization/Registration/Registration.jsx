@@ -10,6 +10,12 @@ import { UseFormControl } from "../FormControl";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { MaskPhone } from "../../../common/mask";
+import {
+  emailValidation,
+  nameValidation,
+  passwordValidation,
+  phoneValidation,
+} from "../../../common/validations";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,25 +39,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SignupSchema = yup.object().shape({
-  email: yup.string().required("Обязательное поле").email("Некорректный email"),
-  password: yup
-    .string()
-    .required("Обязательное поле")
-    .min(6, "Не менее 6 символов")
-    .max(15, "Не более 15 сиволов"),
-  name: yup
-    .string()
-    .required("Обязательное поле")
-    .matches(/^[a-zа-яё\s]+$/i, "Недопустимое имя")
-    .min(2, "Некорректное имя")
-    .max(30, "Некорректное имя"),
-  phone: yup
-    .string()
-    .required("Обязательное поле")
-    .transform((value) => {
-      return value.replace(/[^0-9]/g, "");
-    })
-    .min(11, "Некорректный номер телефона"),
+  ...emailValidation,
+  ...passwordValidation,
+  ...nameValidation,
+  ...phoneValidation,
 });
 
 export const Registration = () => {

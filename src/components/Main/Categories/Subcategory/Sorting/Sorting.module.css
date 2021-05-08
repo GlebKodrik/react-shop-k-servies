@@ -2,6 +2,7 @@
     margin-top: 30px;
     display: flex;
     flex-direction: row;
+    margin-bottom: 30px;
 }
 .item{
     color: #5d5d64;
