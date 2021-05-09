@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getProducts } from "../../../../Redux/productsReducer";
 import { CardProducts } from "./CardProducts";
-import { act } from "@testing-library/react";
 import { NotFound } from "../../../NotFould/NotFound";
 
 export const Subcategory = () => {
@@ -29,8 +28,8 @@ export const Subcategory = () => {
       <div className={s.header}>
         <div className={s.headerSwitch}>
           <NavLink to="/">Категории/</NavLink>
-          <NavLink to={`/category/${actualCategory.url}`}>
-            {actualCategory.name}
+          <NavLink to={`/category/${actualCategory?.url}`}>
+            {actualCategory?.name}
           </NavLink>
         </div>
         <div className={s.headerTitle}>
@@ -38,7 +37,7 @@ export const Subcategory = () => {
         </div>
         <Sorting />
         <div className={s.cardWrap}>
-          {products.map((el) => {
+          {products?.map((el) => {
             return <CardProducts productItem={el} />;
           })}
         </div>

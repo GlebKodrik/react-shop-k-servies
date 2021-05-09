@@ -13,53 +13,53 @@ const products = [
     categoryId: 1,
   },
   {
-    _id: 1,
-    name: "Металообработка",
-    img: "https://goramet.ru/wp-content/uploads/my/obrabotka-metalla.jpg",
-    categoryId: 1,
-  },
-  {
-    _id: 2,
-    name: "Металл",
-    img:
-      "https://prom-neva.ru/wp-content/uploads/2013/07/uslugi_frezernoj_obrabotki_metalla_2.jpg",
-    categoryId: 1,
-  },
-  {
-    _id: 1,
-    name: "Металообработка",
-    img: "https://goramet.ru/wp-content/uploads/my/obrabotka-metalla.jpg",
-    categoryId: 1,
-  },
-  {
-    _id: 2,
-    name: "Металл",
-    img:
-      "https://prom-neva.ru/wp-content/uploads/2013/07/uslugi_frezernoj_obrabotki_metalla_2.jpg",
-    categoryId: 1,
-  },
-  {
-    _id: 1,
-    name: "Металообработка",
-    img: "https://goramet.ru/wp-content/uploads/my/obrabotka-metalla.jpg",
-    categoryId: 1,
-  },
-  {
-    _id: 2,
-    name: "Металл",
-    img:
-      "https://prom-neva.ru/wp-content/uploads/2013/07/uslugi_frezernoj_obrabotki_metalla_2.jpg",
-    categoryId: 1,
-  },
-  {
     _id: 3,
+    name: "Металообработка",
+    img: "https://goramet.ru/wp-content/uploads/my/obrabotka-metalla.jpg",
+    categoryId: 1,
+  },
+  {
+    _id: 4,
+    name: "Металл",
+    img:
+      "https://prom-neva.ru/wp-content/uploads/2013/07/uslugi_frezernoj_obrabotki_metalla_2.jpg",
+    categoryId: 1,
+  },
+  {
+    _id: 5,
+    name: "Металообработка",
+    img: "https://goramet.ru/wp-content/uploads/my/obrabotka-metalla.jpg",
+    categoryId: 1,
+  },
+  {
+    _id: 6,
+    name: "Металл",
+    img:
+      "https://prom-neva.ru/wp-content/uploads/2013/07/uslugi_frezernoj_obrabotki_metalla_2.jpg",
+    categoryId: 1,
+  },
+  {
+    _id: 7,
+    name: "Металообработка",
+    img: "https://goramet.ru/wp-content/uploads/my/obrabotka-metalla.jpg",
+    categoryId: 1,
+  },
+  {
+    _id: 8,
+    name: "Металл",
+    img:
+      "https://prom-neva.ru/wp-content/uploads/2013/07/uslugi_frezernoj_obrabotki_metalla_2.jpg",
+    categoryId: 1,
+  },
+  {
+    _id: 9,
     name: "Лента",
     img:
       "https://s-agroservis.ru/assets/images/produkciya/RTI/konveier-lenta/konvejernaya-lenta(1).jpg",
     categoryId: 2,
   },
   {
-    _id: 4,
+    _id: 10,
     name: "Лента вторая",
     img:
       "https://lh3.googleusercontent.com/proxy/3o2LFeHKA01TJIq9jp0NbuF9wjZhsNe7nszdZpxluyISi7lseuTMAaKRNwAZl018VTaJkCl4cWOZpX_lDcHIYHsboKvodPZAZyaTw0ij",
