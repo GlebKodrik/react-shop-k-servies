@@ -26,8 +26,9 @@
     color: var(--main-text-color);
 }
 .contentImg img{
-    max-width: 100px;
-    max-height: 80px;
+    object-fit: cover;
+    height: 84px;
+    width: 84px;
 }
 .contentImg{
     margin: 0 auto 10px;

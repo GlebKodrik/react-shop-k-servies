@@ -25,7 +25,6 @@ export const Profile = (props) => {
   const [edit, setEdit] = useState(false);
   const dispatch = useDispatch();
   const avatar = useSelector(getAvatar);
-  debugger;
   const {
     register,
     handleSubmit,
@@ -43,6 +42,7 @@ export const Profile = (props) => {
 
   const onMainPhotoSelected = (e) => {
     const path = e.target.files[0];
+    console.log(path);
     if (path) {
       dispatch(savePhoto(path));
     }

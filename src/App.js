@@ -7,10 +7,10 @@ import { NotFound } from "./components/NotFould/NotFound";
 import { MainRouter } from "./components/Main/MainRouter";
 import { ScrollToTop } from "./common/ScrollToTop";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core";
-
 import React, { useEffect } from "react";
 import { getCategories } from "./Redux/productsReducer";
 import { useDispatch, useSelector } from "react-redux";
+import "swiper/swiper-bundle.min.css";
 
 const theme = createMuiTheme({
   props: {

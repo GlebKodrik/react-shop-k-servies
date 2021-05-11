@@ -2,16 +2,6 @@
     padding-bottom: 30px;
     background-color: initial;
 }
-.headerSwitch a{
-    color: #5d5d64;
-    cursor: pointer;
-    transition: color .1s ease;
-    line-height: 20px;
-    font-size: 14px;
-}
-.headerSwitch{
-    margin-bottom: 25px;
-}
 .headerTitle{
     font-size: 2.1rem;
     font-weight: 600;
@@ -36,13 +26,16 @@
     cursor: pointer;
     transition: color .1s ease;
     padding: 20px 20px 30px;
+    max-width: 350px;
+    min-width: 200px;
 }
 .cardItem:hover{
     box-shadow: 0 5px 25px rgb(30 31 33 / 12%);
     transition: box-shadow .15s ease-in-out;
 }
 .cardItem:hover .cardItemText{
-    color: var(--main-text-color)
+    color: var(--main-text-color);
+    transition: color .3s;
 }
 .cardItemTop{
     margin-bottom: 30px;
@@ -52,7 +45,10 @@
     margin-bottom: 10px;
 }
 .cardItemImg img{
-    width: 200px;
+    object-fit: cover;
+    width: 100%;
+    height: 200px;
+    border-radius: 4px;
 }
 .cardItemCost{
     font-weight: 600;

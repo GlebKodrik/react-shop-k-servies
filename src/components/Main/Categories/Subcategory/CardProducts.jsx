@@ -1,7 +1,7 @@
 import s from "./Subcategory.module.css";
 import { NavLink } from "react-router-dom";
 
-export const CardProducts = ({ productItem: product }, ...props) => {
+export const CardProducts = ({ productItem: product }) => {
   return (
     <>
       <NavLink to={`/product/${product._id}`}>

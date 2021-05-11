@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 export const Categories = () => {
   const categories = useSelector((state) => state.products.categories);
+
   return (
     <div className={s.categories}>
       <div className={s.title}>Категории</div>
@@ -13,7 +14,7 @@ export const Categories = () => {
             <NavLink
               to={`/category/${item.url}`}
               className={s.item}
-              key={item.id}
+              key={item._id}
             >
               <div>
                 <div className={s.contentImg}>

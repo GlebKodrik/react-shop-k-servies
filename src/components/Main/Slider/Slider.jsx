@@ -1,9 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { SliderData } from "./SliderData";
-import "swiper/swiper.scss";
-import "swiper/components/navigation/navigation.scss";
-import "swiper/components/pagination/pagination.scss";
-import "swiper/components/scrollbar/scrollbar.scss";
 import SwiperCore, {
   Navigation,
   A11y,
@@ -31,10 +27,8 @@ export const Slider = () => {
       >
         {SliderData.map((slider) => {
           return (
-            <SwiperSlide key={slider.id}>
-              <div className={s.swipe}>
-                <img src={slider.image} alt="Слайдер" />
-              </div>
+            <SwiperSlide key={slider.id} className={s.swipe}>
+              <img src={slider.image} alt="Слайдер" />
             </SwiperSlide>
           );
         })}

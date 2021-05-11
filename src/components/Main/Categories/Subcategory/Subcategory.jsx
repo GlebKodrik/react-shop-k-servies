@@ -1,21 +1,23 @@
 import { NavLink, useParams } from "react-router-dom";
-
 import s from "./Subcategory.module.css";
 import { Sorting } from "./Sorting/Sorting";
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getProducts } from "../../../../Redux/productsReducer";
 import { CardProducts } from "./CardProducts";
 import { NotFound } from "../../../NotFould/NotFound";
 
-export const Subcategory = () => {
+const Subcategory = () => {
+  const dispatch = useDispatch();
   const { url } = useParams();
   const actualCategory = useSelector((state) => state.products.categories).find(
     (el) => el.url === url
   );
 
-  const products = useSelector((state) => state.products.products);
-  const dispatch = useDispatch();
+  const products = useSelector(
+    (state) => state.products.products,
+    shallowEqual
+  );
 
   useEffect(() => {
     if (actualCategory) {
@@ -26,19 +28,20 @@ export const Subcategory = () => {
   return actualCategory ? (
     <>
       <div className={s.header}>
-        <div className={s.headerSwitch}>
+        <div className="switch">
           <NavLink to="/">Категории/</NavLink>
           <NavLink to={`/category/${actualCategory?.url}`}>
             {actualCategory?.name}
           </NavLink>
         </div>
         <div className={s.headerTitle}>
-          Пример <span className={s.headerSubTitle}>605 товаров</span>
+          {actualCategory?.name}{" "}
+          <span className={s.headerSubTitle}>{products?.length} товаров</span>
         </div>
         <Sorting />
         <div className={s.cardWrap}>
           {products?.map((el) => {
-            return <CardProducts productItem={el} />;
+            return <CardProducts key={el._id} productItem={el} />;
           })}
         </div>
       </div>
@@ -47,3 +50,4 @@ export const Subcategory = () => {
     <NotFound />
   );
 };
+export default Subcategory;

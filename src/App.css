@@ -86,7 +86,7 @@ h3,h1{
 .container{
     margin: 0 auto;
     min-width: 978px;
-    max-width: 1500px;
+    max-width: 1240px;
 }
 .wrapContainer{
     border-radius: 5px;
@@ -141,8 +141,8 @@ h3,h1{
     margin-top: 20px;
 }
 .popupButton:hover{
-    color: #3F51B5;
-    border:1px solid #3F51B5;
+    color: var(--main-text-color);
+    border:1px solid var(--main-text-color);
 }
 .subTextareaError{
     color: red;
@@ -195,3 +195,35 @@ ymaps[class$=map] ymaps[class*=balloon__close]+ymaps[class*=balloon__content] {
     color: black;
 }
 /*EndYmap*/
+.switch a , .switchLast{
+    color: #5d5d64;
+    cursor: pointer;
+    transition: color .1s ease;
+    line-height: 20px;
+    font-size: 14px;
+}
+.switch .switchLast{
+    cursor: default;
+    color: #a3a3a3;
+}
+.switchProduct{
+    display: flex;
+    margin-bottom: 25px;
+}
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #939393;
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--main-text-color);
+
+}
