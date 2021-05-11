@@ -47,7 +47,7 @@
     margin-bottom: 30px;
 }
 .advantagesTop{
-    min-height: 360px;
+    min-height: 278px;
     padding: 16px 24px;
     margin-bottom: 32px;
     box-sizing: content-box;
@@ -110,7 +110,7 @@
 }
 .advantagesBottomTitle{
     font-weight: bold;
-    font-size: 46px;
+    font-size: 36px;
     line-height: 60px;
     transition: color 0.1s;
     margin: 0 0 4px;
