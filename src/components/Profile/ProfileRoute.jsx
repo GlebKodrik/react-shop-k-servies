@@ -5,7 +5,7 @@ import { Navigation } from "./Navigation/Navigation";
 import { NotFound } from "../NotFould/NotFound";
 import { AppealRoute } from "./Appeal/AppealRoute";
 import { Basket } from "./Basket/Basket";
-import { Purchases } from "./Purchases/Purchases";
+import { Favorites } from "./Favorites/Favorites";
 export const ProfileRoute = () => {
   return (
     <>
@@ -15,7 +15,7 @@ export const ProfileRoute = () => {
         <Route path="/profile/details" render={() => <Profile />} />
         <Route path="/profile/communications" render={() => <AppealRoute />} />
         <Route path="/profile/basket" render={() => <Basket />} />
-        <Route path="/profile/purchases" render={() => <Purchases />} />
+        <Route path="/profile/favorites" render={() => <Favorites />} />
         <Route path="/profile/*" render={() => <NotFound />} />
       </Switch>
     </>

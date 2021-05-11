@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import s from "./../Header.module.css";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import cn from "classnames";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../../Redux/authReducer";
@@ -20,11 +20,9 @@ const useStyles = makeStyles({
 export const Menu = (props) => {
   const [focus, setFocus] = useState(false);
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const redirectOut = () => {
     dispatch(logOut());
-    history.push("/");
   };
   const classes = useStyles();
   return (

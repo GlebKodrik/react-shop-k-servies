@@ -227,3 +227,16 @@ ymaps[class$=map] ymaps[class*=balloon__close]+ymaps[class*=balloon__content] {
     background: var(--main-text-color);
 
 }
+/*Slider*/
+.swiper-pagination-clickable .swiper-pagination-bullet {
+    background: var(--main-text-color);
+}
+.swiper-button-prev,
+.swiper-button-next {
+    color: var(--main-text-color) !important;
+}
+.inaccessible{
+    color: red;
+    font-size: 14px;
+    margin-left: 10px;
+}

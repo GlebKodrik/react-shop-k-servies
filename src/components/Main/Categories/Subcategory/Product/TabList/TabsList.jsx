@@ -1,8 +1,6 @@
 import s from "./TabList.module.css";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
 import { makeStyles, useTheme } from "@material-ui/core";
-import { useState } from "react";
+import { memo, useState } from "react";
 import SwipeableViews from "react-swipeable-views";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
@@ -10,25 +8,9 @@ import Tab from "@material-ui/core/Tab";
 import img from "./../../../../../../assets/img/fetback.png";
 import { ModalPopup } from "../../../../../../common/modalPopup";
 import { PopupRecall } from "../../../../../Popup/PopupRecall/PopupRecall";
-const TabPanel = (props) => {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`full-width-tabpanel-${index}`}
-      aria-labelledby={`full-width-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={4}>
-          <Typography component={"div"}>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-};
+import { Feedback } from "./Feedback/Feedback";
+import { TabPanel } from "../../../../../TabPanel/TabPanel";
+import { shallowEqual, useSelector } from "react-redux";
 
 const a11yProps = (index) => ({
   id: `full-width-tab-${index}`,
@@ -44,11 +26,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const TabsList = ({ product }) => {
+export const TabsList = memo(({ product }) => {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = useState(0);
   const [open, setOpen] = useState(false);
+  const auth = useSelector((state) => state.auth.isAuth, shallowEqual);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -87,20 +71,33 @@ export const TabsList = ({ product }) => {
             Item Two
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
-            <div className={s.comment}>
-              <img className={s.img} src={img} alt="Отзыв" />
-              <div className={s.commentText}>
-                <div className="title">Отзывов ещё нет, будьте первыми!</div>
-                <div className={s.subTitle}>
-                  Расскажите о преимуществах и недостатках товара. Ваш отзыв
-                  поможет другим покупателям сделать выбор.
+            {product?.feedback.length ? (
+              <Feedback feedback={product?.feedback} />
+            ) : (
+              <div className={s.comment}>
+                <img className={s.img} src={img} alt="Отзыв" />
+                <div className={s.commentText}>
+                  <div className="title">Отзывов ещё нет, будьте первыми!</div>
+                  <div className={s.subTitle}>
+                    Расскажите о преимуществах и недостатках товара. Ваш отзыв
+                    поможет другим покупателям сделать выбор.
+                  </div>
+                  <ModalPopup component={PopupRecall} {...{ open, setOpen }} />
+                  <div className={s.auth}>
+                    <button
+                      className="button"
+                      onClick={() => setOpen(true)}
+                      disabled={!auth}
+                    >
+                      Оставить отзыв
+                    </button>
+                    {!auth && (
+                      <div className="inaccessible">Нужно авторизироваться</div>
+                    )}
+                  </div>
                 </div>
-                <ModalPopup component={PopupRecall} {...{ open, setOpen }} />
-                <button className="button" onClick={() => setOpen(true)}>
-                  Оставить отзыв
-                </button>
               </div>
-            </div>
+            )}
           </TabPanel>
           <TabPanel value={value} index={3} dir={theme.direction}>
             <div className="title">Обзоров ещё нет, будьте первыми!</div>
@@ -113,4 +110,4 @@ export const TabsList = ({ product }) => {
       </div>
     </>
   );
-};
+});

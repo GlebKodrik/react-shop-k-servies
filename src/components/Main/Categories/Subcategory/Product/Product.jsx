@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getProducts } from "../../../../../Redux/productsReducer";
 import s from "./Product.module.css";
 import { ProductSlider } from "./ProductSlider";
@@ -8,6 +8,8 @@ import cn from "classnames";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import { TabsList } from "./TabList/TabsList";
 import { Link } from "react-scroll";
+import { Rating } from "../../../../Rating/Rating";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 
 export const Product = () => {
   const params = useParams();
@@ -19,13 +21,17 @@ export const Product = () => {
   const actualCategory = useSelector((state) => state.products.categories).find(
     (el) => el._id === product?.categoryId
   );
+  const [favor, setFavor] = useState(false);
 
   useEffect(() => {
     if (!product) {
       dispatch(getProducts());
     }
-  }, [params.id]);
-
+  }, [params.id, dispatch, product]);
+  const handelClick = () => {
+    setFavor(!favor);
+    // localStorage.setItem("Favorite", JSON.stringify(product._id));
+  };
   return (
     <>
       <div className="switch">
@@ -56,23 +62,20 @@ export const Product = () => {
                 подробнее
               </Link>
             </div>
-            <div className={s.infoCommunication}>
-              <div className={s.review} data-rating={product?.recall}>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                {product?.recall}
-              </div>
-            </div>
+            <Rating rating={product?.recall} />
             <div className={s.cost}>
               <div className={s.costWrap}>
                 <div className={s.price}>
                   Цена:&nbsp;<span>{product?.price}&nbsp;₽</span>
                 </div>
-
-                <FavoriteBorderOutlinedIcon className={s.favorites} />
+                {favor ? (
+                  <FavoriteIcon className={s.favorites} onClick={handelClick} />
+                ) : (
+                  <FavoriteBorderOutlinedIcon
+                    className={s.favorites}
+                    onClick={handelClick}
+                  />
+                )}
               </div>
             </div>
             <div className={s.buy}>

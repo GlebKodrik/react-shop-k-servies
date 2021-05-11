@@ -4,7 +4,7 @@ import s from "./Navigation.module.css";
 import { makeStyles } from "@material-ui/core";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import ShoppingBasketOutlinedIcon from "@material-ui/icons/ShoppingBasketOutlined";
-import AccountBalanceWalletOutlinedIcon from "@material-ui/icons/AccountBalanceWalletOutlined";
+import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
 
 const useStyles = makeStyles({
@@ -35,12 +35,10 @@ export const Navigation = (props) => {
             </NavLink>
           </div>
           <div className={s.item}>
-            <NavLink to={"/profile/purchases"}>
+            <NavLink to={"/profile/favorites"}>
               <div className={s.inline}>
-                <AccountBalanceWalletOutlinedIcon
-                  classes={{ root: classes.root }}
-                />
-                <div className={s.name}>Финансы</div>
+                <FavoriteBorderOutlinedIcon classes={{ root: classes.root }} />
+                <div className={s.name}>Избранное</div>
               </div>
             </NavLink>
           </div>

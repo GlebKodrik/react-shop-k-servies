@@ -23,7 +23,7 @@ const Subcategory = () => {
     if (actualCategory) {
       dispatch(getProducts(actualCategory._id));
     }
-  }, [url]);
+  }, [url, actualCategory, dispatch]);
 
   return actualCategory ? (
     <>

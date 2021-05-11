@@ -1,18 +1,22 @@
 import { fetchCategories, fetchProducts } from "../api/products";
 
 const SET_CARD_CATEGORY = "products/SET_CARD_CATEGORY";
-
+// const SET_FAVORITE = "products/SET_FAVORITE";
 const SET_PRODUCTS = "products/SET_PRODUCTS";
 
 let initialState = {
   categories: [],
   products: [],
+  favorites: [],
 };
 const productsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_CARD_CATEGORY: {
       return { ...state, categories: action.data };
     }
+    // case SET_FAVORITE: {
+    //   return { ...state, favorites: action.data };
+    // }
     case SET_PRODUCTS: {
       return { ...state, products: action.data };
     }
@@ -21,6 +25,7 @@ const productsReducer = (state = initialState, action) => {
     }
   }
 };
+// export const setFavorites = (data) => ({ type: SET_FAVORITE, data });
 export const setCardCategory = (data) => ({ type: SET_CARD_CATEGORY, data });
 
 export const setProducts = (data) => ({ type: SET_PRODUCTS, data });

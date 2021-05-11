@@ -39,58 +39,9 @@
 .infoDescr a:hover{
     color:#5F74B7;
 }
-.review{
-    cursor: default;
-    padding: 4px;
-    border: 1px solid #eee;
-    border-radius: 6px;
-    width: fit-content;
-    display: flex;
-    align-items: center;
-}
-.review:first-child{
-    margin-right: 10px;
-}
-.infoCommunication{
-    display: flex;
-    align-items: center;
-    margin-bottom: 40px;
-}
-.review:hover {
-    transition: color .3s;
-    border: 1px solid  var(--main-text-color);
-    color: var(--main-text-color);
-}
-.review[data-rating="4"] i:nth-child(4) ~ i {
-    background-image: url(./../../../../../assets/img/Star_empty.svg);
-}
-.review[data-rating="2"] i:nth-child(2) ~ i {
-    background-image: url(./../../../../../assets/img/Star_empty.svg);
-}
-.review[data-rating="3"] i:nth-child(3) ~ i {
-    background-image: url(./../../../../../assets/img/Star_empty.svg);
-}
-.review[data-rating="5"] i:nth-child(5) ~ i {
-    background-image: url(./../../../../../assets/img/Star_empty.svg);
-}
-.review[data-rating="1"] i:nth-child(1) ~ i {
-    background-image: url(./../../../../../assets/img/Star_empty.svg);
-}
-.review[data-rating="0"] i:nth-child(0)  ~ i {
-    background-image: url(./../../../../../assets/img/Star_empty.svg);
-}
-.review i{
-    font-size: 8px;
-    background-image: url(./../../../../../assets/img/star.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    display: inline-block;
-    height: 18px;
-    margin-right: 4px;
-    width: 12px;
-}
+
 .cost{
+    margin-top: 40px;
     margin-bottom: 24px;
 
 }

@@ -8,7 +8,7 @@ import { MainRouter } from "./components/Main/MainRouter";
 import { ScrollToTop } from "./common/ScrollToTop";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core";
 import React, { useEffect } from "react";
-import { getCategories } from "./Redux/productsReducer";
+import { getCategories, setFavorites } from "./Redux/productsReducer";
 import { useDispatch, useSelector } from "react-redux";
 import "swiper/swiper-bundle.min.css";
 
@@ -35,7 +35,9 @@ const theme = createMuiTheme({
 const App = () => {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.products.categories);
+
   useEffect(() => {
+    // dispatch(setFavorites(localStorage.getItem("Favorite")));
     dispatch(getCategories());
   }, [dispatch]);
 

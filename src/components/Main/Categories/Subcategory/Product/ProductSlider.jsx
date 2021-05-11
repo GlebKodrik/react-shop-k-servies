@@ -6,128 +6,25 @@ import SwiperCore, {
   EffectFade,
   Navigation,
   Pagination,
-  Thumbs,
 } from "swiper";
-import { useState } from "react";
 
-SwiperCore.use([Navigation, A11y, Pagination, EffectFade, Autoplay, Thumbs]);
+SwiperCore.use([Navigation, A11y, Pagination, EffectFade, Autoplay]);
 
 export const ProductSlider = ({ image }) => {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
-
   return (
     <div className={s.slider}>
-      {/*<Swiper*/}
-      {/*  style={{*/}
-      {/*    "--swiper-navigation-color": "#fff",*/}
-      {/*    "--swiper-pagination-color": "#fff",*/}
-      {/*  }}*/}
-      {/*  spaceBetween={10}*/}
-      {/*  navigation={true}*/}
-      {/*  thumbs={{ swiper: thumbsSwiper }}*/}
-      {/*  className="mySwiper2"*/}
-      {/*>*/}
-      {/*  <SwiperSlide>*/}
-      {/*    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />*/}
-      {/*  </SwiperSlide>*/}
-      {/*  <SwiperSlide>*/}
-      {/*    <img src="https://swiperjs.com/demos/images/nature-2.jpg" />*/}
-      {/*  </SwiperSlide>*/}
-      {/*  <SwiperSlide>*/}
-      {/*    <img src="https://swiperjs.com/demos/images/nature-3.jpg" />*/}
-      {/*  </SwiperSlide>*/}
-      {/*  <SwiperSlide>*/}
-      {/*    <img src="https://swiperjs.com/demos/images/nature-4.jpg" />*/}
-      {/*  </SwiperSlide>*/}
-      {/*  <SwiperSlide>*/}
-      {/*    <img src="https://swiperjs.com/demos/images/nature-5.jpg" />*/}
-      {/*  </SwiperSlide>*/}
-      {/*  <SwiperSlide>*/}
-      {/*    <img src="https://swiperjs.com/demos/images/nature-6.jpg" />*/}
-      {/*  </SwiperSlide>*/}
-      {/*  <SwiperSlide>*/}
-      {/*    <img src="https://swiperjs.com/demos/images/nature-7.jpg" />*/}
-      {/*  </SwiperSlide>*/}
-      {/*  <SwiperSlide>*/}
-      {/*    <img src="https://swiperjs.com/demos/images/nature-8.jpg" />*/}
-      {/*  </SwiperSlide>*/}
-      {/*  <SwiperSlide>*/}
-      {/*    <img src="https://swiperjs.com/demos/images/nature-9.jpg" />*/}
-      {/*  </SwiperSlide>*/}
-      {/*  <SwiperSlide>*/}
-      {/*    <img src="https://swiperjs.com/demos/images/nature-10.jpg" />*/}
-      {/*  </SwiperSlide>*/}
-      {/*</Swiper>*/}
-      {/*<Swiper*/}
-      {/*  onSwiper={setThumbsSwiper}*/}
-      {/*  spaceBetween={10}*/}
-      {/*  slidesPerView={4}*/}
-      {/*  freeMode={true}*/}
-      {/*  watchSlidesVisibility={true}*/}
-      {/*  watchSlidesProgress={true}*/}
-      {/*  className="mySwiper"*/}
-      {/*>*/}
-      {/*  <SwiperSlide>*/}
-      {/*    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />*/}
-      {/*  </SwiperSlide>*/}
-      {/*  <SwiperSlide>*/}
-      {/*    <img src="https://swiperjs.com/demos/images/nature-2.jpg" />*/}
-      {/*  </SwiperSlide>*/}
-      {/*  <SwiperSlide>*/}
-      {/*    <img src="https://swiperjs.com/demos/images/nature-3.jpg" />*/}
-      {/*  </SwiperSlide>*/}
-      {/*  <SwiperSlide>*/}
-      {/*    <img src="https://swiperjs.com/demos/images/nature-4.jpg" />*/}
-      {/*  </SwiperSlide>*/}
-      {/*  <SwiperSlide>*/}
-      {/*    <img src="https://swiperjs.com/demos/images/nature-5.jpg" />*/}
-      {/*  </SwiperSlide>*/}
-      {/*  <SwiperSlide>*/}
-      {/*    <img src="https://swiperjs.com/demos/images/nature-6.jpg" />*/}
-      {/*  </SwiperSlide>*/}
-      {/*  <SwiperSlide>*/}
-      {/*    <img src="https://swiperjs.com/demos/images/nature-7.jpg" />*/}
-      {/*  </SwiperSlide>*/}
-      {/*  <SwiperSlide>*/}
-      {/*    <img src="https://swiperjs.com/demos/images/nature-8.jpg" />*/}
-      {/*  </SwiperSlide>*/}
-      {/*  <SwiperSlide>*/}
-      {/*    <img src="https://swiperjs.com/demos/images/nature-9.jpg" />*/}
-      {/*  </SwiperSlide>*/}
-      {/*  <SwiperSlide>*/}
-      {/*    <img src="https://swiperjs.com/demos/images/nature-10.jpg" />*/}
-      {/*  </SwiperSlide>*/}
-      {/*</Swiper>*/}
-
       <Swiper
-        style={{
-          "--swiper-navigation-color": "#fff",
-          "--swiper-pagination-color": "#fff",
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
         }}
-        spaceBetween={10}
-        navigation={true}
-        thumbs={{ swiper: thumbsSwiper }}
-        className={s.mySwiperMain}
+        spaceBetween={20}
+        loop={true}
+        slidesPerView={1}
+        navigation
+        pagination={{ clickable: true }}
+        zoom={true}
       >
-        <SwiperSlide className={s.image}>
-          <img src={image} alt="Слайдер" />
-        </SwiperSlide>
-        <SwiperSlide className={s.image}>
-          <img src={image} alt="Слайдер" />
-        </SwiperSlide>
-      </Swiper>
-      <Swiper
-        onSwiper={setThumbsSwiper}
-        spaceBetween={10}
-        slidesPerView={4}
-        freeMode={true}
-        watchSlidesVisibility={true}
-        watchSlidesProgress={true}
-        className={s.mySwiper}
-      >
-        <SwiperSlide className={s.image}>
-          <img src={image} alt="Слайдер" />
-        </SwiperSlide>
         <SwiperSlide className={s.image}>
           <img src={image} alt="Слайдер" />
         </SwiperSlide>

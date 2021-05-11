@@ -1,0 +1,63 @@
+.scroll{
+    max-height: 800px;
+    overflow: auto;
+}
+.item{
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+.item:last-child{
+    margin: 0;
+}
+.wrapTop{
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.innerTop{
+    cursor: default;
+    margin-left: 18px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.innerDateRating{
+    display: flex;
+    align-items: center;
+}
+.user{
+    font-size: 16px;
+    line-height: 1.25;
+    font-weight: 700;
+    color: #001a34;
+    max-width: 272px;
+}
+.date{
+    font-size: 14px;
+    line-height: 1.29;
+    color: #5a6c7d;
+    margin-right: 10px;
+}
+.wrapBottom{
+    padding-left: 82px;
+}
+.block{
+    margin-top: 16px;
+}
+.block:first-child{
+    margin: 0;
+}
+.title{
+    font-size: 14px;
+    line-height: 1.29;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #001a34;
+}
+.message{
+    font-size: 14px;
+    line-height: 1.29;
+    color: #001a34;
+}
