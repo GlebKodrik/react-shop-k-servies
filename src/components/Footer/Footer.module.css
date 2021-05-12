@@ -46,20 +46,6 @@
     margin-top: 9px;
     margin-left: 10px;
 }
-.button:disabled{
-    cursor: no-drop;
-    border: 1px solid #c1c1c1;
-    color: #C8C8CB;
-}
-.button:enabled{
-    cursor: pointer;
-    border: 1px solid #C8C8CB;
-    color: #5D5D64;
-}
-.button:enabled:hover{
-    border: 1px solid #02A5DF;
-    color: #02A5DF;
-}
 .success{
     cursor: default;
     color:#43a047;

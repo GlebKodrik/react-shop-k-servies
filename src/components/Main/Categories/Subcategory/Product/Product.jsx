@@ -29,7 +29,6 @@ export const Product = () => {
     }
   }, [params.id, dispatch, product]);
   const handelClick = () => {
-    setFavor(!favor);
     // localStorage.setItem("Favorite", JSON.stringify(product._id));
   };
   return (

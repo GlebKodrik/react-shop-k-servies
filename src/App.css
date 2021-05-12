@@ -105,10 +105,21 @@ h3,h1{
     border: 1px solid #C8C8CB;
     color: #5D5D64;
 }
-.button:hover{
-    border: 1px solid var(--main-text-color);
-    color: var(--main-text-color);
+.button:disabled{
+    cursor: no-drop;
+    border: 1px solid #c1c1c1;
+    color: #C8C8CB;
 }
+.button:enabled{
+    cursor: pointer;
+    border: 1px solid #C8C8CB;
+    color: #5D5D64;
+}
+.button:enabled:hover{
+    border: 1px solid #02A5DF;
+    color: #02A5DF;
+}
+
 .popupWrap{
     display: flex;
     flex-direction: column;
@@ -237,6 +248,6 @@ ymaps[class$=map] ymaps[class*=balloon__close]+ymaps[class*=balloon__content] {
 }
 .inaccessible{
     color: red;
-    font-size: 14px;
+    font-size: 12px;
     margin-left: 10px;
 }

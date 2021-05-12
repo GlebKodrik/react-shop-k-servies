@@ -28,7 +28,8 @@
     letter-spacing: .18px;
     color: #808080;
 }
-.auth{
+.send{
     display: flex;
-    align-items: center;
+    justify-content: flex-end;
+    padding-right: 38px;
 }

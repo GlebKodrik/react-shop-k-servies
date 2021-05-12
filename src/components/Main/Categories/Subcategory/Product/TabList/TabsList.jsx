@@ -6,11 +6,9 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import img from "./../../../../../../assets/img/fetback.png";
-import { ModalPopup } from "../../../../../../common/modalPopup";
-import { PopupRecall } from "../../../../../Popup/PopupRecall/PopupRecall";
 import { Feedback } from "./Feedback/Feedback";
 import { TabPanel } from "../../../../../TabPanel/TabPanel";
-import { shallowEqual, useSelector } from "react-redux";
+import { ButtonCheckAuth } from "../../../../../Button/ButtonCheckAuth";
 
 const a11yProps = (index) => ({
   id: `full-width-tab-${index}`,
@@ -30,8 +28,6 @@ export const TabsList = memo(({ product }) => {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = useState(0);
-  const [open, setOpen] = useState(false);
-  const auth = useSelector((state) => state.auth.isAuth, shallowEqual);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -71,7 +67,13 @@ export const TabsList = memo(({ product }) => {
             Item Two
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
-            {product?.feedback.length ? (
+            {!!product?.feedback.length && (
+              <div className={s.send}>
+                <ButtonCheckAuth />
+              </div>
+            )}
+
+            {!!product?.feedback.length ? (
               <Feedback feedback={product?.feedback} />
             ) : (
               <div className={s.comment}>
@@ -82,19 +84,7 @@ export const TabsList = memo(({ product }) => {
                     Расскажите о преимуществах и недостатках товара. Ваш отзыв
                     поможет другим покупателям сделать выбор.
                   </div>
-                  <ModalPopup component={PopupRecall} {...{ open, setOpen }} />
-                  <div className={s.auth}>
-                    <button
-                      className="button"
-                      onClick={() => setOpen(true)}
-                      disabled={!auth}
-                    >
-                      Оставить отзыв
-                    </button>
-                    {!auth && (
-                      <div className="inaccessible">Нужно авторизироваться</div>
-                    )}
-                  </div>
+                  <ButtonCheckAuth />
                 </div>
               </div>
             )}
