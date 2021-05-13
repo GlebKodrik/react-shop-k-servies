@@ -1,0 +1,15 @@
+.wrap{
+    padding: 20px;
+}
+.title{
+    text-align: center;
+}
+.text{
+    font-size: 20px;
+}
+.link{
+    color: var(--main-text-color);
+}
+.link:hover{
+    color: #5F74B7;
+}

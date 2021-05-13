@@ -4,8 +4,10 @@ import { addFavorites, removeFavorites } from "../../Redux/productsReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
-export const Like = ({ id }, ...props) => {
+export const Like = ({ id, ...props }) => {
   const dispatch = useDispatch();
+
+  const auth = useSelector((state) => state.auth.isAuth);
   const favorite = useSelector((state) => state.products.favorites);
 
   useEffect(() => {
@@ -14,11 +16,11 @@ export const Like = ({ id }, ...props) => {
 
   const addFavorite = (e) => {
     e.preventDefault();
-    dispatch(addFavorites(id));
+    auth ? dispatch(addFavorites(id)) : props.setOpen(true);
   };
   const removeFavorite = (e) => {
     e.preventDefault();
-    dispatch(removeFavorites(id));
+    auth ? dispatch(removeFavorites(id)) : props.setOpen(true);
   };
   return (
     <>
