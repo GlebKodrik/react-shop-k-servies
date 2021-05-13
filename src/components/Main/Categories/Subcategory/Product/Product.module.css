@@ -45,10 +45,6 @@
     margin-bottom: 24px;
 
 }
-.favorites{
-    cursor: pointer;
-    color: red;
-}
 .costWrap{
     display: flex;
     align-items: center;

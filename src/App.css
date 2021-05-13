@@ -251,3 +251,7 @@ ymaps[class$=map] ymaps[class*=balloon__close]+ymaps[class*=balloon__content] {
     font-size: 12px;
     margin-left: 10px;
 }
+.favorites{
+    cursor: pointer;
+    color: red;
+}

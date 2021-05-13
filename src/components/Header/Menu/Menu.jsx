@@ -40,19 +40,18 @@ export const Menu = (props) => {
           </NavLink>
         </div>
 
-        {props.isAuth && (
-          <div className={s.item}>
-            <NavLink to="/profile/basket" className={s.link}>
-              <div>
-                <ShoppingBasketOutlinedIcon
-                  classes={{ root: classes.root }}
-                  style={{ color: blue[700] }}
-                />
-                <div>Корзина</div>
-              </div>
-            </NavLink>
-          </div>
-        )}
+        <div className={s.item}>
+          <NavLink to="/profile/basket" className={s.link}>
+            <div>
+              <ShoppingBasketOutlinedIcon
+                classes={{ root: classes.root }}
+                style={{ color: blue[700] }}
+              />
+              <div>Корзина</div>
+            </div>
+          </NavLink>
+        </div>
+
         <div
           className={s.item}
           onMouseEnter={() => setFocus(true)}

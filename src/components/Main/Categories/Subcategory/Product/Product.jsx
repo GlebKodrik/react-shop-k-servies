@@ -1,15 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getProducts } from "../../../../../Redux/productsReducer";
 import s from "./Product.module.css";
 import { ProductSlider } from "./ProductSlider";
 import cn from "classnames";
-import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import { TabsList } from "./TabList/TabsList";
 import { Link } from "react-scroll";
-import { Rating } from "../../../../Rating/Rating";
-import FavoriteIcon from "@material-ui/icons/Favorite";
+import { Rating } from "../../../../../common/Rating/Rating";
+import { Like } from "../../../../Like/Like";
 
 export const Product = () => {
   const params = useParams();
@@ -21,16 +20,13 @@ export const Product = () => {
   const actualCategory = useSelector((state) => state.products.categories).find(
     (el) => el._id === product?.categoryId
   );
-  const [favor, setFavor] = useState(false);
 
   useEffect(() => {
     if (!product) {
       dispatch(getProducts());
     }
-  }, [params.id, dispatch, product]);
-  const handelClick = () => {
-    // localStorage.setItem("Favorite", JSON.stringify(product._id));
-  };
+  }, [dispatch, product]);
+
   return (
     <>
       <div className="switch">
@@ -67,14 +63,7 @@ export const Product = () => {
                 <div className={s.price}>
                   Цена:&nbsp;<span>{product?.price}&nbsp;₽</span>
                 </div>
-                {favor ? (
-                  <FavoriteIcon className={s.favorites} onClick={handelClick} />
-                ) : (
-                  <FavoriteBorderOutlinedIcon
-                    className={s.favorites}
-                    onClick={handelClick}
-                  />
-                )}
+                <Like id={product?._id} />
               </div>
             </div>
             <div className={s.buy}>

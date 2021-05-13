@@ -1,0 +1,19 @@
+.notBlock{
+    text-align: center;
+    padding: 60px 0;
+}
+.title{
+    font-size: 24px;
+    font-weight: 600;
+    color: #2d3133;
+}
+.subTitle{
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: lighter;
+    color: #939da3;
+}
+.wrap{
+    display: flex;
+    flex-wrap: wrap;
+}

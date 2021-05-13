@@ -4,12 +4,13 @@ import { Sorting } from "./Sorting/Sorting";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getProducts } from "../../../../Redux/productsReducer";
-import { CardProducts } from "./CardProducts";
+import { CardProducts } from "../../../CardProduct/CardProducts";
 import { NotFound } from "../../../NotFould/NotFound";
 
 const Subcategory = () => {
   const dispatch = useDispatch();
   const { url } = useParams();
+
   const actualCategory = useSelector((state) => state.products.categories).find(
     (el) => el.url === url
   );
@@ -23,7 +24,7 @@ const Subcategory = () => {
     if (actualCategory) {
       dispatch(getProducts(actualCategory._id));
     }
-  }, [url, actualCategory, dispatch]);
+  }, [actualCategory, dispatch]);
 
   return actualCategory ? (
     <>
@@ -41,7 +42,7 @@ const Subcategory = () => {
         <Sorting />
         <div className={s.cardWrap}>
           {products?.map((el) => {
-            return <CardProducts key={el._id} productItem={el} />;
+            return <CardProducts key={el._id} product={el} />;
           })}
         </div>
       </div>

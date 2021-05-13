@@ -79,7 +79,7 @@ const products = [
     shortDescr:
       "сталь, толщина стенок - 1.5 мм, 390 мм x 254 мм x 270 мм, вес: 3.3 кг",
     recall: "5",
-    price: "1648",
+    price: "1640",
     feedback: [
       {
         _id: 1,
