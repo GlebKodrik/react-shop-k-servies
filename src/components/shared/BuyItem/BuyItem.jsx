@@ -1,7 +1,6 @@
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { NavLink } from "react-router-dom";
 import { addBasket } from "../../../Redux/productsReducer";
 import s from "./BuyItem.module.css";
 import { useEffect } from "react";
@@ -32,7 +31,7 @@ export const BuyItem = ({ id }) => {
   };
   const clickInBasket = (e) => {
     e.preventDefault();
-    history.push("/profile/basket");
+    history.push("/basket");
   };
   return (
     <div>

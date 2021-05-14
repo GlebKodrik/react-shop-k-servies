@@ -41,7 +41,7 @@ export const Menu = (props) => {
         </div>
 
         <div className={s.item}>
-          <NavLink to="/profile/basket" className={s.link}>
+          <NavLink to="/basket" className={s.link}>
             <div className={s.itemBasket}>
               {!!basket.length && (
                 <div className={s.count}>

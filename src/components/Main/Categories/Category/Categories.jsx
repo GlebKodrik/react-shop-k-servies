@@ -25,7 +25,6 @@ export const Categories = () => {
             </NavLink>
           );
         })}
-        {/*Item*/}
       </div>
     </div>
   );

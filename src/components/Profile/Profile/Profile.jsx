@@ -6,7 +6,6 @@ import { ProfileForm } from "./ProfileForm/ProfileForm";
 import noAvatar from "../../../assets/img/noavatar.png";
 import { useDispatch, useSelector } from "react-redux";
 import { savePhoto } from "../../../Redux/profileReducer";
-import { getAvatar } from "../../../Redux/profile-selector";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import {
@@ -24,7 +23,7 @@ const SignupSchema = yup.object().shape({
 export const Profile = (props) => {
   const [edit, setEdit] = useState(false);
   const dispatch = useDispatch();
-  const avatar = useSelector(getAvatar);
+  const avatar = useSelector((state) => state.profilePage.avatar);
   const {
     register,
     handleSubmit,

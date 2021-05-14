@@ -1,7 +1,6 @@
 import s from "./TabList.module.css";
 import { makeStyles, useTheme } from "@material-ui/core";
 import { memo, useState } from "react";
-import SwipeableViews from "react-swipeable-views";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -33,10 +32,6 @@ export const TabsList = memo(({ product }) => {
     setValue(newValue);
   };
 
-  const handleChangeIndex = (index) => {
-    setValue(index);
-  };
-
   return (
     <>
       <div className={classes.root} id={"tabList"}>
@@ -55,11 +50,7 @@ export const TabsList = memo(({ product }) => {
             <Tab label="Обзоры" {...a11yProps(3)} />
           </Tabs>
         </AppBar>
-        <SwipeableViews
-          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-          index={value}
-          onChangeIndex={handleChangeIndex}
-        >
+        <div>
           <TabPanel value={value} index={0} dir={theme.direction}>
             {product?.description}
           </TabPanel>
@@ -96,7 +87,7 @@ export const TabsList = memo(({ product }) => {
               другим покупателям сделать выбор.
             </div>
           </TabPanel>
-        </SwipeableViews>
+        </div>
       </div>
     </>
   );

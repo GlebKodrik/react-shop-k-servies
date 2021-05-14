@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import s from "./Navigation.module.css";
 import { makeStyles } from "@material-ui/core";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
-import ShoppingBasketOutlinedIcon from "@material-ui/icons/ShoppingBasketOutlined";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
 
@@ -26,14 +25,14 @@ export const Navigation = (props) => {
               </div>
             </NavLink>
           </div>
-          <div className={s.item}>
-            <NavLink to={"/profile/basket"}>
-              <div className={s.inline}>
-                <ShoppingBasketOutlinedIcon classes={{ root: classes.root }} />
-                <div className={s.name}>Корзина</div>
-              </div>
-            </NavLink>
-          </div>
+          {/*<div className={s.item}>*/}
+          {/*  <NavLink to={"/profile/basket"}>*/}
+          {/*    <div className={s.inline}>*/}
+          {/*      <ShoppingBasketOutlinedIcon classes={{ root: classes.root }} />*/}
+          {/*      <div className={s.name}>Корзина</div>*/}
+          {/*    </div>*/}
+          {/*  </NavLink>*/}
+          {/*</div>*/}
           <div className={s.item}>
             <NavLink to={"/profile/favorites"}>
               <div className={s.inline}>

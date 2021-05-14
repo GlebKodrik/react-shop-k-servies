@@ -1,12 +1,17 @@
 import s from "./Basket.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { BasketItem } from "./BasketItem/BasketItem";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@material-ui/core";
-import { removeBasket } from "../../../Redux/productsReducer";
+import { removeBasket } from "../../../../Redux/productsReducer";
+import { ModalPopup } from "../../../shared/ModalPopup";
+import { PopupBuy } from "../../../Popup/PopupBuy/PopupBuy";
+
 export const Basket = () => {
+  const [open, setOpen] = useState(false);
   let dispatch = useDispatch();
   const basket = useSelector((state) => state.products.basket);
+
   useEffect(() => {
     localStorage.setItem("basket", JSON.stringify(basket));
   }, [basket]);
@@ -16,13 +21,25 @@ export const Basket = () => {
   };
 
   return (
-    <>
+    <div className={"container"}>
       {basket.length ? (
         <div className={s.wrap}>
           <div className={s.delete}>
-            <Button variant="contained" color="primary" onClick={clickDelete}>
+            <span onClick={clickDelete} className={s.deleteAll}>
               Очистить корзину
+            </span>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => setOpen(true)}
+            >
+              Оформить заказ
             </Button>
+            <ModalPopup
+              component={PopupBuy}
+              {...{ open, setOpen }}
+              basket={basket}
+            />
           </div>
           <div className={s.block}>
             {basket.map((el) => {
@@ -38,6 +55,6 @@ export const Basket = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };

@@ -42,6 +42,8 @@
 }
 .count{
     position: absolute;
+    top: 30px;
+    right: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,10 +51,9 @@
     min-width: 18px;
     height: 18px;
     font-weight: bold;
-    border: 1px solid #8F939C;
-    color: #2d3133;
+    border: 1px solid #4B494A;
+    color: #4B494A;
     border-radius: 50%;
-
 }
 .item:hover{
     border-bottom: 1px solid gray;

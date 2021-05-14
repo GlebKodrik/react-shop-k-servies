@@ -1,6 +1,5 @@
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
-import { HeaderContainer } from "../Header/HeaderContainer";
 import { AuthContainer } from "../Authorization/AuthContainer";
 import { Footer } from "../Footer/Footer";
 import { NotFound } from "../shared/NotFould/NotFound";
@@ -11,6 +10,8 @@ import React, { useEffect } from "react";
 import { getCategories } from "../../Redux/productsReducer";
 import { useDispatch, useSelector } from "react-redux";
 import "swiper/swiper-bundle.min.css";
+import { Basket } from "../Header/Menu/Basket/Basket";
+import { Header } from "../Header/Header";
 
 const theme = createMuiTheme({
   props: {
@@ -45,10 +46,11 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <ScrollToTop />
         <div className="app">
-          <HeaderContainer />
+          <Header />
           <div className="app-content">
             {categories.length ? (
               <Switch>
+                <Route path="/basket" render={() => <Basket />} />
                 <Route path="/login" render={() => <AuthContainer login />} />
                 <Route path="/register" render={() => <AuthContainer />} />
                 <Route path="/" render={() => <MainRouter />} />

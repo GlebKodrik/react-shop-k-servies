@@ -1,11 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import {
-  addBasket,
-  getProducts,
-  removeBasket,
-} from "../../../../../Redux/productsReducer";
+import { addBasket, getProducts } from "../../../../../Redux/productsReducer";
 import s from "./Product.module.css";
 import { ProductSlider } from "./ProductSlider";
 import cn from "classnames";
@@ -81,7 +77,7 @@ export const Product = () => {
             </div>
             <div className={s.buy}>
               {!!basket.find((el) => el.id === product?._id) ? (
-                <NavLink to={"/profile/basket"}>
+                <NavLink to={"/basket"}>
                   <button className={cn("button", s.buttonBasket, s.button)}>
                     В корзину
                   </button>

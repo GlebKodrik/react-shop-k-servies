@@ -11,14 +11,14 @@ const products = [
     characteristic: "",
     feedback: [
       {
-        _id: 1,
+        _id: 3,
         img:
           "https://sun9-44.userapi.com/impg/ejQbgnIAUS0GXFw4cmHoXF18Nv2RSdz-NYTc2w/pAPvsKgu13g.jpg?size=960x1280&quality=96&sign=50f545009303f67872fc74f29462ebc5&type=album",
         minuses: "очень громкий",
         plus: "Очень крутой товар",
         comment: "Качественный очень товар и достоин своих денег",
         rating: "1",
-        user: "Глеб Кодрик",
+        user: "Василиса",
         date: "22.01.1994",
       },
     ],
@@ -93,7 +93,7 @@ const products = [
         date: "22.06.2000",
       },
       {
-        _id: 1,
+        _id: 2,
         user: "Дима Ворогушин",
         img:
           "https://sun9-55.userapi.com/impg/ztEwHHQIy4ZHv7Fq2tV-4O8RylvclZ_2WGSUWw/f4Rda9HQFl4.jpg?size=1623x2160&quality=96&sign=110f6a81b09c657fe4e877d87448e873&type=album",
@@ -104,7 +104,7 @@ const products = [
         comment: "Не покупайте",
       },
       {
-        _id: 1,
+        _id: 3,
         img:
           "https://sun9-44.userapi.com/impg/ejQbgnIAUS0GXFw4cmHoXF18Nv2RSdz-NYTc2w/pAPvsKgu13g.jpg?size=960x1280&quality=96&sign=50f545009303f67872fc74f29462ebc5&type=album",
         minuses: "Очень не качественоо сделан",
@@ -115,7 +115,7 @@ const products = [
         date: "05.01.2021",
       },
       {
-        _id: 1,
+        _id: 4,
         img:
           "https://sun9-4.userapi.com/impg/xkfJjAuTCPMxhpv_hopCz_HtkuyhqFKYGBynBg/rXP0IT-ZvDk.jpg?size=810x1080&quality=96&sign=c85ee478d76faf4d75b5528d10192568&type=album",
         minuses: "А я ваня делаю что хочу",

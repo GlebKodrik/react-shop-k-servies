@@ -13,7 +13,10 @@ export const ShowMenu = (props) => {
                 <NavLink to={"/"}>Главная</NavLink>
               </li>
               <li>
-                <NavLink to={"/profile/basket"}>Корзина</NavLink>
+                <NavLink to={"/profile/details"}>Профиль</NavLink>
+              </li>
+              <li>
+                <NavLink to={"/basket"}>Корзина</NavLink>
               </li>
               <li>
                 <NavLink to={"/profile/favorites"}>Избранное</NavLink>

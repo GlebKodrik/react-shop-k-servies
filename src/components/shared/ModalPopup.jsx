@@ -64,7 +64,7 @@ export const ModalPopup = ({ component: Component, ...props }) => {
               <CloseIcon />
             </IconButton>
           ) : null}
-          <Component />
+          <Component {...props} />
         </div>
       </Fade>
     </Modal>
