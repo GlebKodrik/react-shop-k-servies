@@ -40,7 +40,20 @@
     padding-bottom: 17px;
     margin-right: 74px;
 }
+.count{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    min-width: 18px;
+    height: 18px;
+    font-weight: bold;
+    border: 1px solid #8F939C;
+    color: #2d3133;
+    border-radius: 50%;
 
+}
 .item:hover{
     border-bottom: 1px solid gray;
 }
@@ -51,7 +64,9 @@
 .item:last-child {
     margin-right: 0;
 }
-
+.itemBasket{
+    position: relative;
+}
 .profilePosition{
     position: absolute;
     top: 84px;

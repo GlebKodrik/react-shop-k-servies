@@ -1,6 +1,6 @@
 import s from "./Contact.module.css";
 import cn from "classnames";
-import { ModalPopup } from "../../../../../../common/modalPopup";
+import { ModalPopup } from "../../../../../shared/ModalPopup";
 import { useState } from "react";
 import { PopupQuestion } from "../../../../../Popup/PopupQuestion/PopupQuestion";
 import { PopupCallMe } from "../../../../../Popup/PopupCallMe/PopupCallMe";

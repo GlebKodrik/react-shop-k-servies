@@ -1,7 +1,7 @@
 import React from "react";
 import s from "../Profile.module.css";
 import { makeStyles } from "@material-ui/core/styles";
-import { MaskPhone } from "../../../../common/mask";
+import { MaskPhone } from "../../../shared/Mask";
 import { TextField } from "@material-ui/core";
 import FaceOutlinedIcon from "@material-ui/icons/FaceOutlined";
 import PhoneIphoneOutlinedIcon from "@material-ui/icons/PhoneIphoneOutlined";

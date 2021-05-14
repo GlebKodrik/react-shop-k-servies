@@ -5,7 +5,7 @@ import PhoneIphoneIcon from "@material-ui/icons/PhoneIphone";
 import { useState } from "react";
 import { PopupCallMe } from "../../../Popup/PopupCallMe/PopupCallMe";
 import { PopupQuestion } from "../../../Popup/PopupQuestion/PopupQuestion";
-import { ModalPopup } from "../../../../common/modalPopup";
+import { ModalPopup } from "../../../shared/ModalPopup";
 
 export const Info = () => {
   const [open, setOpen] = useState(false);

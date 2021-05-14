@@ -63,7 +63,7 @@
 }
 .buy{
     position: absolute;
-    bottom: 0px;
+    bottom: 0;
     left: 0;
 }
 .productId{
@@ -86,4 +86,15 @@
 }
 .mySwiper .swiper-slide-thumb-active {
     opacity: 1;
+}
+.buttonAdd{
+    padding: 10px 24px;
+}
+.buttonBasket:enabled{
+    color: white;
+    background-color: var(--main-text-color);
+}
+.buttonBasket:enabled:hover{
+    color: white;
+    box-shadow: 0px 0px 15px 0px rgba(2, 144, 217, 0.2);
 }

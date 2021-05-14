@@ -1,9 +1,10 @@
 import s from "./CardProduct.module.css";
 import { NavLink } from "react-router-dom";
-import { Like } from "../Like/Like";
-import { PopupAuth } from "../Popup/PopupAuth/PopupAuth";
-import { ModalPopup } from "../../common/modalPopup";
+import { LikeItem } from "../LikeItem/LikeItem";
+import { PopupAuth } from "../../Popup/PopupAuth/PopupAuth";
+import { ModalPopup } from "../ModalPopup";
 import { useState } from "react";
+import { BuyItem } from "../BuyItem/BuyItem";
 
 export const CardProducts = ({ product }) => {
   const [open, setOpen] = useState(false);
@@ -24,7 +25,12 @@ export const CardProducts = ({ product }) => {
               {product?.price}
               <span className={s.cardItemRub}> ₽</span>
             </div>
-            <Like id={product?._id} setOpen={setOpen} />
+            <div className={s.cardIcon}>
+              <div className={s.cardIconBuy}>
+                <BuyItem id={product?._id} />
+              </div>
+              <LikeItem id={product?._id} setOpen={setOpen} />
+            </div>
           </div>
         </div>
       </NavLink>

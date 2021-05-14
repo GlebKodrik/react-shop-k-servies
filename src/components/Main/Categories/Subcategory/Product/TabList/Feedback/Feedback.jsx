@@ -1,7 +1,7 @@
 import s from "./Feedback.module.css";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core";
-import { Rating } from "../../../../../../../common/Rating/Rating";
+import { Rating } from "../../../../../../shared/Rating/Rating";
 
 const useStyles = makeStyles((theme) => ({
   large: {

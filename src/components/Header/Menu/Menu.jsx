@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import s from "./../Header.module.css";
 import { NavLink } from "react-router-dom";
 import cn from "classnames";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../../Redux/authReducer";
 import { ShowMenu } from "./ShowMenu";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 export const Menu = (props) => {
   const [focus, setFocus] = useState(false);
   const dispatch = useDispatch();
-
+  const basket = useSelector((state) => state.products.basket);
   const redirectOut = () => {
     dispatch(logOut());
   };
@@ -42,7 +42,12 @@ export const Menu = (props) => {
 
         <div className={s.item}>
           <NavLink to="/profile/basket" className={s.link}>
-            <div>
+            <div className={s.itemBasket}>
+              {!!basket.length && (
+                <div className={s.count}>
+                  {basket.length < 99 ? basket.length : "+99"}
+                </div>
+              )}
               <ShoppingBasketOutlinedIcon
                 classes={{ root: classes.root }}
                 style={{ color: blue[700] }}

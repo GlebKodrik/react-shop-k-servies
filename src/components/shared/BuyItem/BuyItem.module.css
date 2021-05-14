@@ -1,0 +1,8 @@
+.item{
+    border-radius: 50%;
+    padding: 6px;
+    border: 1px solid var(--main-text-color);
+}
+.active{
+    background-color: var(--main-text-color);
+}

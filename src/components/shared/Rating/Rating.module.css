@@ -24,26 +24,26 @@
     color: var(--main-text-color);
 }
 .review[data-rating="4"] i:nth-child(4) ~ i {
-    background-image: url(../../assets/img/Star_empty.svg);
+    background-image: url(../../../assets/img/Star_empty.svg);
 }
 .review[data-rating="2"] i:nth-child(2) ~ i {
-    background-image: url(../../assets/img/Star_empty.svg);
+    background-image: url(../../../assets/img/Star_empty.svg);
 }
 .review[data-rating="3"] i:nth-child(3) ~ i {
-    background-image: url(../../assets/img/Star_empty.svg);
+    background-image: url(../../../assets/img/Star_empty.svg);
 }
 .review[data-rating="5"] i:nth-child(5) ~ i {
-    background-image: url(../../assets/img/Star_empty.svg);
+    background-image: url(../../../assets/img/Star_empty.svg);
 }
 .review[data-rating="1"] i:nth-child(1) ~ i {
-    background-image: url(../../assets/img/Star_empty.svg);
+    background-image: url(../../../assets/img/Star_empty.svg);
 }
 .review[data-rating="0"] i:nth-child(0)  ~ i {
-    background-image: url(../../assets/img/Star_empty.svg);
+    background-image: url(../../../assets/img/Star_empty.svg);
 }
 .review i{
     font-size: 8px;
-    background-image: url(../../assets/img/star.svg);
+    background-image: url(../../../assets/img/star.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;

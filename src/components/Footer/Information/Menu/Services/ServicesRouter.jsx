@@ -1,5 +1,5 @@
 import { Route, Switch } from "react-router-dom";
-import { NotFound } from "../../../../NotFould/NotFound";
+import { NotFound } from "../../../../shared/NotFould/NotFound";
 import { Requisites } from "./Requisites/Requisites";
 import { About } from "./About/About";
 import { Contact } from "./Contact/Contact";

@@ -44,3 +44,10 @@
 .cardItemRub{
     color: #b3b3b7;
 }
+.cardIcon{
+    display: flex;
+    align-items: center;
+}
+.cardIconBuy{
+    margin-right: 10px;
+}

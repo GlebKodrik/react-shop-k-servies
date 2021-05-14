@@ -1,9 +1,28 @@
-.inner{
-    padding-bottom: 100px;
+.wrap{
+    max-height: 1000px;
+    overflow: auto;
+    padding: 10px 20px;
+}
+.block{
+    display: flex;
+    flex-direction: column;
+
+}
+.notBasket{
+    padding: 60px 0;
+    text-align: center;
+}
+.title{
+    font-size: 24px;
+    font-weight: 600;
+    color: #2d3133;
 }
 .subTitle{
-    font-weight: 400;
+    margin-top: 15px;
     font-size: 16px;
-    line-height: 22px;
-    color: #8b8b8b;
+    font-weight: lighter;
+    color: #939da3;
+}
+.delete{
+    text-align: end;
 }

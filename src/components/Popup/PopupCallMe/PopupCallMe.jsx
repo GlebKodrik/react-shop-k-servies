@@ -9,7 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Checkbox, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { MaskPhone } from "../../../common/mask";
+import { MaskPhone } from "../../shared/Mask";
 import { nameValidation, phoneValidation } from "../../../common/validations";
 
 const SignupSchema = yup.object().shape({

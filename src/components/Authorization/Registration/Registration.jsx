@@ -9,7 +9,7 @@ import { logIn } from "../../../Redux/authReducer";
 import { UseFormControl } from "../FormControl";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { MaskPhone } from "../../../common/mask";
+import { MaskPhone } from "../../shared/Mask";
 import {
   emailValidation,
   nameValidation,

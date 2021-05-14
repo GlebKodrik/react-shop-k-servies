@@ -1,18 +1,24 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { getProducts } from "../../../../../Redux/productsReducer";
+import {
+  addBasket,
+  getProducts,
+  removeBasket,
+} from "../../../../../Redux/productsReducer";
 import s from "./Product.module.css";
 import { ProductSlider } from "./ProductSlider";
 import cn from "classnames";
 import { TabsList } from "./TabList/TabsList";
 import { Link } from "react-scroll";
-import { Rating } from "../../../../../common/Rating/Rating";
-import { Like } from "../../../../Like/Like";
+import { Rating } from "../../../../shared/Rating/Rating";
+import { LikeItem } from "../../../../shared/LikeItem/LikeItem";
 
 export const Product = () => {
   const params = useParams();
   const dispatch = useDispatch();
+
+  const basket = useSelector((state) => state.products.basket);
 
   const product = useSelector((state) => state.products.products).find(
     (el) => el._id === parseInt(params.id)
@@ -22,10 +28,17 @@ export const Product = () => {
   );
 
   useEffect(() => {
+    localStorage.setItem("basket", JSON.stringify(basket));
     if (!product) {
       dispatch(getProducts());
     }
-  }, [dispatch, product]);
+  }, [dispatch, product, basket]);
+
+  useEffect(() => {}, []);
+
+  const clickAddBasket = () => {
+    dispatch(addBasket(product?._id));
+  };
 
   return (
     <>
@@ -63,11 +76,24 @@ export const Product = () => {
                 <div className={s.price}>
                   Цена:&nbsp;<span>{product?.price}&nbsp;₽</span>
                 </div>
-                <Like id={product?._id} />
+                <LikeItem id={product?._id} />
               </div>
             </div>
             <div className={s.buy}>
-              <button className={cn("button", s.button)}>В корзину</button>
+              {!!basket.find((el) => el.id === product?._id) ? (
+                <NavLink to={"/profile/basket"}>
+                  <button className={cn("button", s.buttonBasket, s.button)}>
+                    В корзину
+                  </button>
+                </NavLink>
+              ) : (
+                <button
+                  className={cn("button", s.buttonAdd)}
+                  onClick={clickAddBasket}
+                >
+                  Добавить в корзину
+                </button>
+              )}
             </div>
           </div>
         </div>

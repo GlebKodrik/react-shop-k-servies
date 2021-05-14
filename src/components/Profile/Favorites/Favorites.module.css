@@ -14,6 +14,14 @@
     color: #939da3;
 }
 .wrap{
+    max-height: 1000px;
+    overflow: auto;
+    padding: 25px 24px;
+}
+.block{
     display: flex;
     flex-wrap: wrap;
+}
+.delete{
+    text-align: end;
 }

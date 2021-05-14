@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+import App from "./components/App/App";
+import reportWebVitals from "./bin/reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import store from "./Redux/redux-store";
 import { Provider } from "react-redux";

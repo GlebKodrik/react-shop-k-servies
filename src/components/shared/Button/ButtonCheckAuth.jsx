@@ -1,7 +1,7 @@
 import s from "./ButtonCheckAuth.module.css";
 import { shallowEqual, useSelector } from "react-redux";
-import { PopupRecall } from "../../components/Popup/PopupRecall/PopupRecall";
-import { ModalPopup } from "../modalPopup";
+import { PopupRecall } from "../../Popup/PopupRecall/PopupRecall";
+import { ModalPopup } from "../ModalPopup";
 import { useState } from "react";
 import { Button } from "@material-ui/core";
 

@@ -2,7 +2,7 @@ import React from "react";
 import { Profile } from "./Profile/Profile";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { Navigation } from "./Navigation/Navigation";
-import { NotFound } from "../NotFould/NotFound";
+import { NotFound } from "../shared/NotFould/NotFound";
 import { AppealRoute } from "./Appeal/AppealRoute";
 import { Basket } from "./Basket/Basket";
 import { Favorites } from "./Favorites/Favorites";

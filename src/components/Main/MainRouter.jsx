@@ -1,5 +1,5 @@
 import { Route, Switch } from "react-router-dom";
-import { NotFound } from "../NotFould/NotFound";
+import { NotFound } from "../shared/NotFould/NotFound";
 import { Main } from "./Main";
 import { ProfileRoute } from "../Profile/ProfileRoute";
 import { PrivateRouter } from "../Route/PrivateRouter";

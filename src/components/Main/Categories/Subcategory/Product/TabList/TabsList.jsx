@@ -7,8 +7,8 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import img from "./../../../../../../assets/img/fetback.png";
 import { Feedback } from "./Feedback/Feedback";
-import { TabPanel } from "../../../../../../common/TabPanel/TabPanel";
-import { ButtonCheckAuth } from "../../../../../../common/Button/ButtonCheckAuth";
+import { TabPanel } from "../../../../../shared/TabPanel/TabPanel";
+import { ButtonCheckAuth } from "../../../../../shared/Button/ButtonCheckAuth";
 
 const a11yProps = (index) => ({
   id: `full-width-tab-${index}`,

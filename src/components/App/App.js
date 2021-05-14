@@ -1,14 +1,14 @@
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
-import { HeaderContainer } from "./components/Header/HeaderContainer";
-import { AuthContainer } from "./components/Authorization/AuthContainer";
-import { Footer } from "./components/Footer/Footer";
-import { NotFound } from "./components/NotFould/NotFound";
-import { MainRouter } from "./components/Main/MainRouter";
-import { ScrollToTop } from "./common/ScrollToTop";
+import { HeaderContainer } from "../Header/HeaderContainer";
+import { AuthContainer } from "../Authorization/AuthContainer";
+import { Footer } from "../Footer/Footer";
+import { NotFound } from "../shared/NotFould/NotFound";
+import { MainRouter } from "../Main/MainRouter";
+import { ScrollToTop } from "../shared/ScrollToTop";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core";
 import React, { useEffect } from "react";
-import { getCategories } from "./Redux/productsReducer";
+import { getCategories } from "../../Redux/productsReducer";
 import { useDispatch, useSelector } from "react-redux";
 import "swiper/swiper-bundle.min.css";
 
