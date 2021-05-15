@@ -1,5 +1,5 @@
 import s from "./PopupQuestion.module.css";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -20,6 +20,7 @@ const SignupSchema = yup.object().shape({
 });
 
 export const PopupQuestion = () => {
+  const [send, setSend] = useState(false);
   const {
     register,
     handleSubmit,
@@ -33,6 +34,7 @@ export const PopupQuestion = () => {
   const onSubmit = (values) => {
     console.log(values);
     reset();
+    setSend(true);
   };
 
   return (
@@ -87,7 +89,10 @@ export const PopupQuestion = () => {
           <div className={s.subEmail}>Оператор ответит в течение 48 часов</div>
         </div>
 
-        <div className={"popupWrapButton"}>
+        <div className={cn("popupWrapButton", { popupSend: send })}>
+          {send && (
+            <div className={"popupSendText"}>Заявка успешно отправлена</div>
+          )}
           <button className={cn("button", "popupButton")}>Отправить</button>
         </div>
       </form>

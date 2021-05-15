@@ -5,7 +5,7 @@ const products = [
     img: "https://goramet.ru/wp-content/uploads/my/obrabotka-metalla.jpg",
     shortDescr:
       "сталь, толщина стенок - 1.5 мм, 390 мм x 254 мм x 270 мм, вес: 3.3 кг",
-    price: "2051",
+    price: 2051,
     recall: "3",
     categoryId: 2,
     characteristic: "",
@@ -32,7 +32,7 @@ const products = [
       "https://prom-neva.ru/wp-content/uploads/2013/07/uslugi_frezernoj_obrabotki_metalla_2.jpg",
     shortDescr:
       "сталь, толщина стенок - 1.5 мм, 390 мм x 254 мм x 270 мм, вес: 3.3 кг",
-    price: "1011",
+    price: 1011,
     recall: "2",
     categoryId: 2,
     characteristic: "",
@@ -50,7 +50,7 @@ const products = [
       "https://s-agroservis.ru/assets/images/produkciya/RTI/konveier-lenta/konvejernaya-lenta(1).jpg",
     shortDescr:
       "сталь, толщина стенок - 1.5 мм, 390 мм x 254 мм x 270 мм, вес: 3.3 кг",
-    price: "1459",
+    price: 1459,
     recall: "1",
     categoryId: 1,
     characteristic: "",
@@ -79,7 +79,7 @@ const products = [
     shortDescr:
       "сталь, толщина стенок - 1.5 мм, 390 мм x 254 мм x 270 мм, вес: 3.3 кг",
     recall: "5",
-    price: "1640",
+    price: 1640,
     feedback: [
       {
         _id: 1,

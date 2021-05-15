@@ -27,6 +27,7 @@ export const ProfileForm = ({ edit, register, errors, control }) => {
           <span className={s.dataTitle}>ФИО</span>
           {edit ? (
             <TextField
+              required
               className={classes.dataInfo}
               label="ФИО"
               error={!!errors.name}

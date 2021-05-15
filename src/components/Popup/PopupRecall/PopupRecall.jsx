@@ -8,6 +8,7 @@ import {
   nameValidation,
 } from "../../../common/validations";
 import s from "./PopupRecall.module.css";
+import React, { useState } from "react";
 const SignupSchema = yup.object().shape({
   ...nameValidation,
   ...descriptionValidation,
@@ -16,6 +17,7 @@ const SignupSchema = yup.object().shape({
 });
 
 export const PopupRecall = () => {
+  const [send, setSend] = useState(false);
   const {
     register,
     handleSubmit,
@@ -29,6 +31,7 @@ export const PopupRecall = () => {
   const onSubmit = (values) => {
     console.log(values);
     reset();
+    setSend(true);
   };
 
   return (
@@ -98,7 +101,12 @@ export const PopupRecall = () => {
                 </div>
               </div>
 
-              <div className={"popupWrapButton"}>
+              <div className={cn("popupWrapButton", { popupSend: send })}>
+                {send && (
+                  <div className={"popupSendText"}>
+                    Заявка успешно отправлена
+                  </div>
+                )}
                 <button className={cn("button", "popupButton")}>
                   Отправить
                 </button>

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   addFavorites,
   getProducts,
@@ -8,13 +8,17 @@ import {
 } from "../../../../../Redux/productsReducer";
 import cn from "classnames";
 import s from "./BasketItem.module.css";
+import { ModalPopup } from "../../../../shared/ModalPopup";
+import { PopupAuth } from "../../../../Popup/PopupAuth/PopupAuth";
 
-export const BasketItem = ({ id }) => {
+export const BasketItem = ({ id, auth }) => {
+  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
   const product = useSelector((state) => state.products.products).find(
     (el) => el._id === id
   );
+
   const favorite = useSelector((state) => state.products.favorites).find(
     (el) => el.id === id
   );
@@ -26,12 +30,15 @@ export const BasketItem = ({ id }) => {
   }, [dispatch, product]);
 
   const clickFavorite = () => {
-    !!favorite ? dispatch(removeFavorites(id)) : dispatch(addFavorites(id));
+    auth
+      ? !!favorite
+        ? dispatch(removeFavorites(id))
+        : dispatch(addFavorites(id))
+      : setOpen(true);
   };
   const clickDelete = () => {
     dispatch(removeBasket(id));
   };
-
   return (
     <div className={s.wrap}>
       <div className={s.item}>
@@ -57,6 +64,7 @@ export const BasketItem = ({ id }) => {
         <div className={s.cost}>{product?.price}&nbsp;₽</div>
       </div>
       <div className={s.codeProduct}>Код продукта: {product?._id}</div>
+      <ModalPopup component={PopupAuth} {...{ open, setOpen }} />
     </div>
   );
 };

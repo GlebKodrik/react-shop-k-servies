@@ -11,6 +11,8 @@ export const Basket = () => {
   const [open, setOpen] = useState(false);
   let dispatch = useDispatch();
   const basket = useSelector((state) => state.products.basket);
+  const auth = useSelector((state) => state.auth.isAuth);
+  const productsAll = useSelector((state) => state.products.products);
 
   useEffect(() => {
     localStorage.setItem("basket", JSON.stringify(basket));
@@ -20,10 +22,21 @@ export const Basket = () => {
     basket.map((el) => dispatch(removeBasket(el.id)));
   };
 
+  let product = basket.map((item) => {
+    return productsAll.find((el) => el._id === item.id);
+  });
+
+  const sum = product.reduce((sum, n) => sum + n?.price, 0);
+
   return (
     <div className={"container"}>
       {basket.length ? (
         <div className={s.wrap}>
+          <div className={s.total}>
+            <div className={s.totalText}>
+              Итого: {basket.length} товара на {sum} ₽
+            </div>
+          </div>
           <div className={s.delete}>
             <span onClick={clickDelete} className={s.deleteAll}>
               Очистить корзину
@@ -43,7 +56,7 @@ export const Basket = () => {
           </div>
           <div className={s.block}>
             {basket.map((el) => {
-              return <BasketItem key={el.id} id={el.id} basket={basket} />;
+              return <BasketItem key={el.id} id={el.id} {...{ auth }} />;
             })}
           </div>
         </div>

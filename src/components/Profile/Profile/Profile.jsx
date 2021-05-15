@@ -20,7 +20,7 @@ const SignupSchema = yup.object().shape({
   ...nameValidation,
 });
 
-export const Profile = (props) => {
+export const Profile = () => {
   const [edit, setEdit] = useState(false);
   const dispatch = useDispatch();
   const avatar = useSelector((state) => state.profilePage.avatar);

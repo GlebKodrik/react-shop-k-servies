@@ -16,7 +16,8 @@ const SignupSchema = yup.object().shape({
   ...phoneValidation,
   ...nameValidation,
 });
-export const PopupCallMe = (props) => {
+export const PopupCallMe = () => {
+  const [send, setSend] = useState(false);
   const [showDescr, setShowDescr] = useState(false);
   const [value, setValue] = useState("order");
   const useStyles = makeStyles((theme) => ({
@@ -40,6 +41,7 @@ export const PopupCallMe = (props) => {
   const onSubmit = (values) => {
     console.log(values);
     reset();
+    setSend(true);
   };
 
   const handleChangeCheck = (event) => {
@@ -50,9 +52,10 @@ export const PopupCallMe = (props) => {
   return (
     <div className={"popupWrap"}>
       <div className={"popupTitle"}>Перезвонить мне</div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <div>
           <MaskPhone
+            required
             name="phone"
             control={control}
             errors={errors}
@@ -68,6 +71,7 @@ export const PopupCallMe = (props) => {
 
         <div className={s.addName}>
           <TextField
+            required
             label={"Моё имя"}
             placeholder={"Глеб"}
             error={!!errors.name}
@@ -131,7 +135,10 @@ export const PopupCallMe = (props) => {
           />
         </div>
 
-        <div className={"popupWrapButton"}>
+        <div className={cn("popupWrapButton", { popupSend: send })}>
+          {send && (
+            <div className={"popupSendText"}>Заявка успешно отправлена</div>
+          )}
           <button className={cn("button", "popupButton")}>Отправить</button>
         </div>
       </form>

@@ -2,13 +2,13 @@
     position: relative;
 }
 .cardItem{
+    transition: all .3s;
     position: relative;
     font-size: 16px;
     outline: none;
     color: #151528;
     text-decoration: none;
     cursor: pointer;
-    transition: color .1s ease;
     padding: 20px 20px 30px;
     max-width: 350px;
     min-width: 200px;
