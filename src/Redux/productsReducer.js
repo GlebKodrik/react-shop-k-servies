@@ -1,4 +1,5 @@
-import { fetchCategories, fetchProducts } from "../api/products";
+import { fetchProducts } from "../api/products";
+import {productAPI} from "../api/api";
 
 const SET_CARD_CATEGORY = "products/SET_CARD_CATEGORY";
 const ADD_FAVORITE = "products/ADD_FAVORITE";
@@ -51,11 +52,11 @@ const productsReducer = (state = initialState, action) => {
     }
   }
 };
-//test
+
 export const addBasket = (id) => ({ type: ADD_BASKET, id });
 
 export const removeBasket = (id) => ({ type: REMOVE_BASKET, id });
-// Тест
+
 export const addFavorites = (id) => ({ type: ADD_FAVORITE, id });
 
 export const removeFavorites = (id) => ({ type: REMOVE_FAVORITE, id });
@@ -65,12 +66,13 @@ export const setCardCategory = (data) => ({ type: SET_CARD_CATEGORY, data });
 export const setProducts = (data) => ({ type: SET_PRODUCTS, data });
 
 export const getCategories = () => async (dispatch) => {
-  const response = await fetchCategories();
-  dispatch(setCardCategory(response.data));
+  const response = await productAPI.getCategories();
+  dispatch(setCardCategory(response.data.data));
 };
 
 export const getProducts = (id) => async (dispatch) => {
   const response = await fetchProducts(id);
+  console.log(response)
   dispatch(setProducts(response.data));
 };
 

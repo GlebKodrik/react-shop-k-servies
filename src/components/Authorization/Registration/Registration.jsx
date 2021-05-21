@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Button, TextField } from "@material-ui/core";
-import { logIn } from "../../../Redux/authReducer";
+import {logUpThunk} from "../../../Redux/authReducer";
 import { UseFormControl } from "../FormControl";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -59,8 +59,8 @@ export const Registration = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
-    dispatch(logIn(data));
+   dispatch(logUpThunk(data));
+   console.log("Отправил")
   };
 
   const classes = useStyles();
