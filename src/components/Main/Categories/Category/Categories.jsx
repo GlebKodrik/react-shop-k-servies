@@ -18,7 +18,7 @@ export const Categories = () => {
             >
               <div>
                 <div className={s.contentImg}>
-                  <img src={item.img} alt="" />
+                  <img src={item.image} alt="" />
                 </div>
                 <div className={s.name}>{item.name}</div>
               </div>

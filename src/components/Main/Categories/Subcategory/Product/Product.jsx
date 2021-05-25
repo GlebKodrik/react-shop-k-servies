@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { addBasket, getProducts } from "../../../../../Redux/productsReducer";
+import { addBasket, getProducts } from "../../../../../redux/productsReducer";
 import s from "./Product.module.css";
 import { ProductSlider } from "./ProductSlider";
 import cn from "classnames";

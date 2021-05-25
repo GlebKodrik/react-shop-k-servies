@@ -3,7 +3,7 @@ import s from "./Subcategory.module.css";
 import { Sorting } from "./Sorting/Sorting";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getProducts } from "../../../../Redux/productsReducer";
+import { getProducts } from "../../../../redux/productsReducer";
 import { CardProducts } from "../../../shared/CardProduct/CardProducts";
 import { NotFound } from "../../../shared/NotFould/NotFound";
 

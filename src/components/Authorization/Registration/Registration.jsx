@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import s from "../Authorization.module.css";
 import { makeStyles } from "@material-ui/core/styles";
-import { useForm } from "react-hook-form";
+import { useForm, useFormState } from "react-hook-form";
 import { NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { Button, TextField } from "@material-ui/core";
-import {logUpThunk} from "../../../Redux/authReducer";
 import { UseFormControl } from "../FormControl";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -16,6 +14,8 @@ import {
   passwordValidation,
   phoneValidation,
 } from "../../../common/validations";
+import { PopupToast } from "../../Popup/PopupToast/PopupToast";
+import { authAPI } from "../../../api/api";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,9 +27,6 @@ const useStyles = makeStyles((theme) => ({
   button: {
     textAlign: "center",
     marginBottom: theme.spacing(2),
-    "& .MuiButtonBase-root": {
-      width: "226px",
-    },
   },
   authInfo: {
     display: "flex",
@@ -46,21 +43,45 @@ const SignupSchema = yup.object().shape({
 });
 
 export const Registration = () => {
-  const dispatch = useDispatch();
+  const [state, setState] = useState({
+    open: false,
+    text: "",
+    type: "",
+  });
 
   const {
     register,
     handleSubmit,
     control,
+    setError,
+    reset,
     formState: { errors },
   } = useForm({
+    defaultValues: { phone: "", email: "", name: "" },
     resolver: yupResolver(SignupSchema),
     mode: "onTouched",
   });
 
-  const onSubmit = (data) => {
-   dispatch(logUpThunk(data));
-   console.log("Отправил")
+  const onSubmit = async (values) => {
+    const response = await authAPI.logUp(values);
+    let error = response.data.errors;
+    if (!!error) {
+      console.log(error);
+      if (error.email) {
+        setError("email", { message: error.email[0] });
+      }
+      if (error.password) {
+        setError("password", { message: error.password[0] });
+      }
+      setState({ open: true, text: "Ошибка при регистрации", type: "error" });
+      return;
+    }
+    setState({
+      open: true,
+      text: "Вы успешно зарегистрированы!",
+      type: "success",
+    });
+    reset();
   };
 
   const classes = useStyles();
@@ -102,7 +123,13 @@ export const Registration = () => {
         <UseFormControl name="password" control={control} errors={errors} />
 
         <div className={classes.button}>
-          <Button type={"submit"} variant={"outlined"} color={"primary"}>
+          {state.open && <PopupToast {...state} setState={setState} />}
+          <Button
+            type={"submit"}
+            variant={"outlined"}
+            color={"primary"}
+            className={s.button}
+          >
             Регистрация
           </Button>
         </div>

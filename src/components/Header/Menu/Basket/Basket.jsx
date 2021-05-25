@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { BasketItem } from "./BasketItem/BasketItem";
 import { useEffect, useState } from "react";
 import { Button } from "@material-ui/core";
-import { removeBasket } from "../../../../Redux/productsReducer";
+import { removeBasket } from "../../../../redux/productsReducer";
 import { ModalPopup } from "../../../shared/ModalPopup";
 import { PopupBuy } from "../../../Popup/PopupBuy/PopupBuy";
 

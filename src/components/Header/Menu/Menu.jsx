@@ -3,7 +3,7 @@ import s from "./../Header.module.css";
 import { NavLink } from "react-router-dom";
 import cn from "classnames";
 import { useDispatch, useSelector } from "react-redux";
-import { logOut } from "../../../Redux/authReducer";
+import { logOut } from "../../../redux/authReducer";
 import { ShowMenu } from "./ShowMenu";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import { blue, red } from "@material-ui/core/colors";

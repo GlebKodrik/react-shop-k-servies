@@ -1,6 +1,6 @@
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
-import { addFavorites, removeFavorites } from "../../../Redux/productsReducer";
+import { addFavorites, removeFavorites } from "../../../redux/productsReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 

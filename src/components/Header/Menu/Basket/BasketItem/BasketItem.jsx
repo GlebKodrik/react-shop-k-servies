@@ -5,7 +5,7 @@ import {
   getProducts,
   removeBasket,
   removeFavorites,
-} from "../../../../../Redux/productsReducer";
+} from "../../../../../redux/productsReducer";
 import cn from "classnames";
 import s from "./BasketItem.module.css";
 import { ModalPopup } from "../../../../shared/ModalPopup";

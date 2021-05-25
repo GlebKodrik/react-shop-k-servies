@@ -1,5 +1,5 @@
 import { fetchProducts } from "../api/products";
-import {productAPI} from "../api/api";
+import { productAPI } from "../api/api";
 
 const SET_CARD_CATEGORY = "products/SET_CARD_CATEGORY";
 const ADD_FAVORITE = "products/ADD_FAVORITE";
@@ -13,6 +13,7 @@ let initialState = {
   products: [],
   favorites: JSON.parse(localStorage.getItem("favorites")) || [],
   basket: JSON.parse(localStorage.getItem("basket")) || [],
+  error: null,
 };
 const productsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -47,6 +48,7 @@ const productsReducer = (state = initialState, action) => {
     case SET_PRODUCTS: {
       return { ...state, products: action.data };
     }
+
     default: {
       return state;
     }
@@ -72,7 +74,7 @@ export const getCategories = () => async (dispatch) => {
 
 export const getProducts = (id) => async (dispatch) => {
   const response = await fetchProducts(id);
-  console.log(response)
+  console.log(response);
   dispatch(setProducts(response.data));
 };
 

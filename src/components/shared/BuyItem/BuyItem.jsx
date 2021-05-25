@@ -1,7 +1,7 @@
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { addBasket } from "../../../Redux/productsReducer";
+import { addBasket } from "../../../redux/productsReducer";
 import s from "./BuyItem.module.css";
 import { useEffect } from "react";
 import { makeStyles } from "@material-ui/core";

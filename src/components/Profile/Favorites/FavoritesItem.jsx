@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getProducts } from "../../../Redux/productsReducer";
+import { getProducts } from "../../../redux/productsReducer";
 import { CardProducts } from "../../shared/CardProduct/CardProducts";
 
 export const FavoritesItem = ({ id }) => {

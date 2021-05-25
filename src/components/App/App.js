@@ -7,13 +7,13 @@ import { MainRouter } from "../Main/MainRouter";
 import { ScrollToTop } from "../shared/ScrollToTop";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core";
 import React, { useEffect } from "react";
-import { getCategories } from "../../Redux/productsReducer";
+import { getCategories } from "../../redux/productsReducer";
 import { useDispatch, useSelector } from "react-redux";
 import "swiper/swiper-bundle.min.css";
 import { Basket } from "../Header/Menu/Basket/Basket";
 import { Header } from "../Header/Header";
-import {setInterceptor} from "../../api/api";
-import {authThunk, meThunk} from "../../Redux/authReducer";
+import { setInterceptor } from "../../api/api";
+import { authThunk, meThunk } from "../../redux/authReducer";
 
 const theme = createMuiTheme({
   props: {

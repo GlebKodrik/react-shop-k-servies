@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import s from "../Authorization.module.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { Controller, useForm } from "react-hook-form";
-import { NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { logIn } from "../../../Redux/authReducer";
+import { NavLink, useHistory } from "react-router-dom";
 import {
   Button,
   Checkbox,
@@ -18,6 +16,10 @@ import {
   emailValidation,
   passwordValidation,
 } from "../../../common/validations";
+import { PopupToast } from "../../Popup/PopupToast/PopupToast";
+import { useDispatch } from "react-redux";
+import { setAuth } from "../../../redux/authReducer";
+import { authAPI } from "../../../api/api";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,9 +31,6 @@ const useStyles = makeStyles((theme) => ({
   button: {
     textAlign: "center",
     marginBottom: theme.spacing(2),
-    "& .MuiButtonBase-root": {
-      width: "226px",
-    },
   },
 }));
 
@@ -42,7 +41,12 @@ const SignupSchema = yup.object().shape({
 
 export const Login = () => {
   const dispatch = useDispatch();
-
+  const history = useHistory();
+  const [state, setState] = useState({
+    open: false,
+    text: "",
+    type: "",
+  });
   const {
     register,
     handleSubmit,
@@ -54,8 +58,18 @@ export const Login = () => {
     mode: "onTouched",
   });
 
-  const onSubmit = (data) => {
-    dispatch(logIn(data));
+  const onSubmit = async (values) => {
+    const response = await authAPI.logIn({ ...values });
+    if (!!response.data.errors) {
+      setState({
+        open: true,
+        text: "Неверный email или пароль",
+        type: "error",
+      });
+      return;
+    }
+    dispatch(setAuth(true));
+    history.push("/");
   };
 
   const classes = useStyles();
@@ -100,7 +114,13 @@ export const Login = () => {
         />
 
         <div className={classes.button}>
-          <Button type={"submit"} variant={"outlined"} color={"primary"}>
+          {state.open && <PopupToast {...state} setState={setState} />}
+          <Button
+            type={"submit"}
+            variant={"outlined"}
+            color={"primary"}
+            className={s.button}
+          >
             Войти
           </Button>
         </div>
@@ -110,7 +130,7 @@ export const Login = () => {
           <NavLink to="/change">Забыл пароль?</NavLink>
         </div>
         <div>
-          <NavLink to="/register">Регистрироваться</NavLink>
+          <NavLink to="/register">Зарегистрироваться</NavLink>
         </div>
       </div>
     </div>

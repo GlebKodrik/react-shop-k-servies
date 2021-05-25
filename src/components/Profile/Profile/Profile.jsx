@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { ProfileForm } from "./ProfileForm/ProfileForm";
 import noAvatar from "../../../assets/img/noavatar.png";
 import { useDispatch, useSelector } from "react-redux";
-import { savePhoto } from "../../../Redux/profileReducer";
+import { savePhoto } from "../../../redux/profileReducer";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import {

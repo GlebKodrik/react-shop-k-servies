@@ -5,42 +5,42 @@ export const CONFIG = {
   withCredentials: true,
   validateStatus: (status) => status < 500,
   headers: {
-    'content-type': 'application/json'
-  }
+    "content-type": "application/json",
+  },
 };
 
 const instance = axios.create(CONFIG);
 
 export const authAPI = {
-  me(){
+  me() {
     return instance.get("/auth/me");
   },
-  logUp(user){
-    return instance.post("/auth/sign-up", user)
+  logUp(user) {
+    return instance.post("/auth/sign-up", user);
   },
-  logIn(email, password) {
+  logIn({ email, password }) {
     return instance.post("/auth/sign-in", { email, password });
   },
-  logOut(){
+  logOut() {
     return instance.post("/auth/logout");
-  }
+  },
 };
 export const productAPI = {
-  getCategories(){
+  getCategories() {
     return instance.get("/shop/rubrics");
   },
-  getProduct(){
+  getProduct() {
     return instance.get("/shop/products/");
-  }
-}
+  },
+};
 
 export const setInterceptor = (setUser) => {
   instance.interceptors.response.use(async (response) => {
     if (response.status === 401) {
       const refreshResponse = await axios.request({
         ...CONFIG,
-        url: '/auth/refresh',
-        method: 'GET',
+        url: "/auth/refresh",
+        method: "GET",
       });
 
       if (refreshResponse.status === 401) {
