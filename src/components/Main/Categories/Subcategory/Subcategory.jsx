@@ -4,8 +4,8 @@ import { Sorting } from "./Sorting/Sorting";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getProducts } from "../../../../redux/productsReducer";
-import { CardProducts } from "../../../shared/CardProduct/CardProducts";
-import { NotFound } from "../../../shared/NotFould/NotFound";
+import { CardProducts } from "../../../page/CardProduct/CardProducts";
+import { NotFound } from "../../../page/NotFould/NotFound";
 
 const Subcategory = () => {
   const dispatch = useDispatch();

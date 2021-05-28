@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import s from "../Authorization.module.css";
 import { makeStyles } from "@material-ui/core/styles";
-import { useForm, useFormState } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
-import { Button, TextField } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import { UseFormControl } from "../FormControl";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -16,6 +16,7 @@ import {
 } from "../../../common/validations";
 import { PopupToast } from "../../Popup/PopupToast/PopupToast";
 import { authAPI } from "../../../api/api";
+import { Input } from "../../shared/Input/Input";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,14 +51,13 @@ export const Registration = () => {
   });
 
   const {
-    register,
     handleSubmit,
     control,
     setError,
     reset,
     formState: { errors },
   } = useForm({
-    defaultValues: { phone: "", email: "", name: "" },
+    defaultValues: { phone: "", email: "", name: "", password: "" },
     resolver: yupResolver(SignupSchema),
     mode: "onTouched",
   });
@@ -65,8 +65,8 @@ export const Registration = () => {
   const onSubmit = async (values) => {
     const response = await authAPI.logUp(values);
     let error = response.data.errors;
+
     if (!!error) {
-      console.log(error);
       if (error.email) {
         setError("email", { message: error.email[0] });
       }
@@ -93,22 +93,24 @@ export const Registration = () => {
         autoComplete="on"
         noValidate
       >
-        <TextField
+        <Input
           required
           label="Имя"
           variant="outlined"
           error={!!errors.name}
           helperText={errors.name && errors.name.message}
-          {...register("name")}
+          name={"name"}
+          control={control}
         />
 
-        <TextField
+        <Input
           required
           label={"E-mail"}
           variant="outlined"
           error={!!errors.email}
           helperText={errors.email && errors.email.message}
-          {...register("email")}
+          name={"email"}
+          control={control}
         />
 
         <MaskPhone

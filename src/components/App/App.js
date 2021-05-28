@@ -1,19 +1,18 @@
-import "./App.css";
-import { Route, Switch } from "react-router-dom";
-import { AuthContainer } from "../Authorization/AuthContainer";
-import { Footer } from "../Footer/Footer";
-import { NotFound } from "../shared/NotFould/NotFound";
-import { MainRouter } from "../Main/MainRouter";
-import { ScrollToTop } from "../shared/ScrollToTop";
-import { ThemeProvider, createMuiTheme } from "@material-ui/core";
-import React, { useEffect } from "react";
-import { getCategories } from "../../redux/productsReducer";
-import { useDispatch, useSelector } from "react-redux";
-import "swiper/swiper-bundle.min.css";
-import { Basket } from "../Header/Menu/Basket/Basket";
-import { Header } from "../Header/Header";
-import { setInterceptor } from "../../api/api";
-import { authThunk, meThunk } from "../../redux/authReducer";
+import "./App.css"
+import { Route, Switch } from "react-router-dom"
+import { AuthContainer } from "../Authorization/AuthContainer"
+import { Footer } from "../Footer/Footer"
+import { NotFound } from "./../page/NotFould/NotFound"
+import { MainRouter } from "../Main/MainRouter"
+import { ScrollToTop } from "../shared/ScrollToTop"
+import { ThemeProvider, createMuiTheme } from "@material-ui/core"
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import "swiper/swiper-bundle.min.css"
+import { Basket } from "../Header/Menu/Basket/Basket"
+import { Header } from "../Header/Header"
+import { initializeApp } from "../../redux/appReducer"
+import Loader from "../shared/Loader/Loader"
 
 const theme = createMuiTheme({
   props: {
@@ -33,17 +32,19 @@ const theme = createMuiTheme({
       dark: "#7e7e7e",
     },
   },
-});
+})
 
 const App = () => {
-  const dispatch = useDispatch();
-  const categories = useSelector((state) => state.products.categories);
+  const dispatch = useDispatch()
+  const initialized = useSelector((state) => state.app.initialized)
 
   useEffect(() => {
-    setInterceptor((user) => dispatch(authThunk(user)));
-    dispatch(meThunk());
-    dispatch(getCategories());
-  }, [dispatch]);
+    dispatch(initializeApp())
+  }, [dispatch])
+
+  if (!initialized) {
+    return <Loader />
+  }
 
   return (
     <Route>
@@ -52,23 +53,19 @@ const App = () => {
         <div className="app">
           <Header />
           <div className="app-content">
-            {categories.length ? (
-              <Switch>
-                <Route path="/basket" render={() => <Basket />} />
-                <Route path="/login" render={() => <AuthContainer login />} />
-                <Route path="/register" render={() => <AuthContainer />} />
-                <Route path="/" render={() => <MainRouter />} />
-                <Route path="*" render={() => <NotFound />} />
-              </Switch>
-            ) : (
-              <>loading</>
-            )}
+            <Switch>
+              <Route path="/basket" render={() => <Basket />} />
+              <Route path="/login" render={() => <AuthContainer login />} />
+              <Route path="/register" render={() => <AuthContainer />} />
+              <Route path="/" render={() => <MainRouter />} />
+              <Route path="*" render={() => <NotFound />} />
+            </Switch>
           </div>
           <Footer />
         </div>
       </ThemeProvider>
     </Route>
-  );
-};
+  )
+}
 
-export default App;
+export default App

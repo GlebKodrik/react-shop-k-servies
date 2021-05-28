@@ -38,6 +38,6 @@ export const passwordValidation = {
   password: yup
     .string()
     .required("Обязательное поле")
-    .min(6, "Не менее 6 символов")
+    .min(10, "Не менее 10 символов")
     .max(15, "Не более 15 сиволов"),
 };

@@ -85,7 +85,7 @@ h3,h1{
 }
 .container{
     margin: 0 auto;
-    min-width: 978px;
+    min-width: 1240px;
     max-width: 1240px;
 }
 .wrapContainer{

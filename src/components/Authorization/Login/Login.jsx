@@ -1,14 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import s from "../Authorization.module.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { Controller, useForm } from "react-hook-form";
 import { NavLink, useHistory } from "react-router-dom";
-import {
-  Button,
-  Checkbox,
-  FormControlLabel,
-  TextField,
-} from "@material-ui/core";
+import { Button, Checkbox, FormControlLabel } from "@material-ui/core";
 import { UseFormControl } from "../FormControl";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -18,8 +13,9 @@ import {
 } from "../../../common/validations";
 import { PopupToast } from "../../Popup/PopupToast/PopupToast";
 import { useDispatch } from "react-redux";
-import { setAuth } from "../../../redux/authReducer";
+import { meThunk } from "../../../redux/authReducer";
 import { authAPI } from "../../../api/api";
+import { Input } from "../../shared/Input/Input";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,12 +44,11 @@ export const Login = () => {
     type: "",
   });
   const {
-    register,
     handleSubmit,
     control,
     formState: { errors },
   } = useForm({
-    defaultValues: { remember: true },
+    defaultValues: { remember: true, email: "" },
     resolver: yupResolver(SignupSchema),
     mode: "onTouched",
   });
@@ -68,7 +63,7 @@ export const Login = () => {
       });
       return;
     }
-    dispatch(setAuth(true));
+    dispatch(meThunk());
     history.push("/");
   };
 
@@ -81,7 +76,7 @@ export const Login = () => {
         autoComplete="off"
         noValidate
       >
-        <TextField
+        <Input
           required
           autoComplete={"on"}
           type={"email"}
@@ -89,7 +84,8 @@ export const Login = () => {
           variant="outlined"
           error={!!errors.email}
           helperText={errors.email && errors.email.message}
-          {...register("email")}
+          name={"email"}
+          control={control}
         />
 
         <UseFormControl name="password" control={control} errors={errors} />

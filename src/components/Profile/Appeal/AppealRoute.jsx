@@ -1,7 +1,7 @@
 import { NavLink, Route, Switch, useRouteMatch } from "react-router-dom";
 import { Appeal } from "./Appeal";
 import { Archive } from "./Archive/Archive";
-import { NotFound } from "../../shared/NotFould/NotFound";
+import { NotFound } from "../../page/NotFould/NotFound";
 import React from "react";
 import s from "./Appeal.module.css";
 import cn from "classnames";

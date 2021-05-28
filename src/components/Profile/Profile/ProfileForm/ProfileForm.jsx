@@ -2,12 +2,12 @@ import React from "react";
 import s from "../Profile.module.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { MaskPhone } from "../../../shared/Mask";
-import { TextField } from "@material-ui/core";
 import FaceOutlinedIcon from "@material-ui/icons/FaceOutlined";
 import PhoneIphoneOutlinedIcon from "@material-ui/icons/PhoneIphoneOutlined";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
+import { Input } from "../../../shared/Input/Input";
 
-export const ProfileForm = ({ edit, register, errors, control }) => {
+export const ProfileForm = ({ edit, errors, control, user, setEdit }) => {
   const useStyles = makeStyles(() => ({
     icon: {
       fontSize: 26,
@@ -24,18 +24,21 @@ export const ProfileForm = ({ edit, register, errors, control }) => {
     <>
       <div className={s.data}>
         <label className={s.dataItem}>
-          <span className={s.dataTitle}>ФИО</span>
+          <span className={s.dataTitle}>Имя</span>
           {edit ? (
-            <TextField
+            <Input
               required
               className={classes.dataInfo}
-              label="ФИО"
+              label="Имя"
               error={!!errors.name}
               helperText={errors.name && errors.name.message}
-              {...register("name")}
+              name={"name"}
+              control={control}
             />
           ) : (
-            <span className={s.dataInfo}>Кодрик Глеб Михайлович</span>
+            <span className={s.dataInfo}>
+              {user?.profile?.nickname || "не указан"}
+            </span>
           )}
           <div>
             <FaceOutlinedIcon className={classes.icon} />
@@ -53,26 +56,32 @@ export const ProfileForm = ({ edit, register, errors, control }) => {
               errors={errors}
             />
           ) : (
-            <span className={s.dataInfo}>89955993130</span>
+            <span className={s.dataInfo}>{user?.profile?.phone}</span>
           )}
           <PhoneIphoneOutlinedIcon className={classes.icon} />
         </label>
         <label className={s.dataItem}>
           <span className={s.dataTitle}>Email</span>
           {edit ? (
-            <TextField
+            <Input
               required
               className={classes.dataInfo}
               label="Email"
               error={!!errors.email}
               helperText={errors.email && errors.email.message}
-              {...register("email")}
+              name={"email"}
+              control={control}
             />
           ) : (
-            <span className={s.dataInfo}> kodrikgleb2@mail.ru</span>
+            <span className={s.dataInfo}>{user?.email}</span>
           )}
           <EmailOutlinedIcon className={classes.icon} />
         </label>
+        {edit && (
+          <div className={s.cansel} onClick={() => setEdit(!edit)}>
+            Отменить редактирование
+          </div>
+        )}
       </div>
     </>
   );

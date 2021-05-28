@@ -26,7 +26,6 @@ export const Email = () => {
   });
 
   const onSubmit = (values) => {
-    console.log(values);
     setSuccess(true);
   };
 

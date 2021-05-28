@@ -15,14 +15,25 @@ export const authAPI = {
   me() {
     return instance.get("/auth/me");
   },
-  logUp(user) {
-    return instance.post("/auth/sign-up", user);
+  logUp({ name: nickname, password, email, phone }) {
+    return instance.post("/auth/sign-up", { nickname, password, email, phone });
   },
   logIn({ email, password }) {
     return instance.post("/auth/sign-in", { email, password });
   },
   logOut() {
     return instance.post("/auth/logout");
+  },
+};
+export const userAPI = {
+  changeUser({ name: nickname, password, email, phone, avatar }) {
+    return instance.post("/auth/change-profile post", {
+      name: nickname,
+      password,
+      email,
+      phone,
+      avatar,
+    });
   },
 };
 export const productAPI = {

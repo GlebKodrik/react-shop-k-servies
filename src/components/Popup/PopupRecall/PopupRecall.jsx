@@ -29,7 +29,6 @@ export const PopupRecall = () => {
   });
 
   const onSubmit = (values) => {
-    console.log(values);
     reset();
     setSend(true);
   };

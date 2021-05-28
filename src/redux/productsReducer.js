@@ -7,16 +7,29 @@ const REMOVE_FAVORITE = "products/REMOVE_FAVORITE";
 const ADD_BASKET = "products/ADD_BASKET";
 const REMOVE_BASKET = "products/REMOVE_BASKET";
 const SET_PRODUCTS = "products/SET_PRODUCTS";
+const GET_FAVORITES = "products/GET_FAVORITES";
+const GET_BASKET = "products/GET_BASKET";
 
 let initialState = {
   categories: [],
   products: [],
-  favorites: JSON.parse(localStorage.getItem("favorites")) || [],
-  basket: JSON.parse(localStorage.getItem("basket")) || [],
-  error: null,
+  favorites: null,
+  basket: null,
 };
 const productsReducer = (state = initialState, action) => {
   switch (action.type) {
+    case GET_BASKET: {
+      return {
+        ...state,
+        basket: JSON.parse(localStorage.getItem("basket")) || [],
+      };
+    }
+    case GET_FAVORITES: {
+      return {
+        ...state,
+        favorites: JSON.parse(localStorage.getItem("favorites")) || [],
+      };
+    }
     case SET_CARD_CATEGORY: {
       return { ...state, categories: action.data };
     }
@@ -26,7 +39,6 @@ const productsReducer = (state = initialState, action) => {
         favorites: [...state.favorites, { id: action.id }],
       };
     }
-
     case REMOVE_FAVORITE: {
       return {
         ...state,
@@ -54,6 +66,8 @@ const productsReducer = (state = initialState, action) => {
     }
   }
 };
+export const getFavorites = () => ({ type: GET_FAVORITES });
+export const getBasket = () => ({ type: GET_BASKET });
 
 export const addBasket = (id) => ({ type: ADD_BASKET, id });
 
@@ -74,7 +88,6 @@ export const getCategories = () => async (dispatch) => {
 
 export const getProducts = (id) => async (dispatch) => {
   const response = await fetchProducts(id);
-  console.log(response);
   dispatch(setProducts(response.data));
 };
 

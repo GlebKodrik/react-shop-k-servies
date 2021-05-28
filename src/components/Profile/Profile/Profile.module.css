@@ -81,7 +81,7 @@
 .dataTitle{
     font-size: 14px;
     margin-right: 12px;
-    width: calc(34% - 12px);
+    width: calc(21% - 12px);
     color: #8b8b8b;
 }
 .dataInfo{
@@ -106,4 +106,10 @@
     font-size: 16px;
     line-height: 22px;
 }
+.cansel{
+    text-align: end;
+    cursor: pointer;
+    font-size: 14px;
+    color: rgb(249, 17, 85);
 
+}

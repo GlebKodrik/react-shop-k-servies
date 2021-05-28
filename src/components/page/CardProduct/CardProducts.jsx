@@ -1,8 +1,8 @@
 import s from "./CardProduct.module.css";
 import { NavLink } from "react-router-dom";
-import { LikeItem } from "../LikeItem/LikeItem";
+import { LikeItem } from "../../shared/LikeItem/LikeItem";
 import { PopupAuth } from "../../Popup/PopupAuth/PopupAuth";
-import { ModalPopup } from "../ModalPopup";
+import { ModalPopup } from "../../shared/ModalPopup";
 import { useState } from "react";
 import { BuyItem } from "../BuyItem/BuyItem";
 

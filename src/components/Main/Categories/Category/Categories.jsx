@@ -18,7 +18,10 @@ export const Categories = () => {
             >
               <div>
                 <div className={s.contentImg}>
-                  <img src={item.image} alt="" />
+                  <img
+                    src={`https://shop-api-exam.herokuapp.com${item.image}`}
+                    alt=""
+                  />
                 </div>
                 <div className={s.name}>{item.name}</div>
               </div>
