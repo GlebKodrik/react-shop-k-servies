@@ -11,6 +11,7 @@ import {
   nameValidation,
   subjectValidation,
 } from "../../../common/validations";
+import { PopupToast } from "../PopupToast/PopupToast";
 
 const SignupSchema = yup.object().shape({
   ...emailValidation,
@@ -20,7 +21,11 @@ const SignupSchema = yup.object().shape({
 });
 
 export const PopupQuestion = () => {
-  const [send, setSend] = useState(false);
+  const [state, setState] = useState({
+    open: false,
+    text: "",
+    type: "",
+  });
   const {
     register,
     handleSubmit,
@@ -32,9 +37,12 @@ export const PopupQuestion = () => {
   });
 
   const onSubmit = (values) => {
-    console.log(values);
     reset();
-    setSend(true);
+    setState({
+      open: true,
+      text: "Заявка отправлена!",
+      type: "success",
+    });
   };
 
   return (
@@ -89,10 +97,8 @@ export const PopupQuestion = () => {
           <div className={s.subEmail}>Оператор ответит в течение 48 часов</div>
         </div>
 
-        <div className={cn("popupWrapButton", { popupSend: send })}>
-          {send && (
-            <div className={"popupSendText"}>Заявка успешно отправлена</div>
-          )}
+        <div className={cn("popupWrapButton")}>
+          {state && <PopupToast {...state} setState={setState} />}
           <button className={cn("button", "popupButton")}>Отправить</button>
         </div>
       </form>

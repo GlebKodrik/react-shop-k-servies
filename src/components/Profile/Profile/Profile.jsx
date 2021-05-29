@@ -4,10 +4,10 @@ import { Button } from "@material-ui/core";
 import { useForm } from "react-hook-form";
 import { ProfileForm } from "./ProfileForm/ProfileForm";
 import noAvatar from "../../../assets/img/noavatar.png";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-
+import cn from "classnames";
 import {
   emailValidation,
   nameValidation,
@@ -30,13 +30,11 @@ export const Profile = () => {
   });
   const user = useSelector((state) => state.user.client);
   const [edit, setEdit] = useState(false);
-  const dispatch = useDispatch();
 
   const {
     register,
     handleSubmit,
     control,
-    watch,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -72,13 +70,21 @@ export const Profile = () => {
       {state.open && <PopupToast {...state} setState={setState} />}
       <div className={["wrapContainer", s.dataWrap].join(" ")}>
         <div>
-          <div className={s.avatar}>
-            <label className={s.photo__label}>
-              <span className={s.photo__text}>Изменить фото</span>
-              <input type={"file"} onChange={onMainPhotoSelected} />
-            </label>
+          <div className={cn(s.avatar, { [s.icon]: edit })}>
+            {edit && (
+              <label className={s.photo__label}>
+                <span className={s.photo__text}>Изменить фото</span>
+                <input type={"file"} onChange={onMainPhotoSelected} />
+              </label>
+            )}
             <div>
-              <img src={noAvatar} alt="" />
+              <img
+                src={
+                  noAvatar ||
+                  `https://shop-api-exam.herokuapp.com${user.profile.avatar}`
+                }
+                alt="Аватар"
+              />
             </div>
           </div>
         </div>

@@ -29,8 +29,6 @@ export const Email = () => {
     setSuccess(true);
   };
 
-  const theme = useTheme();
-
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={s.email_content}>
       <div className={cn(s.email, { [s.email_center]: success })}>
@@ -45,9 +43,7 @@ export const Email = () => {
                   return (
                     <TextField
                       label={"Мой e-mail"}
-                      color={
-                        errors.email ? theme.palette.error.main : "secondary"
-                      }
+                      color={"secondary"}
                       error={!!errors.email}
                       helperText={errors.email?.message}
                       onBlur={() => clearErrors()}

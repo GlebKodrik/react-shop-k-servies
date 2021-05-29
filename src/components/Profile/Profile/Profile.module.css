@@ -11,7 +11,7 @@
     width: 150px;
     height: 150px;
 }
-.avatar:before{
+.icon:before{
     content: "";
     display: block;
     width: 24px;

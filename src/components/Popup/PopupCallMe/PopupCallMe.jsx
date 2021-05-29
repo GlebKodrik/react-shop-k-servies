@@ -11,13 +11,18 @@ import { Checkbox, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { MaskPhone } from "../../shared/Mask";
 import { nameValidation, phoneValidation } from "../../../common/validations";
+import { PopupToast } from "../PopupToast/PopupToast";
 
 const SignupSchema = yup.object().shape({
   ...phoneValidation,
   ...nameValidation,
 });
 export const PopupCallMe = () => {
-  const [send, setSend] = useState(false);
+  const [state, setState] = useState({
+    open: false,
+    text: "",
+    type: "",
+  });
   const [showDescr, setShowDescr] = useState(false);
   const [value, setValue] = useState("order");
   const useStyles = makeStyles((theme) => ({
@@ -39,9 +44,12 @@ export const PopupCallMe = () => {
   });
 
   const onSubmit = (values) => {
-    console.log(values);
     reset();
-    setSend(true);
+    setState({
+      open: true,
+      text: "Заявка отправлена!",
+      type: "success",
+    });
   };
 
   const handleChangeCheck = (event) => {
@@ -135,10 +143,8 @@ export const PopupCallMe = () => {
           />
         </div>
 
-        <div className={cn("popupWrapButton", { popupSend: send })}>
-          {send && (
-            <div className={"popupSendText"}>Заявка успешно отправлена</div>
-          )}
+        <div className={cn("popupWrapButton")}>
+          {state && <PopupToast {...state} setState={setState} />}
           <button className={cn("button", "popupButton")}>Отправить</button>
         </div>
       </form>

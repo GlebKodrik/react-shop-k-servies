@@ -56,7 +56,9 @@ export const ProfileForm = ({ edit, errors, control, user, setEdit }) => {
               errors={errors}
             />
           ) : (
-            <span className={s.dataInfo}>{user?.profile?.phone}</span>
+            <span className={s.dataInfo}>
+              {user?.profile?.phone || "не указан"}
+            </span>
           )}
           <PhoneIphoneOutlinedIcon className={classes.icon} />
         </label>
@@ -73,7 +75,7 @@ export const ProfileForm = ({ edit, errors, control, user, setEdit }) => {
               control={control}
             />
           ) : (
-            <span className={s.dataInfo}>{user?.email}</span>
+            <span className={s.dataInfo}>{user?.email || "не указан"}</span>
           )}
           <EmailOutlinedIcon className={classes.icon} />
         </label>
