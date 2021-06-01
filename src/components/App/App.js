@@ -1,18 +1,19 @@
-import "./App.css"
-import { Route, Switch } from "react-router-dom"
-import { AuthContainer } from "../Authorization/AuthContainer"
-import { Footer } from "../Footer/Footer"
-import { NotFound } from "./../page/NotFould/NotFound"
-import { MainRouter } from "../Main/MainRouter"
-import { ScrollToTop } from "../shared/ScrollToTop"
-import { ThemeProvider, createMuiTheme } from "@material-ui/core"
-import React, { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import "swiper/swiper-bundle.min.css"
-import { Basket } from "../Header/Menu/Basket/Basket"
-import { Header } from "../Header/Header"
-import { initializeApp } from "../../redux/appReducer"
-import Loader from "../shared/Loader/Loader"
+import "./App.css";
+import { Route, Switch } from "react-router-dom";
+import { AuthContainer } from "../Authorization/AuthContainer";
+import { Footer } from "../Footer/Footer";
+import { MainRouter } from "../Main/MainRouter";
+import { ScrollToTop } from "../shared/ScrollToTop";
+import { ThemeProvider, createMuiTheme } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import "swiper/swiper-bundle.min.css";
+import { Basket } from "../Header/Menu/Basket/Basket";
+import { Header } from "../Header/Header";
+import { clearProcessing, initializeApp } from "../../redux/appReducer";
+import Loader from "../shared/Loader/Loader";
+import { PopupToast } from "../Popup/PopupToast/PopupToast";
+import { NotFound } from "../page/NotFould/NotFound";
 
 const theme = createMuiTheme({
   props: {
@@ -32,18 +33,36 @@ const theme = createMuiTheme({
       dark: "#7e7e7e",
     },
   },
-})
+});
 
 const App = () => {
-  const dispatch = useDispatch()
-  const initialized = useSelector((state) => state.app.initialized)
+  const dispatch = useDispatch();
+  const [state, setState] = useState({
+    open: false,
+    text: "",
+    type: "",
+  });
+
+  const message = useSelector((state) => state.app.message);
+  const initialized = useSelector((state) => state.app.initialized);
 
   useEffect(() => {
-    dispatch(initializeApp())
-  }, [dispatch])
+    dispatch(initializeApp());
+  }, [dispatch]);
+
+  // useEffect(() => {
+  //   if (message) {
+  //     setState({
+  //       open: true,
+  //       text: message.text,
+  //       type: message.type,
+  //     });
+  //   }
+  //   dispatch(clearProcessing());
+  // }, [message]);
 
   if (!initialized) {
-    return <Loader />
+    return <Loader page />;
   }
 
   return (
@@ -64,8 +83,9 @@ const App = () => {
           <Footer />
         </div>
       </ThemeProvider>
+      {state.open && <PopupToast {...state} setState={setState} />}
     </Route>
-  )
-}
+  );
+};
 
-export default App
+export default App;

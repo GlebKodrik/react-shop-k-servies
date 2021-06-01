@@ -56,7 +56,7 @@ export const PopupQuestion = () => {
             label={"Имя"}
             error={!!errors.name}
             helperText={errors.name?.message}
-            {...register("name")}
+            {...register("nickname")}
           />
         </div>
         <div className={s.subject}>

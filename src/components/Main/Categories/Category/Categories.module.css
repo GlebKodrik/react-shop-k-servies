@@ -1,7 +1,7 @@
 .categories{
     margin: 40px 0;
 }
-.wrapp{
+.wrap{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

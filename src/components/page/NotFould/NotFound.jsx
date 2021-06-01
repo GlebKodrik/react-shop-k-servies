@@ -3,6 +3,7 @@ import { Button } from "@material-ui/core";
 import s from "./NotFound.module.css";
 import React from "react";
 import cn from "classnames";
+
 export const NotFound = () => {
   return (
     <div className={s.wrap}>

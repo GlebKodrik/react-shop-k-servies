@@ -1,11 +1,11 @@
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { addBasket } from "../../../redux/productsReducer";
 import s from "./BuyItem.module.css";
 import { useEffect } from "react";
 import { makeStyles } from "@material-ui/core";
 import cn from "classnames";
+import { addBasket } from "../../../redux/basketReducer";
 const useStyles = makeStyles({
   noActive: {
     display: "block",
@@ -21,10 +21,12 @@ export const BuyItem = ({ id }) => {
   const classes = useStyles();
   let history = useHistory();
   const dispatch = useDispatch();
-  const basket = useSelector((state) => state.products.basket);
+  const basket = useSelector((state) => state.basket.basket);
+
   useEffect(() => {
     localStorage.setItem("basket", JSON.stringify(basket));
   }, [basket]);
+
   const clickAddBasket = (e) => {
     e.preventDefault();
     dispatch(addBasket(id));

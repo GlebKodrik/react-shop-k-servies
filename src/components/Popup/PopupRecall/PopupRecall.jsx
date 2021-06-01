@@ -1,23 +1,23 @@
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import cn from "classnames";
-import { TextField } from "@material-ui/core";
+import { useForm } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup"
+import cn from "classnames"
+import { TextField } from "@material-ui/core"
 import {
   descriptionValidation,
   nameValidation,
-} from "../../../common/validations";
-import s from "./PopupRecall.module.css";
-import React, { useState } from "react";
+} from "../../../common/validations"
+import s from "./PopupRecall.module.css"
+import React, { useState } from "react"
 const SignupSchema = yup.object().shape({
   ...nameValidation,
   ...descriptionValidation,
   plus: yup.string().required("Обязательное поле").max(2000),
   limitations: yup.string().required("Обязательное поле").max(2000),
-});
+})
 
 export const PopupRecall = () => {
-  const [send, setSend] = useState(false);
+  const [send, setSend] = useState(false)
   const {
     register,
     handleSubmit,
@@ -26,12 +26,12 @@ export const PopupRecall = () => {
   } = useForm({
     resolver: yupResolver(SignupSchema),
     mode: "onTouched",
-  });
+  })
 
   const onSubmit = (values) => {
-    reset();
-    setSend(true);
-  };
+    reset()
+    setSend(true)
+  }
 
   return (
     <div style={{ overflow: "auto", maxHeight: 600, marginTop: 40 }}>
@@ -47,7 +47,7 @@ export const PopupRecall = () => {
                   label={"Имя"}
                   error={!!errors.name}
                   helperText={errors.name?.message}
-                  {...register("name")}
+                  {...register("nickname")}
                 />
               </div>
               <div className={s.item}>
@@ -115,5 +115,5 @@ export const PopupRecall = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

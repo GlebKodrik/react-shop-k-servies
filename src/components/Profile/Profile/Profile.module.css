@@ -111,5 +111,11 @@
     cursor: pointer;
     font-size: 14px;
     color: rgb(249, 17, 85);
-
+}
+.loading{
+    display: flex;
+    align-items: center;
+}
+.loading button{
+    margin-left: 20px;
 }

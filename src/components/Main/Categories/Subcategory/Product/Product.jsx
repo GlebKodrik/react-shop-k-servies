@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { addBasket, getProducts } from "../../../../../redux/productsReducer";
+import { getProduct } from "../../../../../redux/productsReducer";
 import s from "./Product.module.css";
 import { ProductSlider } from "./ProductSlider";
 import cn from "classnames";
@@ -9,28 +9,27 @@ import { TabsList } from "./TabList/TabsList";
 import { Link } from "react-scroll";
 import { Rating } from "../../../../shared/Rating/Rating";
 import { LikeItem } from "../../../../shared/LikeItem/LikeItem";
+import Loader from "../../../../shared/Loader/Loader";
+import { NotFound } from "../../../../page/NotFould/NotFound";
+import { addBasket } from "../../../../../redux/basketReducer";
 
-export const Product = () => {
-  const params = useParams();
+export const Product = ({ categories, isFetching, basket }) => {
+  const { id } = useParams();
   const dispatch = useDispatch();
 
-  const basket = useSelector((state) => state.products.basket);
-
-  const product = useSelector((state) => state.products.products).find(
-    (el) => el._id === parseInt(params.id)
-  );
-  const actualCategory = useSelector((state) => state.products.categories).find(
-    (el) => el._id === product?.categoryId
-  );
+  const product = useSelector((state) => state.products.product);
 
   useEffect(() => {
     localStorage.setItem("basket", JSON.stringify(basket));
     if (!product) {
-      dispatch(getProducts());
+      dispatch(getProduct(id));
     }
-  }, [dispatch, product, basket]);
+  }, [dispatch, product, basket, id]);
 
-  useEffect(() => {}, []);
+  if (isFetching || !product) {
+    return <Loader />;
+  }
+  const actualCategory = categories.find((el) => el._id === product?.rubric);
 
   const clickAddBasket = () => {
     dispatch(addBasket(product?._id));
@@ -50,11 +49,11 @@ export const Product = () => {
       <div className={s.inner}>
         <div className={s.innerTop}>
           <div className={s.topSlider}>
-            <ProductSlider image={product?.img} />
+            <ProductSlider image={product?.images} />
           </div>
           <div className={s.topInfo}>
             <div className={s.infoDescr}>
-              {product?.shortDescr}&nbsp;
+              {product?.shortDescription}&nbsp;
               <Link
                 to={"tabList"}
                 activeClass={"active"}

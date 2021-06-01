@@ -1,5 +1,15 @@
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
+import * as yup from "yup";
+import {
+  emailValidation,
+  passwordValidation,
+} from "../../../common/validations";
+
+const SignupSchema = yup.object().shape({
+  ...passwordValidation,
+  ...emailValidation,
+});
 
 export const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
@@ -13,7 +23,7 @@ export const TabPanel = (props) => {
       {...other}
     >
       {value === index && (
-        <Box p={4}>
+        <Box>
           <Typography component={"div"}>{children}</Typography>
         </Box>
       )}

@@ -6,8 +6,9 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import img from "./../../../../../../assets/img/fetback.png";
 import { Feedback } from "./Feedback/Feedback";
-import { TabPanel } from "../../../../../shared/TabPanel/TabPanel";
 import { ButtonCheckAuth } from "../../../../../shared/Button/ButtonCheckAuth";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
 
 const a11yProps = (index) => ({
   id: `full-width-tab-${index}`,
@@ -22,6 +23,26 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 8,
   },
 }));
+
+export const TabPanel = (props) => {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`full-width-tabpanel-${index}`}
+      aria-labelledby={`full-width-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box p={4}>
+          <Typography component={"div"}>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+};
 
 export const TabsList = memo(({ product }) => {
   const classes = useStyles();
@@ -52,20 +73,20 @@ export const TabsList = memo(({ product }) => {
         </AppBar>
         <div>
           <TabPanel value={value} index={0} dir={theme.direction}>
-            {product?.description}
+            {product.description}
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
             Item Two
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
-            {!!product?.feedback.length && (
+            {!!product?.comments.length && (
               <div className={s.send}>
                 <ButtonCheckAuth />
               </div>
             )}
 
-            {!!product?.feedback.length ? (
-              <Feedback feedback={product?.feedback} />
+            {!!product?.comments.length ? (
+              <Feedback feedback={product?.comments} />
             ) : (
               <div className={s.comment}>
                 <img className={s.img} src={img} alt="Отзыв" />

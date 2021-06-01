@@ -14,9 +14,10 @@ import {
   passwordValidation,
   phoneValidation,
 } from "../../../common/validations";
-import { PopupToast } from "../../Popup/PopupToast/PopupToast";
 import { authAPI } from "../../../api/api";
 import { Input } from "../../shared/Input/Input";
+import { useDispatch } from "react-redux";
+import { setAppMessage } from "../../../redux/appReducer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,11 +45,7 @@ const SignupSchema = yup.object().shape({
 });
 
 export const Registration = () => {
-  const [state, setState] = useState({
-    open: false,
-    text: "",
-    type: "",
-  });
+  const dispatch = useDispatch();
 
   const {
     handleSubmit,
@@ -57,7 +54,7 @@ export const Registration = () => {
     reset,
     formState: { errors },
   } = useForm({
-    defaultValues: { phone: "", email: "", name: "", password: "" },
+    defaultValues: { phone: "", email: "", nickname: "", password: "" },
     resolver: yupResolver(SignupSchema),
     mode: "onTouched",
   });
@@ -73,14 +70,10 @@ export const Registration = () => {
       if (error.password) {
         setError("password", { message: error.password[0] });
       }
-      setState({ open: true, text: "Ошибка при регистрации", type: "error" });
+      dispatch(setAppMessage("Ошибка при регистрации", "error"));
       return;
     }
-    setState({
-      open: true,
-      text: "Вы успешно зарегистрированы!",
-      type: "success",
-    });
+    dispatch(setAppMessage("Вы успешно зарегистрированы!", "success"));
     reset();
   };
 
@@ -99,7 +92,7 @@ export const Registration = () => {
           variant="outlined"
           error={!!errors.name}
           helperText={errors.name && errors.name.message}
-          name={"name"}
+          name={"nickname"}
           control={control}
         />
 
@@ -125,7 +118,6 @@ export const Registration = () => {
         <UseFormControl name="password" control={control} errors={errors} />
 
         <div className={classes.button}>
-          {state.open && <PopupToast {...state} setState={setState} />}
           <Button
             type={"submit"}
             variant={"outlined"}

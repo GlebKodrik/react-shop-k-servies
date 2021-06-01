@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import s from "../Authorization.module.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { Controller, useForm } from "react-hook-form";
@@ -11,11 +11,11 @@ import {
   emailValidation,
   passwordValidation,
 } from "../../../common/validations";
-import { PopupToast } from "../../Popup/PopupToast/PopupToast";
 import { useDispatch } from "react-redux";
 import { meThunk } from "../../../redux/authReducer";
 import { authAPI } from "../../../api/api";
 import { Input } from "../../shared/Input/Input";
+import { setAppMessage } from "../../../redux/appReducer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,11 +38,6 @@ const SignupSchema = yup.object().shape({
 export const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [state, setState] = useState({
-    open: false,
-    text: "",
-    type: "",
-  });
   const {
     handleSubmit,
     control,
@@ -56,14 +51,11 @@ export const Login = () => {
   const onSubmit = async (values) => {
     const response = await authAPI.logIn({ ...values });
     if (!!response.data.errors) {
-      setState({
-        open: true,
-        text: "Неверный email или пароль",
-        type: "error",
-      });
+      dispatch(setAppMessage("Неверный email или пароль!", "error"));
       return;
     }
     dispatch(meThunk());
+    dispatch(setAppMessage("Ура! Вы авторизованы!", "success"));
     history.push("/");
   };
 
@@ -73,7 +65,7 @@ export const Login = () => {
       <form
         onSubmit={handleSubmit(onSubmit)}
         className={classes.root}
-        autoComplete="off"
+        autoComplete="on"
         noValidate
       >
         <Input
@@ -110,7 +102,6 @@ export const Login = () => {
         />
 
         <div className={classes.button}>
-          {state.open && <PopupToast {...state} setState={setState} />}
           <Button
             type={"submit"}
             variant={"outlined"}

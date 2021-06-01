@@ -8,7 +8,7 @@ export const Categories = () => {
   return (
     <div className={s.categories}>
       <div className={s.title}>Категории</div>
-      <div className={s.wrapp}>
+      <div className={s.wrap}>
         {categories.map((item) => {
           return (
             <NavLink

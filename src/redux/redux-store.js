@@ -6,6 +6,9 @@ import authReducer from "./authReducer";
 import productsReducer from "./productsReducer";
 import userReducer from "./userReducer";
 import appReducer from "./appReducer";
+import basketReducer from "./basketReducer";
+import favoriteReducer from "./favoriteReducer";
+import adminReducer from "./adminReducer";
 
 const reducer = combineReducers({
   headerContent: headerReducer,
@@ -14,6 +17,9 @@ const reducer = combineReducers({
   products: productsReducer,
   user: userReducer,
   app: appReducer,
+  basket: basketReducer,
+  favorite: favoriteReducer,
+  admin: adminReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

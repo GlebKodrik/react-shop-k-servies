@@ -32,7 +32,7 @@ export const ProfileForm = ({ edit, errors, control, user, setEdit }) => {
               label="Имя"
               error={!!errors.name}
               helperText={errors.name && errors.name.message}
-              name={"name"}
+              name={"nickname"}
               control={control}
             />
           ) : (
@@ -57,7 +57,7 @@ export const ProfileForm = ({ edit, errors, control, user, setEdit }) => {
             />
           ) : (
             <span className={s.dataInfo}>
-              {user?.profile?.phone || "не указан"}
+              {`+${user?.profile?.phone}` || "не указан"}
             </span>
           )}
           <PhoneIphoneOutlinedIcon className={classes.icon} />
@@ -80,7 +80,7 @@ export const ProfileForm = ({ edit, errors, control, user, setEdit }) => {
           <EmailOutlinedIcon className={classes.icon} />
         </label>
         {edit && (
-          <div className={s.cansel} onClick={() => setEdit(!edit)}>
+          <div className={s.cansel} onClick={setEdit}>
             Отменить редактирование
           </div>
         )}

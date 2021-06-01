@@ -26,6 +26,7 @@
 }
 .cardItemImg{
     min-height: 146px;
+    min-width: 200px;
     margin-bottom: 10px;
 }
 .cardItemImg img{

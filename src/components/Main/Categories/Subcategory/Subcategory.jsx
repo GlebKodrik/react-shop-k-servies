@@ -1,54 +1,56 @@
 import { NavLink, useParams } from "react-router-dom";
 import s from "./Subcategory.module.css";
 import { Sorting } from "./Sorting/Sorting";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getProducts } from "../../../../redux/productsReducer";
+import { getProductsCategory } from "../../../../redux/productsReducer";
 import { CardProducts } from "../../../page/CardProduct/CardProducts";
+import Loader from "../../../shared/Loader/Loader";
 import { NotFound } from "../../../page/NotFould/NotFound";
 
-const Subcategory = () => {
+const Subcategory = ({ categories, isFetching }) => {
   const dispatch = useDispatch();
   const { url } = useParams();
 
-  const actualCategory = useSelector((state) => state.products.categories).find(
-    (el) => el.url === url
-  );
+  const actualCategories = categories.find((el) => el.url === url);
 
-  const products = useSelector(
-    (state) => state.products.products,
-    shallowEqual
-  );
+  const products = useSelector((state) => state.products.products);
 
   useEffect(() => {
-    if (actualCategory) {
-      dispatch(getProducts(actualCategory._id));
+    if (actualCategories) {
+      dispatch(getProductsCategory(actualCategories._id));
     }
-  }, [actualCategory, dispatch]);
+  }, [actualCategories, dispatch]);
 
-  return actualCategory ? (
+  if (isFetching) {
+    return <Loader />;
+  }
+
+  if (!actualCategories) {
+    return <NotFound />;
+  }
+
+  return (
     <>
       <div className={s.header}>
         <div className="switch">
           <NavLink to="/">Категории/</NavLink>
-          <NavLink to={`/category/${actualCategory?.url}`}>
-            {actualCategory?.name}
+          <NavLink to={`/category/${actualCategories?.url}`}>
+            {actualCategories?.name}
           </NavLink>
         </div>
         <div className={s.headerTitle}>
-          {actualCategory?.name}{" "}
+          {actualCategories?.name}{" "}
           <span className={s.headerSubTitle}>{products?.length} товаров</span>
         </div>
         <Sorting />
         <div className={s.cardWrap}>
-          {products?.map((el) => {
+          {products.map((el) => {
             return <CardProducts key={el._id} product={el} />;
           })}
         </div>
       </div>
     </>
-  ) : (
-    <NotFound />
   );
 };
 export default Subcategory;

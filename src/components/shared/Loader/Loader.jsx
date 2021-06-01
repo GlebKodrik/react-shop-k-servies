@@ -1,10 +1,12 @@
 import React from "react";
 import { CircularProgress } from "@material-ui/core";
 import s from "./Loader.module.css";
-const Loader = () => {
+import cn from "classnames";
+
+const Loader = ({ page }) => {
   return (
-    <div className={s.load}>
-      <CircularProgress />
+    <div className={cn(s.load, { [s.page]: page })}>
+      <CircularProgress color={"primary"} />
     </div>
   );
 };

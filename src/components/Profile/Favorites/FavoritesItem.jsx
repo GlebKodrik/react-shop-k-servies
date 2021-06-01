@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getProducts } from "../../../redux/productsReducer";
+import { getProductsCategory } from "../../../redux/productsReducer";
 import { CardProducts } from "../../page/CardProduct/CardProducts";
 
 export const FavoritesItem = ({ id }) => {
@@ -12,7 +12,7 @@ export const FavoritesItem = ({ id }) => {
 
   useEffect(() => {
     if (!product) {
-      dispatch(getProducts());
+      dispatch(getProductsCategory());
     }
   }, [dispatch, product]);
 

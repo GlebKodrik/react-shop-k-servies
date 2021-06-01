@@ -265,3 +265,7 @@ ymaps[class$=map] ymaps[class*=balloon__close]+ymaps[class*=balloon__content] {
     cursor: pointer;
     color: red;
 }
+.success{
+    color: green;
+    font-size: 12px;
+}

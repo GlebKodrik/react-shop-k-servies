@@ -84,7 +84,7 @@ export const PopupCallMe = () => {
             placeholder={"Глеб"}
             error={!!errors.name}
             helperText={errors.name && errors.name.message}
-            {...register("name")}
+            {...register("nickname")}
           />
         </div>
 

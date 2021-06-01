@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 export const Menu = (props) => {
   const [focus, setFocus] = useState(false);
   const dispatch = useDispatch();
-  const basket = useSelector((state) => state.products.basket);
+  const basket = useSelector((state) => state.basket.basket);
   const redirectOut = () => {
     dispatch(logOut());
   };

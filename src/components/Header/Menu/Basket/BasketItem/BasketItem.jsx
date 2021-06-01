@@ -1,50 +1,42 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import {
-  addFavorites,
-  getProducts,
-  removeBasket,
-  removeFavorites,
-} from "../../../../../redux/productsReducer";
+import { useState } from "react";
 import cn from "classnames";
 import s from "./BasketItem.module.css";
 import { ModalPopup } from "../../../../shared/ModalPopup";
 import { PopupAuth } from "../../../../Popup/PopupAuth/PopupAuth";
+import { urlApi } from "../../../../../common/urlApi";
+import { removeBasket } from "../../../../../redux/basketReducer";
+import {
+  addFavorites,
+  removeFavorites,
+} from "../../../../../redux/favoriteReducer";
 
-export const BasketItem = ({ id, auth }) => {
+export const BasketItem = ({ auth, product }) => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
-  const product = useSelector((state) => state.products.products).find(
-    (el) => el._id === id
+  const favorite = useSelector((state) => state.favorite.favorites).find(
+    (el) => el.id === product._id
   );
-
-  const favorite = useSelector((state) => state.products.favorites).find(
-    (el) => el.id === id
-  );
-
-  useEffect(() => {
-    if (!product) {
-      dispatch(getProducts());
-    }
-  }, [dispatch, product]);
 
   const clickFavorite = () => {
     auth
       ? !!favorite
-        ? dispatch(removeFavorites(id))
-        : dispatch(addFavorites(id))
+        ? dispatch(removeFavorites(product._id))
+        : dispatch(addFavorites(product._id))
       : setOpen(true);
   };
+
   const clickDelete = () => {
-    dispatch(removeBasket(id));
+    dispatch(removeBasket(product._id));
   };
+
   return (
     <div className={s.wrap}>
       <div className={s.item}>
         <div className={s.product}>
           <div className={s.itemImg}>
-            <img src={product?.img} alt="" />
+            <img src={`${urlApi}${product?.images[0]}`} alt="" />
           </div>
           <div className={s.text}>
             <div className={s.title}>{product?.name}</div>

@@ -9,7 +9,7 @@ export const descriptionValidation = {
 };
 
 export const nameValidation = {
-  name: yup
+  nickname: yup
     .string()
     .required("Обязательное поле")
     .matches(/^[a-zа-яё\s]+$/i, "Недопустимое имя")

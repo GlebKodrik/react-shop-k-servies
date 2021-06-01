@@ -1,20 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./Profile.module.css";
-import { Button } from "@material-ui/core";
+import {
+  Avatar,
+  Button,
+  CircularProgress,
+  makeStyles,
+} from "@material-ui/core";
 import { useForm } from "react-hook-form";
 import { ProfileForm } from "./ProfileForm/ProfileForm";
-import noAvatar from "../../../assets/img/noavatar.png";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import cn from "classnames";
+
 import {
   emailValidation,
   nameValidation,
   phoneValidation,
 } from "../../../common/validations";
-import { userAPI } from "../../../api/api";
-import { PopupToast } from "../../Popup/PopupToast/PopupToast";
+import { urlApi } from "../../../common/urlApi";
+import { changeUser, setEdit } from "../../../redux/userReducer";
+import Loader from "../../shared/Loader/Loader";
+
+const useStyles = makeStyles((theme) => ({
+  large: {
+    width: theme.spacing(18.8),
+    height: theme.spacing(18.8),
+  },
+}));
 
 const SignupSchema = yup.object().shape({
   ...phoneValidation,
@@ -22,68 +35,64 @@ const SignupSchema = yup.object().shape({
   ...nameValidation,
 });
 
-export const Profile = () => {
-  const [state, setState] = useState({
-    open: false,
-    text: "",
-    type: "",
-  });
-  const user = useSelector((state) => state.user.client);
-  const [edit, setEdit] = useState(false);
+export const Profile = ({ user, isFetching, edit, state }) => {
+  const classes = useStyles();
+  const dispatch = useDispatch();
+
+  const [preview, setPreview] = useState({ file: null });
 
   const {
     register,
     handleSubmit,
     control,
+    setValue,
+    reset,
     formState: { errors },
   } = useForm({
-    defaultValues: {
-      name: user?.profile?.nickname || "",
-      phone: user?.profile?.phone,
-      email: user?.email,
-    },
+    defaultValues: state,
     resolver: yupResolver(SignupSchema),
-    mode: "onTouched",
+    mode: "onChange",
   });
 
-  const onSubmit = async (values) => {
-    console.log("тут");
-    const response = await userAPI.changeUser({ ...values });
-    if (!!response.data.errors) {
-      setState({
-        open: true,
-        text: "Ошибка при редактирование!",
-        type: "error",
-      });
-      return;
+  useEffect(() => {
+    reset(state);
+  }, [state]);
+
+  const onSubmit = async (data) => {
+    const error = await dispatch(changeUser(data));
+    if (!error) {
+      dispatch(setEdit(false));
     }
-    setState({
-      open: true,
-      text: "Пользователь успешно изменен!",
-      type: "success",
-    });
-    setEdit(!edit);
   };
-  const onMainPhotoSelected = (e) => {};
+  if (isFetching) {
+    return <Loader />;
+  }
+  const onMainPhotoSelected = (e) => {
+    let file = e.currentTarget.files[0];
+    setPreview({ file: URL.createObjectURL(file) });
+    setValue("avatar", file);
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} autoComplete="on" noValidate>
-      {state.open && <PopupToast {...state} setState={setState} />}
       <div className={["wrapContainer", s.dataWrap].join(" ")}>
         <div>
           <div className={cn(s.avatar, { [s.icon]: edit })}>
             {edit && (
               <label className={s.photo__label}>
                 <span className={s.photo__text}>Изменить фото</span>
-                <input type={"file"} onChange={onMainPhotoSelected} />
+                <input
+                  accept="image/*"
+                  type={"file"}
+                  onChange={onMainPhotoSelected}
+                />
               </label>
             )}
             <div>
-              <img
-                src={
-                  noAvatar ||
-                  `https://shop-api-exam.herokuapp.com${user.profile.avatar}`
-                }
-                alt="Аватар"
+              <Avatar
+                alt={""}
+                src={preview.file || `${urlApi}${user.profile.avatar}`}
+                className={classes.large}
               />
             </div>
           </div>
@@ -96,27 +105,24 @@ export const Profile = () => {
                 variant="outlined"
                 color="primary"
                 type={"button"}
-                onClick={(e) => {
-                  e.preventDefault();
-                  setEdit(!edit);
+                onClick={() => {
+                  dispatch(setEdit(true));
                 }}
               >
                 Редактировать
               </Button>
             ) : (
-              <Button
-                type={!edit ? "button" : "submit"}
-                variant="outlined"
-                color="primary"
-              >
-                Сохранить
-              </Button>
+              <div className={s.loading}>
+                <Button type={"submit"} variant="outlined" color="primary">
+                  Сохранить
+                </Button>
+              </div>
             )}
           </div>
         </div>
         <ProfileForm
+          setEdit={() => dispatch(setEdit(false))}
           {...{
-            setEdit,
             user,
             control,
             edit,

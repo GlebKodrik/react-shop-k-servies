@@ -7,6 +7,7 @@ import SwiperCore, {
   Navigation,
   Pagination,
 } from "swiper";
+import { urlApi } from "../../../../../common/urlApi";
 
 SwiperCore.use([Navigation, A11y, Pagination, EffectFade, Autoplay]);
 
@@ -25,9 +26,14 @@ export const ProductSlider = ({ image }) => {
         pagination={{ clickable: true }}
         zoom={true}
       >
-        <SwiperSlide className={s.image}>
-          <img src={image} alt="Слайдер" />
-        </SwiperSlide>
+        {image.map((el, index) => {
+          return (
+            <SwiperSlide className={s.image} key={index}>
+              {" "}
+              <img src={`${urlApi}${el}`} alt="Слайдер" />{" "}
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </div>
   );

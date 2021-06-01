@@ -1,7 +1,8 @@
 import axios from "axios";
+import { urlApi } from "../common/urlApi";
 
 export const CONFIG = {
-  baseURL: "https://shop-api-exam.herokuapp.com/api",
+  baseURL: `${urlApi}/api`,
   withCredentials: true,
   validateStatus: (status) => status < 500,
   headers: {
@@ -26,22 +27,31 @@ export const authAPI = {
   },
 };
 export const userAPI = {
-  changeUser({ name: nickname, password, email, phone, avatar }) {
-    return instance.post("/auth/change-profile post", {
-      name: nickname,
-      password,
-      email,
-      phone,
-      avatar,
-    });
+  changeUser(data) {
+    let formData = new FormData();
+
+    for (const key in data) {
+      if (data[key]) {
+        formData.append(key, data[key]);
+      }
+    }
+
+    return instance.post("/auth/change-profile", formData);
   },
 };
+
 export const productAPI = {
   getCategories() {
     return instance.get("/shop/rubrics");
   },
-  getProduct() {
-    return instance.get("/shop/products/");
+  getProductsCategory(id) {
+    return instance.get(`/shop/products?rubricId=${id}`);
+  },
+  getProduct(id) {
+    return instance.get(`/shop/products/${id}`);
+  },
+  deleteProduct(id) {
+    return instance.delete(`/shop/products/${id}`);
   },
 };
 

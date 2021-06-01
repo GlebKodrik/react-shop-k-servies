@@ -1,94 +1,105 @@
-import { fetchProducts } from "../api/products";
 import { productAPI } from "../api/api";
 
 const SET_CARD_CATEGORY = "products/SET_CARD_CATEGORY";
-const ADD_FAVORITE = "products/ADD_FAVORITE";
-const REMOVE_FAVORITE = "products/REMOVE_FAVORITE";
-const ADD_BASKET = "products/ADD_BASKET";
-const REMOVE_BASKET = "products/REMOVE_BASKET";
 const SET_PRODUCTS = "products/SET_PRODUCTS";
-const GET_FAVORITES = "products/GET_FAVORITES";
-const GET_BASKET = "products/GET_BASKET";
-
+const SET_ERROR = "products/SET_ERROR";
+const SET_DONE = "products/SET_DONE";
+const SET_PRODUCT = "products/SET_PRODUCT";
+const TOGGLE_IS_FETCHING = "products/TOGGLE-IS-FETCHING";
+const SET_BOX_PRODUCT = "products/SET_BOX_PRODUCT";
+const CLEAR_BOX_PRODUCT = "products/CLEAR_BOX_PRODUCT";
 let initialState = {
   categories: [],
   products: [],
-  favorites: null,
-  basket: null,
+  error: null,
+  done: null,
+  isFetching: false,
+  product: null,
+  boxProduct: [],
 };
+
 const productsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_BASKET: {
-      return {
-        ...state,
-        basket: JSON.parse(localStorage.getItem("basket")) || [],
-      };
-    }
-    case GET_FAVORITES: {
-      return {
-        ...state,
-        favorites: JSON.parse(localStorage.getItem("favorites")) || [],
-      };
-    }
     case SET_CARD_CATEGORY: {
       return { ...state, categories: action.data };
     }
-    case ADD_FAVORITE: {
-      return {
-        ...state,
-        favorites: [...state.favorites, { id: action.id }],
-      };
-    }
-    case REMOVE_FAVORITE: {
-      return {
-        ...state,
-        favorites: state.favorites.filter((el) => el.id !== action.id),
-      };
-    }
-    case ADD_BASKET: {
-      return {
-        ...state,
-        basket: [...state.basket, { id: action.id }],
-      };
-    }
-    case REMOVE_BASKET: {
-      return {
-        ...state,
-        basket: state.basket.filter((el) => el.id !== action.id),
-      };
+    case SET_BOX_PRODUCT: {
+      return { ...state, boxProduct: [...state.boxProduct, action.data] };
     }
     case SET_PRODUCTS: {
       return { ...state, products: action.data };
     }
-
+    case SET_ERROR: {
+      return { ...state, error: action.error };
+    }
+    case SET_PRODUCT: {
+      return { ...state, product: action.product };
+    }
+    case TOGGLE_IS_FETCHING: {
+      return {
+        ...state,
+        isFetching: action.isFetching,
+      };
+    }
+    case CLEAR_BOX_PRODUCT: {
+      return {
+        ...state,
+        boxProduct: [],
+      };
+    }
     default: {
       return state;
     }
   }
 };
-export const getFavorites = () => ({ type: GET_FAVORITES });
-export const getBasket = () => ({ type: GET_BASKET });
 
-export const addBasket = (id) => ({ type: ADD_BASKET, id });
+export const toggleIsFetching = (isFetching) => ({
+  type: TOGGLE_IS_FETCHING,
+  isFetching,
+});
+export const clearBoxProduct = () => ({ type: CLEAR_BOX_PRODUCT });
 
-export const removeBasket = (id) => ({ type: REMOVE_BASKET, id });
+export const setProduct = (product) => ({ type: SET_PRODUCT, product });
 
-export const addFavorites = (id) => ({ type: ADD_FAVORITE, id });
+export const setError = (error) => ({ type: SET_ERROR, error });
 
-export const removeFavorites = (id) => ({ type: REMOVE_FAVORITE, id });
+export const setDone = (message) => ({ type: SET_DONE, message });
 
 export const setCardCategory = (data) => ({ type: SET_CARD_CATEGORY, data });
 
 export const setProducts = (data) => ({ type: SET_PRODUCTS, data });
-
+export const setBoxProducts = (data) => ({ type: SET_BOX_PRODUCT, data });
 export const getCategories = () => async (dispatch) => {
   const response = await productAPI.getCategories();
   dispatch(setCardCategory(response.data.data));
 };
 
+export const getProductsCategory = (id) => async (dispatch) => {
+  dispatch(toggleIsFetching(true));
+  const response = await productAPI.getProductsCategory(id);
+  dispatch(setProducts(response.data.data));
+  dispatch(toggleIsFetching(false));
+};
+export const getProduct = (id) => async (dispatch) => {
+  dispatch(toggleIsFetching(true));
+  const response = await productAPI.getProduct(id);
+  if (!!response.data.error) {
+    dispatch(toggleIsFetching(false));
+    return;
+  }
+  dispatch(setProduct(response.data.data));
+  dispatch(toggleIsFetching(false));
+};
+
 export const getProducts = (id) => async (dispatch) => {
-  const response = await fetchProducts(id);
-  dispatch(setProducts(response.data));
+  dispatch(toggleIsFetching(true));
+  const response = await productAPI.getProduct(id);
+  if (!!response.data.error) {
+    dispatch(toggleIsFetching(false));
+    return;
+  }
+  dispatch(setBoxProducts(response.data.data));
+  dispatch(toggleIsFetching(false));
 };
 
 export default productsReducer;

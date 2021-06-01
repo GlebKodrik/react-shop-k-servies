@@ -66,6 +66,7 @@
     color: rgb(249, 17, 85);
 }
 .codeProduct{
+    margin-top: 10px;
     cursor: default;
     color: rgb(177, 185, 194);
     line-height: 1.29;

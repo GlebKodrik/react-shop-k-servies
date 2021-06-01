@@ -4,10 +4,12 @@ import { LikeItem } from "../../shared/LikeItem/LikeItem";
 import { PopupAuth } from "../../Popup/PopupAuth/PopupAuth";
 import { ModalPopup } from "../../shared/ModalPopup";
 import { useState } from "react";
-import { BuyItem } from "../BuyItem/BuyItem";
+import { BuyItem } from "../../shared/BuyItem/BuyItem";
+import { urlApi } from "../../../common/urlApi";
 
 export const CardProducts = ({ product }) => {
   const [open, setOpen] = useState(false);
+
   return (
     <div className={s.item}>
       <ModalPopup component={PopupAuth} {...{ open, setOpen }} />
@@ -15,7 +17,7 @@ export const CardProducts = ({ product }) => {
         <div className={s.cardItem}>
           <div className={s.cardItemTop}>
             <div className={s.cardItemImg}>
-              <img src={product?.img} alt="Продукт" />
+              <img src={`${urlApi}${product?.images[0]}`} alt="Продукт" />
             </div>
 
             <div className={s.cardItemText}>{product?.name}</div>
