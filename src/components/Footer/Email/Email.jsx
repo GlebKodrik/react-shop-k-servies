@@ -4,7 +4,7 @@ import cn from "classnames";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { TextField, useTheme } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 import { emailValidation } from "../../../common/validations";
 
 const SignupSchema = yup.object().shape({

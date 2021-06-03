@@ -1,11 +1,15 @@
 import s from "./Favorites.module.css";
-import { FavoritesItem } from "./FavoritesItem";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { clearBoxProduct, getProducts } from "../../../redux/productsReducer";
-import { useDispatch } from "react-redux";
+import { FavoritesItem } from "./FavoritesItem";
+import Loader from "../../shared/Loader/Loader";
 
-export const Favorites = ({ favorite }) => {
+export const Favorites = () => {
   const dispatch = useDispatch();
+  const isFetching = useSelector((state) => state.products.isFetching);
+  const boxProduct = useSelector((state) => state.products.boxProduct);
+  const favorite = useSelector((state) => state.favorite.favorites);
 
   useEffect(() => {
     favorite.forEach((el) => dispatch(getProducts(el.id)));
@@ -15,13 +19,17 @@ export const Favorites = ({ favorite }) => {
     };
   }, [favorite]);
 
+  if (isFetching) {
+    return <Loader />;
+  }
+
   return (
     <>
       {favorite.length ? (
         <div className={s.wrap}>
           <div className={s.block}>
-            {favorite.map((el) => (
-              <FavoritesItem key={el.id} id={el.id} />
+            {boxProduct.map((el) => (
+              <FavoritesItem key={el._id} id={el.id} product={el} />
             ))}
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import s from "../Authorization.module.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { useForm } from "react-hook-form";
@@ -90,8 +90,8 @@ export const Registration = () => {
           required
           label="Имя"
           variant="outlined"
-          error={!!errors.name}
-          helperText={errors.name && errors.name.message}
+          error={!!errors.nickname}
+          helperText={errors.nickname && errors.nickname.message}
           name={"nickname"}
           control={control}
         />
@@ -107,6 +107,7 @@ export const Registration = () => {
         />
 
         <MaskPhone
+          required
           name="phone"
           control={control}
           errors={errors}

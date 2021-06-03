@@ -2,8 +2,8 @@
     text-align: center;
 }
 .swipe img{
-    min-height: 280px;
-    max-height: 350px;
+    min-height: 360px;
+    max-height: 380px;
     width: 100%;
 }
 .content{

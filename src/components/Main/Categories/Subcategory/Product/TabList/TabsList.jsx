@@ -9,6 +9,7 @@ import { Feedback } from "./Feedback/Feedback";
 import { ButtonCheckAuth } from "../../../../../shared/Button/ButtonCheckAuth";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
+import { Spacs } from "./Spacs";
 
 const a11yProps = (index) => ({
   id: `full-width-tab-${index}`,
@@ -76,7 +77,7 @@ export const TabsList = memo(({ product }) => {
             {product.description}
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
-            Item Two
+            <Spacs />
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
             {!!product?.comments.length && (

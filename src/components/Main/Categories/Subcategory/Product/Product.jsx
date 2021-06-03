@@ -10,25 +10,28 @@ import { Link } from "react-scroll";
 import { Rating } from "../../../../shared/Rating/Rating";
 import { LikeItem } from "../../../../shared/LikeItem/LikeItem";
 import Loader from "../../../../shared/Loader/Loader";
-import { NotFound } from "../../../../page/NotFould/NotFound";
 import { addBasket } from "../../../../../redux/basketReducer";
 
-export const Product = ({ categories, isFetching, basket }) => {
+export const Product = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-
+  const isFetching = useSelector((state) => state.products.isFetching);
+  const categories = useSelector((state) => state.products.categories);
+  const basket = useSelector((state) => state.basket.basket);
   const product = useSelector((state) => state.products.product);
 
   useEffect(() => {
+    dispatch(getProduct(id));
+  }, [id]);
+
+  useEffect(() => {
     localStorage.setItem("basket", JSON.stringify(basket));
-    if (!product) {
-      dispatch(getProduct(id));
-    }
-  }, [dispatch, product, basket, id]);
+  }, [dispatch, basket]);
 
   if (isFetching || !product) {
     return <Loader />;
   }
+
   const actualCategory = categories.find((el) => el._id === product?.rubric);
 
   const clickAddBasket = () => {

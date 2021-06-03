@@ -29,18 +29,19 @@ export const authAPI = {
 export const userAPI = {
   changeUser(data) {
     let formData = new FormData();
-
     for (const key in data) {
       if (data[key]) {
         formData.append(key, data[key]);
       }
     }
-
     return instance.post("/auth/change-profile", formData);
   },
 };
 
 export const productAPI = {
+  getSpecs(id) {
+    return instance.get(`/shop/specs/${id}`);
+  },
   getCategories() {
     return instance.get("/shop/rubrics");
   },
@@ -50,8 +51,39 @@ export const productAPI = {
   getProduct(id) {
     return instance.get(`/shop/products/${id}`);
   },
+};
+
+export const adminAPI = {
   deleteProduct(id) {
     return instance.delete(`/shop/products/${id}`);
+  },
+  deleteCategories(rubric) {
+    return instance.delete(`/shop/rubrics/${rubric}`);
+  },
+  createCategories(data) {
+    let formData = new FormData();
+
+    for (const key in data) {
+      if (data[key]) {
+        formData.append(key, data[key]);
+      }
+    }
+
+    return instance.post("/shop/rubrics", formData);
+  },
+  createProduct({ data: { images, ...data } }) {
+    let formData = new FormData();
+
+    images.map((el) => formData.append("images", el));
+
+    for (const key in data) {
+      if (data[key]) {
+        formData.append(key, data[key]);
+      }
+    }
+    console.log("form", formData);
+
+    return instance.post("/shop/products", formData);
   },
 };
 

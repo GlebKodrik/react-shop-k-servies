@@ -1,11 +1,11 @@
-import React from "react";
-import s from "../Profile.module.css";
-import { makeStyles } from "@material-ui/core/styles";
-import { MaskPhone } from "../../../shared/Mask";
-import FaceOutlinedIcon from "@material-ui/icons/FaceOutlined";
-import PhoneIphoneOutlinedIcon from "@material-ui/icons/PhoneIphoneOutlined";
-import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
-import { Input } from "../../../shared/Input/Input";
+import React from "react"
+import s from "../Profile.module.css"
+import { makeStyles } from "@material-ui/core/styles"
+import { MaskPhone } from "../../../shared/Mask"
+import FaceOutlinedIcon from "@material-ui/icons/FaceOutlined"
+import PhoneIphoneOutlinedIcon from "@material-ui/icons/PhoneIphoneOutlined"
+import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined"
+import { Input } from "../../../shared/Input/Input"
 
 export const ProfileForm = ({ edit, errors, control, user, setEdit }) => {
   const useStyles = makeStyles(() => ({
@@ -17,8 +17,8 @@ export const ProfileForm = ({ edit, errors, control, user, setEdit }) => {
       marginRight: "10px",
       width: "66%",
     },
-  }));
-  const classes = useStyles();
+  }))
+  const classes = useStyles()
 
   return (
     <>
@@ -30,8 +30,8 @@ export const ProfileForm = ({ edit, errors, control, user, setEdit }) => {
               required
               className={classes.dataInfo}
               label="Имя"
-              error={!!errors.name}
-              helperText={errors.name && errors.name.message}
+              error={!!errors.nickname}
+              helperText={errors.nickname && errors.nickname.message}
               name={"nickname"}
               control={control}
             />
@@ -86,5 +86,5 @@ export const ProfileForm = ({ edit, errors, control, user, setEdit }) => {
         )}
       </div>
     </>
-  );
-};
+  )
+}

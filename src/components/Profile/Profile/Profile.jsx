@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from "react";
 import s from "./Profile.module.css";
-import {
-  Avatar,
-  Button,
-  CircularProgress,
-  makeStyles,
-} from "@material-ui/core";
+import { Avatar, Button, makeStyles } from "@material-ui/core";
 import { useForm } from "react-hook-form";
 import { ProfileForm } from "./ProfileForm/ProfileForm";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import cn from "classnames";
@@ -35,10 +30,13 @@ const SignupSchema = yup.object().shape({
   ...nameValidation,
 });
 
-export const Profile = ({ user, isFetching, edit, state }) => {
+export const Profile = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
+  const isFetching = useSelector((state) => state.user.isFetching);
+  const user = useSelector((state) => state.user.client);
+  const edit = useSelector((state) => state.user.edit);
   const [preview, setPreview] = useState({ file: null });
 
   const {
@@ -49,14 +47,22 @@ export const Profile = ({ user, isFetching, edit, state }) => {
     reset,
     formState: { errors },
   } = useForm({
-    defaultValues: state,
+    defaultValues: {
+      nickname: user?.profile?.nickname,
+      phone: user?.profile?.phone,
+      email: user?.email,
+    },
     resolver: yupResolver(SignupSchema),
     mode: "onChange",
   });
 
   useEffect(() => {
-    reset(state);
-  }, [state]);
+    reset({
+      nickname: user?.profile?.nickname,
+      phone: user?.profile?.phone,
+      email: user?.email,
+    });
+  }, [user]);
 
   const onSubmit = async (data) => {
     const error = await dispatch(changeUser(data));

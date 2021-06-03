@@ -8,7 +8,9 @@ import { CardProducts } from "../../../page/CardProduct/CardProducts";
 import Loader from "../../../shared/Loader/Loader";
 import { NotFound } from "../../../page/NotFould/NotFound";
 
-const Subcategory = ({ categories, isFetching }) => {
+const Subcategory = () => {
+  const categories = useSelector((state) => state.products.categories);
+  const isFetching = useSelector((state) => state.products.isFetching);
   const dispatch = useDispatch();
   const { url } = useParams();
 

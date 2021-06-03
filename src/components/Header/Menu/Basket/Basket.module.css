@@ -1,7 +1,10 @@
 .wrap{
-    max-height: 1000px;
-    overflow: auto;
     padding: 30px 20px;
+}
+.scroll{
+    padding: 10px 10px;
+    max-height: 600px;
+    overflow: auto;
 }
 .total{
     padding-bottom: 20px;
@@ -16,7 +19,6 @@
 .block{
     display: flex;
     flex-direction: column;
-
 }
 .notBasket{
     padding: 60px 0;

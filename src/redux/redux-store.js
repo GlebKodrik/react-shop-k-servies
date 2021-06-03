@@ -1,5 +1,4 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
-import profileReducer from "./profileReducer";
 import thunkMiddleware from "redux-thunk";
 import headerReducer from "./headerReducer";
 import authReducer from "./authReducer";
@@ -12,7 +11,6 @@ import adminReducer from "./adminReducer";
 
 const reducer = combineReducers({
   headerContent: headerReducer,
-  profilePage: profileReducer,
   auth: authReducer,
   products: productsReducer,
   user: userReducer,

@@ -5,12 +5,13 @@ import { getBasket } from "./basketReducer";
 import { getFavorites } from "./favoriteReducer";
 
 const INITIALIZED_SUCCESS = "app/INITIALIZED_SUCCESS";
-const SET_MESSAGE = "error/SET_MESSAGE";
-const CLEAR = "error/CLEAR";
+const SET_MESSAGE = "app/SET_MESSAGE";
+const CLEAR = "app/CLEAR";
 
 let initialState = {
   initialized: false,
   message: null,
+  isFetching: false,
 };
 
 const appReducer = (state = initialState, action) => {

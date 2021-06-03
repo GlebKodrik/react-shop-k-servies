@@ -1,4 +1,10 @@
 import * as yup from "yup";
+export const namesValidation = {
+  name: yup
+    .string()
+    .required("Обязательное поле!")
+    .matches(/^[a-zа-яё\s]+$/i, "Недопустимое название"),
+};
 
 export const emailValidation = {
   email: yup.string().required("Обязательное поле").email("Некорректный email"),

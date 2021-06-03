@@ -1,10 +1,7 @@
-import { logDOM } from "@testing-library/react";
-
 const ADD_BASKET = "basket/ADD_BASKET";
 const REMOVE_BASKET = "basket/REMOVE_BASKET";
 const GET_BASKET = "basket/GET_BASKET";
 const SET_ERROR = "basket/SET_ERROR";
-const TOGGLE_IS_FETCHING = "basket/TOGGLE-IS-FETCHING";
 
 let initialState = {
   basket: null,
@@ -35,11 +32,6 @@ const basketReducer = (state = initialState, action) => {
     }
   }
 };
-
-export const toggleIsFetching = (isFetching) => ({
-  type: TOGGLE_IS_FETCHING,
-  isFetching,
-});
 
 export const setError = (error) => ({ type: SET_ERROR, error });
 

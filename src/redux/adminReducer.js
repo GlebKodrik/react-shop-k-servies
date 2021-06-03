@@ -1,28 +1,21 @@
-import { productAPI } from "../api/api";
+import { adminAPI } from "../api/api";
 import { removeBasket } from "./basketReducer";
 import { removeFavorites } from "./favoriteReducer";
-import { logDOM } from "@testing-library/react";
+import { setAppMessage } from "./appReducer";
+import { getCategories, getProductsCategory } from "./productsReducer";
 
-const SET_ERROR = "admin/SET_ERROR";
-const SET_DONE = "admin/SET_DONE";
+const SET_PAGE = "admin/SET_PAGE";
 
 let initialState = {
-  error: null,
-  done: false,
+  actualPage: 0,
 };
 
 const adminReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_ERROR: {
+    case SET_PAGE: {
       return {
         ...state,
-        error: action.message,
-      };
-    }
-    case SET_DONE: {
-      return {
-        ...state,
-        done: action.message,
+        actualPage: action.page,
       };
     }
     default: {
@@ -30,21 +23,47 @@ const adminReducer = (state = initialState, action) => {
     }
   }
 };
-
-export const setError = (message) => ({ type: SET_ERROR, message });
-export const setDone = (message) => ({ type: SET_DONE, message });
+export const setPage = (page) => ({ type: SET_PAGE, page });
 
 export const deleteProduct = ({ id }) => async (dispatch) => {
-  const response = await productAPI.deleteProduct(id);
+  const response = await adminAPI.deleteProduct(id);
   if (!!response.data.errors) {
-    dispatch(setDone(false));
-    dispatch(setError(response.data.errors.product));
+    dispatch(setAppMessage(response.data.errors.product, "error"));
     return;
   }
   dispatch(removeBasket(id));
   dispatch(removeFavorites(id));
-  dispatch(setError(null));
-  dispatch(setDone(true));
+  dispatch(setAppMessage("Товар успешно удален!"));
+};
+
+export const deleteCategories = (id) => async (dispatch) => {
+  let product = await dispatch(getProductsCategory(id));
+  const response = await adminAPI.deleteCategories(id);
+  if (!!response.data.errors) {
+    dispatch(setAppMessage(response.data.errors.product, "error"));
+    return;
+  }
+  dispatch(getCategories());
+  return product;
+};
+
+export const createCategories = (data) => async (dispatch) => {
+  const response = await adminAPI.createCategories(data);
+  if (!!response.data.errors) {
+    dispatch(setAppMessage("Произошла ошибка!", "error"));
+    return;
+  }
+  dispatch(getCategories());
+  dispatch(setAppMessage("Категория добавлена!"));
+};
+
+export const createProduct = (data) => async (dispatch) => {
+  const response = await adminAPI.createProduct({ data });
+  if (!!response.data.errors) {
+    dispatch(setAppMessage("Произошла ошибка!", "error"));
+    return;
+  }
+  dispatch(setAppMessage("Продукт добавлена!"));
 };
 
 export default adminReducer;

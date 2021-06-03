@@ -36,7 +36,7 @@ export const BuyItem = ({ id }) => {
     history.push("/basket");
   };
   return (
-    <div>
+    <>
       {!!basket.find((el) => el.id === id) ? (
         <div className={cn(s.item, s.active)} onClick={clickInBasket}>
           <ShoppingCartOutlinedIcon classes={{ root: classes.active }} />
@@ -49,6 +49,6 @@ export const BuyItem = ({ id }) => {
           />
         </div>
       )}
-    </div>
+    </>
   );
 };

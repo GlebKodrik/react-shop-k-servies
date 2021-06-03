@@ -43,14 +43,13 @@ export const changeUser = (values) => async (dispatch) => {
   dispatch(toggleIsFetching(true));
   const response = await userAPI.changeUser(values);
   if (!!response.data.errors) {
-    // dispatch(setAppMessage("Ошибка при редактирование!", "error"));
+    dispatch(setAppMessage("Ошибка при редактирование!", "error"));
     dispatch(toggleIsFetching(false));
-    // throw new Error(response.data.errors);
     return response.data.errors;
   }
   dispatch(toggleIsFetching(false));
   dispatch(meThunk());
-  // dispatch(setAppMessage("Пользователь успешно изменен!", "success"));
+  dispatch(setAppMessage("Пользователь успешно изменен!", "success"));
 };
 
 export default userReducer;

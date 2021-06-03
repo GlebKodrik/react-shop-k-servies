@@ -6,11 +6,12 @@ import { Button } from "@material-ui/core";
 import { ModalPopup } from "../../../shared/ModalPopup";
 import { PopupBuy } from "../../../Popup/PopupBuy/PopupBuy";
 import { removeBasket } from "../../../../redux/basketReducer";
+import cn from "classnames";
+import Loader from "../../../shared/Loader/Loader";
 import {
   clearBoxProduct,
   getProducts,
 } from "../../../../redux/productsReducer";
-import Loader from "../../../shared/Loader/Loader";
 
 export const Basket = () => {
   const [open, setOpen] = useState(false);
@@ -21,12 +22,14 @@ export const Basket = () => {
   const isFetching = useSelector((state) => state.products.isFetching);
 
   useEffect(() => {
-    basket.forEach((el) => dispatch(getProducts(el.id)));
+    if (basket.length) {
+      basket.forEach((el) => dispatch(getProducts(el.id)));
+    }
     localStorage.setItem("basket", JSON.stringify(basket));
     return () => {
       dispatch(clearBoxProduct());
     };
-  }, [basket]);
+  }, [basket, dispatch]);
 
   const clickDelete = () => {
     basket.map((el) => dispatch(removeBasket(el.id)));
@@ -63,7 +66,7 @@ export const Basket = () => {
               basket={basket}
             />
           </div>
-          <div className={s.block}>
+          <div className={cn(s.block, { [s.scroll]: basket.length > 5 })}>
             {boxProduct.map((el) => {
               return <BasketItem key={el._id} {...{ auth }} product={el} />;
             })}

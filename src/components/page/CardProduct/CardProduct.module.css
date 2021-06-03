@@ -1,5 +1,6 @@
 .item{
     position: relative;
+    margin: 10px 20px;
 }
 .cardItem{
     transition: all .3s;
