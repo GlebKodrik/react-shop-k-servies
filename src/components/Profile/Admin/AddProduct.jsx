@@ -67,14 +67,7 @@ export const AddProduct = ({ categories }) => {
   });
 
   const onSubmit = (values) => {
-    const files = state.map((el) => {
-      if (el.file) {
-        return el.file;
-      }
-      return null;
-    });
-
-    const filtered = files.filter((el) => el != null);
+    const filtered = state.filter((el) => el.file != null);
 
     if (!filtered.length) {
       dispatch(setAppMessage("Добавьте фото товара! (от 2 штук)", "error"));
@@ -133,7 +126,7 @@ export const AddProduct = ({ categories }) => {
           className={classes.form}
         >
           <Input
-            label={"Имя категории"}
+            label={"Имя продукта"}
             control={control}
             error={!!errors.name}
             helperText={errors.name && errors.name.message}
@@ -141,7 +134,7 @@ export const AddProduct = ({ categories }) => {
             className={classes.item}
           />
           <Input
-            label={"Короткое описание"}
+            label={"Краткое описание"}
             control={control}
             error={!!errors.shortDescription}
             helperText={
