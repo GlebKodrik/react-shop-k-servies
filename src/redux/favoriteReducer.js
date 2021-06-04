@@ -1,6 +1,3 @@
-import { toggleIsFetching } from "./productsReducer";
-import { productAPI } from "../api/api";
-
 const ADD_FAVORITE = "favorite/ADD_FAVORITE";
 const REMOVE_FAVORITE = "favorite/REMOVE_FAVORITE";
 const GET_FAVORITES = "favorite/GET_FAVORITES";

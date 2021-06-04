@@ -256,12 +256,7 @@ ymaps[class$=map] ymaps[class*=balloon__close]+ymaps[class*=balloon__content] {
 .swiper-button-next {
     color: var(--main-text-color) !important;
 }
-/*.swiper-button-prev ,.swiper-button-next {*/
-/*    background-color: rgba(50, 50, 54, 0.5);*/
-/*    width: 100px;*/
-/*    height: 100px;*/
-/*    border-radius: 50%;*/
-/*}*/
+
 .inaccessible{
     color: red;
     font-size: 12px;

@@ -9,7 +9,6 @@ const TOGGLE_IS_FETCHING = "products/TOGGLE-IS-FETCHING";
 const SET_BOX_PRODUCT = "products/SET_BOX_PRODUCT";
 const CLEAR_BOX_PRODUCT = "products/CLEAR_BOX_PRODUCT";
 const SET_SPECS = "products/SET_SPECS";
-const INITIALIZED_SUCCESS = "products/INITIALIZED_SUCCESS";
 
 let initialState = {
   categories: [],
@@ -20,7 +19,6 @@ let initialState = {
   product: null,
   boxProduct: [],
   specs: null,
-  initialized: false,
 };
 
 const productsReducer = (state = initialState, action) => {
@@ -73,7 +71,6 @@ export const setDone = (message) => ({ type: SET_DONE, message });
 export const setCardCategory = (data) => ({ type: SET_CARD_CATEGORY, data });
 export const setProducts = (data) => ({ type: SET_PRODUCTS, data });
 export const setSpecs = (data) => ({ type: SET_SPECS, data });
-export const initializedSuccess = () => ({ type: INITIALIZED_SUCCESS });
 
 export const getCategories = () => async (dispatch) => {
   const response = await productAPI.getCategories();
@@ -81,8 +78,10 @@ export const getCategories = () => async (dispatch) => {
 };
 
 export const initializedProduct = (id) => async (dispatch) => {
+  dispatch(toggleIsFetching(true));
   await dispatch(getProduct(id));
   await dispatch(getSpecsThunk(id));
+  dispatch(toggleIsFetching(false));
 };
 
 export const getProductsCategory = (id) => async (dispatch) => {

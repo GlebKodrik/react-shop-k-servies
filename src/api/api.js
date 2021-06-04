@@ -81,7 +81,6 @@ export const adminAPI = {
         formData.append(key, data[key]);
       }
     }
-    console.log("form", formData);
 
     return instance.post("/shop/products", formData);
   },

@@ -62,7 +62,7 @@ export const Profile = () => {
       phone: user?.profile?.phone,
       email: user?.email,
     });
-  }, [user]);
+  }, [reset, user]);
 
   const onSubmit = async (data) => {
     const error = await dispatch(changeUser(data));

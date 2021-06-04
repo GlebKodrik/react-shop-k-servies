@@ -9,7 +9,7 @@ import { SelectInput } from "../../shared/SelectInput";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginBottom: 20,
+    marginLeft: 5,
   },
   form: {
     display: "flex",

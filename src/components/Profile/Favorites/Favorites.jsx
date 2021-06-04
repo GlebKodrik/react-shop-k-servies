@@ -17,7 +17,7 @@ export const Favorites = () => {
     return () => {
       dispatch(clearBoxProduct());
     };
-  }, [favorite]);
+  }, [dispatch, favorite]);
 
   if (isFetching) {
     return <Loader />;

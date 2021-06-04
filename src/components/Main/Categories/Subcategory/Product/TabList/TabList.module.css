@@ -33,3 +33,6 @@
     justify-content: flex-end;
     padding-right: 38px;
 }
+.characteristics li{
+    list-style: outside;
+}

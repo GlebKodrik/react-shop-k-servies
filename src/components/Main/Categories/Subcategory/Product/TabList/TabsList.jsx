@@ -9,7 +9,7 @@ import { Feedback } from "./Feedback/Feedback";
 import { ButtonCheckAuth } from "../../../../../shared/Button/ButtonCheckAuth";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
-import { Spacs } from "./Spacs";
+import { Specs } from "./Specs";
 
 const a11yProps = (index) => ({
   id: `full-width-tab-${index}`,
@@ -77,7 +77,7 @@ export const TabsList = memo(({ product }) => {
             {product.description}
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
-            <Spacs />
+            <Specs />
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
             {!!product?.comments.length && (
@@ -103,7 +103,9 @@ export const TabsList = memo(({ product }) => {
             )}
           </TabPanel>
           <TabPanel value={value} index={3} dir={theme.direction}>
-            <div className="title">Обзоров ещё нет, будьте первыми!</div>
+            <div className="title">
+              Обзоров ещё нет, будьте первыми!&#128517;
+            </div>
             <div className={s.text}>
               Расскажите о преимуществах и недостатках товара. Ваш обзор поможет
               другим покупателям сделать выбор.

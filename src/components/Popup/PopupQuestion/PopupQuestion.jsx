@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import cn from "classnames";
-import { TextField } from "@material-ui/core";
+
 import {
   descriptionValidation,
   emailValidation,
@@ -12,6 +12,7 @@ import {
   subjectValidation,
 } from "../../../common/validations";
 import { PopupToast } from "../PopupToast/PopupToast";
+import { Input } from "../../shared/Input/Input";
 
 const SignupSchema = yup.object().shape({
   ...emailValidation,
@@ -30,8 +31,10 @@ export const PopupQuestion = () => {
     register,
     handleSubmit,
     reset,
+    control,
     formState: { errors },
   } = useForm({
+    defaultValues: { nickname: "", email: "", subject: "" },
     resolver: yupResolver(SignupSchema),
     mode: "onTouched",
   });
@@ -50,23 +53,25 @@ export const PopupQuestion = () => {
       <div className={"popupTitle"}>Обратная связь</div>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <div className={s.name}>
-          <TextField
+          <Input
             required
             type={"text"}
             label={"Имя"}
-            error={!!errors.name}
-            helperText={errors.name?.message}
-            {...register("nickname")}
+            error={!!errors.nickname}
+            helperText={errors.nickname?.message}
+            name={"nickname"}
+            control={control}
           />
         </div>
         <div className={s.subject}>
-          <TextField
+          <Input
             required
             type={"text"}
             label={"Тема обращения"}
             error={!!errors.subject}
             helperText={errors.subject?.message}
-            {...register("subject")}
+            name={"subject"}
+            control={control}
           />
         </div>
         <div className={s.appeal}>
@@ -87,12 +92,13 @@ export const PopupQuestion = () => {
         </div>
 
         <div>
-          <TextField
+          <Input
             required
             label={"Email"}
             error={!!errors.email}
             helperText={errors.email?.message}
-            {...register("email")}
+            name={"email"}
+            control={control}
           />
           <div className={s.subEmail}>Оператор ответит в течение 48 часов</div>
         </div>

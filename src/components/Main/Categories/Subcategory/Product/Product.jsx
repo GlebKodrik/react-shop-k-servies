@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { getProduct } from "../../../../../redux/productsReducer";
+import { initializedProduct } from "../../../../../redux/productsReducer";
 import s from "./Product.module.css";
 import { ProductSlider } from "./ProductSlider";
 import cn from "classnames";
@@ -15,20 +15,20 @@ import { addBasket } from "../../../../../redux/basketReducer";
 export const Product = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const isFetching = useSelector((state) => state.products.isFetching);
+  const initialized = useSelector((state) => state.products.isFetching);
   const categories = useSelector((state) => state.products.categories);
   const basket = useSelector((state) => state.basket.basket);
   const product = useSelector((state) => state.products.product);
 
   useEffect(() => {
-    dispatch(getProduct(id));
-  }, [id]);
+    dispatch(initializedProduct(id));
+  }, [dispatch, id]);
 
   useEffect(() => {
     localStorage.setItem("basket", JSON.stringify(basket));
   }, [dispatch, basket]);
 
-  if (isFetching || !product) {
+  if (initialized || !product) {
     return <Loader />;
   }
 

@@ -23,8 +23,9 @@ export const Basket = () => {
 
   useEffect(() => {
     if (basket.length) {
-      basket.forEach((el) => dispatch(getProducts(el.id)));
+      basket.map((el) => dispatch(getProducts(el.id)));
     }
+
     localStorage.setItem("basket", JSON.stringify(basket));
     return () => {
       dispatch(clearBoxProduct());
