@@ -78,10 +78,14 @@ export const getCategories = () => async (dispatch) => {
 };
 
 export const initializedProduct = (id) => async (dispatch) => {
-  dispatch(toggleIsFetching(true));
-  await dispatch(getProduct(id));
-  await dispatch(getSpecsThunk(id));
-  dispatch(toggleIsFetching(false));
+  try {
+    dispatch(toggleIsFetching(true));
+    await dispatch(getProduct(id));
+    await dispatch(getSpecsThunk(id));
+    dispatch(toggleIsFetching(false));
+  } catch (e) {
+    dispatch(toggleIsFetching(false));
+  }
 };
 
 export const getProductsCategory = (id) => async (dispatch) => {

@@ -13,7 +13,7 @@ import { Header } from "../Header/Header";
 import { initializeApp } from "../../redux/appReducer";
 import Loader from "../shared/Loader/Loader";
 import { PopupToast } from "../Popup/PopupToast/PopupToast";
-import { NotFound } from "../page/NotFould/NotFound";
+import { NotFound } from "../shared/NotFould/NotFound";
 
 const theme = createMuiTheme({
   props: {

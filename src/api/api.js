@@ -73,8 +73,7 @@ export const adminAPI = {
   },
   createProduct({ data: { images, ...data } }) {
     let formData = new FormData();
-
-    images.map((el) => formData.append("images", el));
+    images.map((el) => formData.append("images", el.file));
 
     for (const key in data) {
       if (data[key]) {

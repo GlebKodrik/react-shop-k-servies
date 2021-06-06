@@ -23,6 +23,7 @@ const adminReducer = (state = initialState, action) => {
     }
   }
 };
+
 export const setPage = (page) => ({ type: SET_PAGE, page });
 
 export const deleteProduct = ({ id }) => async (dispatch) => {

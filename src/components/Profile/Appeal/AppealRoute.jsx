@@ -1,13 +1,13 @@
-import { NavLink, Route, Switch, useRouteMatch } from "react-router-dom";
-import { Appeal } from "./Appeal";
-import { Archive } from "./Archive/Archive";
-import { NotFound } from "../../page/NotFould/NotFound";
-import React from "react";
-import s from "./Appeal.module.css";
-import cn from "classnames";
+import { NavLink, Route, Switch, useRouteMatch } from "react-router-dom"
+import { Appeal } from "./Appeal"
+import { Archive } from "./Archive/Archive"
+import { NotFound } from "../../shared/NotFould/NotFound"
+import React from "react"
+import s from "./Appeal.module.css"
+import cn from "classnames"
 
 export const AppealRoute = () => {
-  const match = useRouteMatch();
+  const match = useRouteMatch()
 
   return (
     <div className="container">
@@ -36,5 +36,5 @@ export const AppealRoute = () => {
         <Route path="/*" render={() => <NotFound />} />
       </Switch>
     </div>
-  );
-};
+  )
+}

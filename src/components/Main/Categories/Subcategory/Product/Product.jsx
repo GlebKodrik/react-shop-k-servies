@@ -11,6 +11,7 @@ import { Rating } from "../../../../shared/Rating/Rating";
 import { LikeItem } from "../../../../shared/LikeItem/LikeItem";
 import Loader from "../../../../shared/Loader/Loader";
 import { addBasket } from "../../../../../redux/basketReducer";
+import { NotFound } from "../../../../shared/NotFould/NotFound";
 
 export const Product = () => {
   const { id } = useParams();
@@ -28,8 +29,11 @@ export const Product = () => {
     localStorage.setItem("basket", JSON.stringify(basket));
   }, [dispatch, basket]);
 
-  if (initialized || !product) {
+  if (initialized) {
     return <Loader />;
+  }
+  if (!product) {
+    return <NotFound />;
   }
 
   const actualCategory = categories.find((el) => el._id === product?.rubric);

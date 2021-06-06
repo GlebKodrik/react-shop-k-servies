@@ -1,12 +1,12 @@
-import { Route, Switch } from "react-router-dom";
-import { NotFound } from "../page/NotFould/NotFound";
-import { Main } from "./Main";
-import { ProfileRoute } from "../Profile/ProfileRoute";
-import { PrivateRouter } from "../Route/PrivateRouter";
-import s from "./Main.module.css";
-import { ServicesRouter } from "../Footer/Information/Menu/Services/ServicesRouter";
-import Subcategory from "./Categories/Subcategory/Subcategory";
-import { Product } from "./Categories/Subcategory/Product/Product";
+import { Route, Switch } from "react-router-dom"
+import { NotFound } from "../shared/NotFould/NotFound"
+import { Main } from "./Main"
+import { ProfileRoute } from "../Profile/ProfileRoute"
+import { PrivateRouter } from "../Route/PrivateRouter"
+import s from "./Main.module.css"
+import { ServicesRouter } from "../Footer/Information/Menu/Services/ServicesRouter"
+import Subcategory from "./Categories/Subcategory/Subcategory"
+import { Product } from "./Categories/Subcategory/Product/Product"
 
 export const MainRouter = () => {
   return (
@@ -24,5 +24,5 @@ export const MainRouter = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}

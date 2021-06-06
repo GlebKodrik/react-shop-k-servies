@@ -1,9 +1,9 @@
-import { Route, Switch } from "react-router-dom";
-import { NotFound } from "../../../../page/NotFould/NotFound";
-import { Requisites } from "./Requisites/Requisites";
-import { About } from "./About/About";
-import { Contact } from "./Contact/Contact";
-import { Location } from "./Location/Location";
+import { Route, Switch } from "react-router-dom"
+import { NotFound } from "../../../../shared/NotFould/NotFound"
+import { Requisites } from "./Requisites/Requisites"
+import { About } from "./About/About"
+import { Contact } from "./Contact/Contact"
+import { Location } from "./Location/Location"
 
 export const ServicesRouter = () => {
   return (
@@ -20,5 +20,5 @@ export const ServicesRouter = () => {
         <Route path="*" render={() => <NotFound />} />
       </Switch>
     </>
-  );
-};
+  )
+}

@@ -1,12 +1,12 @@
-import React from "react";
-import { Profile } from "./Profile/Profile";
-import { Redirect, Route, Switch } from "react-router-dom";
-import { Navigation } from "./Navigation/Navigation";
-import { NotFound } from "../page/NotFould/NotFound";
-import { AppealRoute } from "./Appeal/AppealRoute";
-import { AdminRouter } from "../Route/AdminRouter";
-import { Admin } from "./Admin/Admin";
-import { Favorites } from "./Favorites/Favorites";
+import React from "react"
+import { Profile } from "./Profile/Profile"
+import { Redirect, Route, Switch } from "react-router-dom"
+import { Navigation } from "./Navigation/Navigation"
+import { NotFound } from "../shared/NotFould/NotFound"
+import { AppealRoute } from "./Appeal/AppealRoute"
+import { AdminRouter } from "../Route/AdminRouter"
+import { Admin } from "./Admin/Admin"
+import { Favorites } from "./Favorites/Favorites"
 
 export const ProfileRoute = () => {
   return (
@@ -21,5 +21,5 @@ export const ProfileRoute = () => {
         <Route path="/profile/*" render={() => <NotFound />} />
       </Switch>
     </>
-  );
-};
+  )
+}

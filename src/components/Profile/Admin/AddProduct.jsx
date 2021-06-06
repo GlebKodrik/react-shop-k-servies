@@ -7,10 +7,11 @@ import { Input } from "../../shared/Input/Input";
 import { useDispatch } from "react-redux";
 import * as yup from "yup";
 import { SelectInput } from "../../shared/SelectInput";
-import { useState } from "react";
+import React, { useState } from "react";
 import AddBoxOutlinedIcon from "@material-ui/icons/AddBoxOutlined";
 import { namesValidation } from "../../../common/validations";
 import BackspaceIcon from "@material-ui/icons/Backspace";
+import cn from "classnames";
 
 const SignupSchema = yup.object().shape({
   ...namesValidation,
@@ -54,12 +55,11 @@ export const AddProduct = ({ categories }) => {
     handleSubmit,
     reset,
     control,
+    register,
     formState: { errors },
   } = useForm({
     defaultValues: {
       name: "",
-      shortDescription: "",
-      description: "",
       price: "",
     },
     resolver: yupResolver(SignupSchema),
@@ -69,7 +69,7 @@ export const AddProduct = ({ categories }) => {
   const onSubmit = (values) => {
     const filtered = state.filter((el) => el.file != null);
 
-    if (!filtered.length) {
+    if (!filtered.length || filtered.length < 2) {
       dispatch(setAppMessage("Добавьте фото товара! (от 2 штук)", "error"));
       return;
     }
@@ -133,24 +133,42 @@ export const AddProduct = ({ categories }) => {
             name={"name"}
             className={classes.item}
           />
-          <Input
-            label={"Краткое описание"}
-            control={control}
-            error={!!errors.shortDescription}
-            helperText={
-              errors.shortDescription && errors.shortDescription.message
-            }
-            name={"shortDescription"}
-            className={classes.item}
+
+          <textarea
+            placeholder={"Краткое описание продукта"}
+            className={cn("popupTextarea", classes.item, {
+              textareaError: !!errors.shortDescription,
+            })}
+            autoComplete={"off"}
+            {...register("shortDescription")}
           />
-          <Input
-            label={"Описание"}
-            control={control}
-            error={!!errors.description}
-            helperText={errors.description && errors.description.message}
-            name={"description"}
-            className={classes.item}
+
+          {/*<Input*/}
+          {/*  label={"Краткое описание"}*/}
+          {/*  control={control}*/}
+          {/*  error={!!errors.shortDescription}*/}
+          {/*  helperText={*/}
+          {/*    errors.shortDescription && errors.shortDescription.message*/}
+          {/*  }*/}
+          {/*  name={"shortDescription"}*/}
+          {/*  className={classes.item}*/}
+          {/*/>*/}
+          <textarea
+            placeholder={"Описание продукта"}
+            className={cn("popupTextarea", {
+              textareaError: !!errors.description,
+            })}
+            autoComplete={"off"}
+            {...register("description")}
           />
+          {/*<Input*/}
+          {/*  label={"Описание"}*/}
+          {/*  control={control}*/}
+          {/*  error={!!errors.description}*/}
+          {/*  helperText={errors.description && errors.description.message}*/}
+          {/*  name={"description"}*/}
+          {/*  className={classes.item}*/}
+          {/*/>*/}
           <Input
             placeholder={"0"}
             type="number"

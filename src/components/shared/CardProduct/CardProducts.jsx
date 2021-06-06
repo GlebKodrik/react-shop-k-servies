@@ -1,10 +1,10 @@
 import s from "./CardProduct.module.css";
 import { NavLink } from "react-router-dom";
-import { LikeItem } from "../../shared/LikeItem/LikeItem";
+import { LikeItem } from "../LikeItem/LikeItem";
 import { PopupAuth } from "../../Popup/PopupAuth/PopupAuth";
-import { ModalPopup } from "../../shared/ModalPopup";
+import { ModalPopup } from "../ModalPopup";
 import { useState } from "react";
-import { BuyItem } from "../../shared/BuyItem/BuyItem";
+import { BuyItem } from "../BuyItem/BuyItem";
 import { urlApi } from "../../../common/urlApi";
 
 export const CardProducts = ({ product }) => {

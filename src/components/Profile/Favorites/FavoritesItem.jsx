@@ -1,4 +1,4 @@
-import { CardProducts } from "../../page/CardProduct/CardProducts";
+import { CardProducts } from "../../shared/CardProduct/CardProducts";
 
 export const FavoritesItem = ({ id, product }) => {
   return (

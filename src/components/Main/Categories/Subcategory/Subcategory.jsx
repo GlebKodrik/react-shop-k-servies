@@ -4,9 +4,9 @@ import { Sorting } from "./Sorting/Sorting";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getProductsCategory } from "../../../../redux/productsReducer";
-import { CardProducts } from "../../../page/CardProduct/CardProducts";
+import { CardProducts } from "../../../shared/CardProduct/CardProducts";
 import Loader from "../../../shared/Loader/Loader";
-import { NotFound } from "../../../page/NotFould/NotFound";
+import { NotFound } from "../../../shared/NotFould/NotFound";
 
 const Subcategory = () => {
   const categories = useSelector((state) => state.products.categories);
