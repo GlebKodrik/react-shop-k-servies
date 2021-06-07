@@ -1,36 +1,41 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import s from "./PopupBuy.module.css";
-import { TextField } from "@material-ui/core";
 import cn from "classnames";
 import * as yup from "yup";
 import { nameValidation, phoneValidation } from "../../../common/validations";
 import { MaskPhone } from "../../shared/Mask";
-import React, { useState } from "react";
+import React from "react";
+import { Input } from "../../shared/Input/Input";
+import { sendReceipt } from "../../../redux/basketReducer";
+import { useDispatch } from "react-redux";
 
 const SignupSchema = yup.object().shape({
   ...nameValidation,
   ...phoneValidation,
 });
 
-export const PopupBuy = () => {
-  const [send, setSend] = useState(false);
+export const PopupBuy = ({ basket, ...props }) => {
+  const dispatch = useDispatch();
+
   const {
-    register,
     handleSubmit,
     reset,
     control,
     formState: { errors },
   } = useForm({
-    defaultValues: { phone: "" },
+    defaultValues: { phone: "", nickname: "" },
     resolver: yupResolver(SignupSchema),
     mode: "onTouched",
   });
 
-  const onSubmit = (values) => {
-    console.log(values);
+  const onSubmit = async (values) => {
+    const arr = basket.map((el) => {
+      return el.id;
+    });
+    await dispatch(sendReceipt({ products: arr, ...values }));
+    props.setOpen(false);
     reset();
-    setSend(true);
   };
 
   return (
@@ -38,13 +43,13 @@ export const PopupBuy = () => {
       <div className={cn("popupTitle", s.title)}>Оформить заказ</div>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <div className={s.phone}>
-          <TextField
+          <Input
             required
-            type={"text"}
             label={"Имя"}
-            error={!!errors.name}
-            helperText={errors.name?.message}
-            {...register("nickname")}
+            error={!!errors.nickname}
+            helperText={errors.nickname?.message}
+            control={control}
+            name={"nickname"}
           />
         </div>
         <div>
@@ -62,10 +67,7 @@ export const PopupBuy = () => {
           Оператор перезвонит в течение 1 часа (с 9:00 до 21:00 по местному
           времени)
         </div>
-        <div className={cn("popupWrapButton", { popupSend: send })}>
-          {send && (
-            <div className={"popupSendText"}>Заявка успешно отправлена</div>
-          )}
+        <div className={cn("popupWrapButton")}>
           <button className={cn("button", "popupButton")}>Отправить</button>
         </div>
       </form>

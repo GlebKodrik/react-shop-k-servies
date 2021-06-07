@@ -25,7 +25,6 @@ export const Basket = () => {
     if (basket.length) {
       basket.map((el) => dispatch(getProducts(el.id)));
     }
-
     localStorage.setItem("basket", JSON.stringify(basket));
     return () => {
       dispatch(clearBoxProduct());

@@ -1,3 +1,6 @@
+import { basketAPI } from "../api/api";
+import { setAppMessage } from "./appReducer";
+
 const ADD_BASKET = "basket/ADD_BASKET";
 const REMOVE_BASKET = "basket/REMOVE_BASKET";
 const GET_BASKET = "basket/GET_BASKET";
@@ -41,4 +44,14 @@ export const addBasket = (id) => ({ type: ADD_BASKET, id });
 
 export const removeBasket = (id) => ({ type: REMOVE_BASKET, id });
 
+export const sendReceipt = ({ nickname: name, ...data }) => async (
+  dispatch
+) => {
+  const response = await basketAPI.sendMessage({ name, ...data });
+  if (!!response.data.errors) {
+    dispatch(setAppMessage("Ошибка при отправке!", "error"));
+    return;
+  }
+  dispatch(setAppMessage("Заявка успешно оставлена!"));
+};
 export default basketReducer;

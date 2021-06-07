@@ -84,6 +84,11 @@ export const adminAPI = {
     return instance.post("/shop/products", formData);
   },
 };
+export const basketAPI = {
+  sendMessage(data) {
+    return instance.post("/email", data);
+  },
+};
 
 export const setInterceptor = (setUser) => {
   instance.interceptors.response.use(async (response) => {
