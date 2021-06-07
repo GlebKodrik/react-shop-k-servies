@@ -9,12 +9,11 @@ import * as yup from "yup";
 import { SelectInput } from "../../shared/SelectInput";
 import React, { useState } from "react";
 import AddBoxOutlinedIcon from "@material-ui/icons/AddBoxOutlined";
-import { namesValidation } from "../../../common/validations";
 import BackspaceIcon from "@material-ui/icons/Backspace";
 import cn from "classnames";
 
 const SignupSchema = yup.object().shape({
-  ...namesValidation,
+  name: yup.string().required("Обязательное поле!"),
   description: yup.string().required("Обязательное поле!"),
   shortDescription: yup.string().required("Обязательное поле!"),
   price: yup.number().typeError("Только число!").required("Обязательное поле!"),
