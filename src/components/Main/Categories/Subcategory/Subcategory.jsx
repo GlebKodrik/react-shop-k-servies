@@ -1,6 +1,5 @@
 import { NavLink, useParams } from "react-router-dom";
 import s from "./Subcategory.module.css";
-import { Sorting } from "./Sorting/Sorting";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getProductsCategory } from "../../../../redux/productsReducer";
@@ -45,7 +44,6 @@ const Subcategory = () => {
           {actualCategories?.name}{" "}
           <span className={s.headerSubTitle}>{products?.length} товаров</span>
         </div>
-        <Sorting />
         <div className={s.cardWrap}>
           {products.map((el) => {
             return <CardProducts key={el._id} product={el} />;

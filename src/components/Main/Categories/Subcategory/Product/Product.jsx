@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { initializedProduct } from "../../../../../redux/productsReducer";
 import s from "./Product.module.css";
 import { ProductSlider } from "./ProductSlider";
