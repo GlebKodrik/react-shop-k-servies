@@ -14,7 +14,7 @@ import {
   phoneValidation,
 } from "../../../common/validations";
 import { urlApi } from "../../../common/urlApi";
-import { changeUser, setEdit } from "../../../redux/userReducer";
+import { changeUser } from "../../../redux/userReducer";
 import Loader from "../../shared/Loader/Loader";
 
 const useStyles = makeStyles((theme) => ({
@@ -36,7 +36,7 @@ export const Profile = () => {
 
   const isFetching = useSelector((state) => state.user.isFetching);
   const user = useSelector((state) => state.user.client);
-  const edit = useSelector((state) => state.user.edit);
+  const [edit, setEdit] = useState(false);
   const [preview, setPreview] = useState({ file: null });
 
   const {
@@ -67,7 +67,7 @@ export const Profile = () => {
   const onSubmit = async (data) => {
     const error = await dispatch(changeUser(data));
     if (!error) {
-      dispatch(setEdit(false));
+      setEdit(false);
     }
   };
   if (isFetching) {
@@ -112,7 +112,7 @@ export const Profile = () => {
                 color="primary"
                 type={"button"}
                 onClick={() => {
-                  dispatch(setEdit(true));
+                  setEdit(true);
                 }}
               >
                 Редактировать
@@ -127,7 +127,7 @@ export const Profile = () => {
           </div>
         </div>
         <ProfileForm
-          setEdit={() => dispatch(setEdit(false))}
+          setEdit={() => setEdit(false)}
           {...{
             user,
             control,

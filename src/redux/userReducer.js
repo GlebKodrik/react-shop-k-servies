@@ -5,11 +5,10 @@ import { setAppMessage } from "./appReducer";
 const TOGGLE_IS_FETCHING = "TOGGLE-IS-FETCHING";
 const SET_USER = "auth/SET_USER";
 const SET_ERROR = "auth/SET_ERROR";
-const SET_EDIT = "auth/SET_EDIT";
+
 let initialState = {
   client: null,
   isFetching: false,
-  edit: false,
 };
 
 const userReducer = (state = initialState, action) => {
@@ -17,9 +16,7 @@ const userReducer = (state = initialState, action) => {
     case SET_USER: {
       return { ...state, client: action.client };
     }
-    case SET_EDIT: {
-      return { ...state, edit: action.edit };
-    }
+
     case TOGGLE_IS_FETCHING: {
       return {
         ...state,
@@ -38,7 +35,7 @@ export const toggleIsFetching = (isFetching) => ({
 });
 
 export const setError = (error) => ({ type: SET_ERROR, error });
-export const setEdit = (edit) => ({ type: SET_EDIT, edit });
+
 export const changeUser = (values) => async (dispatch) => {
   dispatch(toggleIsFetching(true));
   const response = await userAPI.changeUser(values);

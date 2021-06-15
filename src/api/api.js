@@ -16,8 +16,8 @@ export const authAPI = {
   me() {
     return instance.get("/auth/me");
   },
-  logUp({ name: nickname, password, email, phone }) {
-    return instance.post("/auth/sign-up", { nickname, password, email, phone });
+  logUp(data) {
+    return instance.post("/auth/sign-up", data);
   },
   logIn({ email, password }) {
     return instance.post("/auth/sign-in", { email, password });
