@@ -79,6 +79,7 @@ export const AddCategories = () => {
             className={classes.item}
           />
           <Input
+            placeholder={"Пример: lenta"}
             label={"Имя url пути"}
             control={control}
             error={!!errors.url}
