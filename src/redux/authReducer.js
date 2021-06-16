@@ -1,5 +1,6 @@
 import { authAPI } from "../api/api";
 import { setUser } from "./userReducer";
+import { setUserId } from "./favoriteReducer";
 
 const SET_AUTH = "auth/SET_AUTH";
 
@@ -26,6 +27,7 @@ export const meThunk = () => async (dispatch) => {
   try {
     const response = await authAPI.me();
     dispatch(setUser(response.data.data));
+    dispatch(setUserId(response.data.data._id));
     dispatch(setAuth(!response.data.errors));
   } catch (e) {
     dispatch(setUser(null));

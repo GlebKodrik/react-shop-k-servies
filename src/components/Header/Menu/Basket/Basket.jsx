@@ -12,6 +12,7 @@ import {
   clearBoxProduct,
   getProducts,
 } from "../../../../redux/productsReducer";
+import { NavLink } from "react-router-dom";
 
 export const Basket = () => {
   const [open, setOpen] = useState(false);
@@ -78,6 +79,11 @@ export const Basket = () => {
           <div className={s.subTitle}>
             Корзина ждет, что ее наполнят. Желаем приятных покупок!
           </div>
+          <NavLink to={"/"}>
+            <Button variant="outlined" color="primary">
+              Главная
+            </Button>
+          </NavLink>
         </div>
       )}
     </div>

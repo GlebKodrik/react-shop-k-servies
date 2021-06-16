@@ -125,4 +125,23 @@ export const getSpecsThunk = (id) => async (dispatch) => {
   dispatch(setSpecs(response.data.data));
 };
 
+// export const getBasket = (ids) => async (dispatch) => {
+//   dispatch(toggleIsFetching(true));
+//   const basket = [];
+//   await Promise.all(
+//     ids.map(async (id) => {
+//       const response = await productAPI.getProduct(id);
+//       if (!!response.data.error) {
+//         dispatch(toggleIsFetching(false));
+//         return;
+//       }
+//       basket.push(response.data.data);
+//     })
+//   );
+//   basket.forEach((product) => {
+//     dispatch(setBoxProducts(product));
+//   });
+//   dispatch(toggleIsFetching(false));
+// };
+
 export default productsReducer;

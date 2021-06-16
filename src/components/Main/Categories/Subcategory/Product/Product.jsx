@@ -12,10 +12,13 @@ import { LikeItem } from "../../../../shared/LikeItem/LikeItem";
 import Loader from "../../../../shared/Loader/Loader";
 import { addBasket } from "../../../../../redux/basketReducer";
 import { NotFound } from "../../../../shared/NotFould/NotFound";
+import { PopupAuth } from "../../../../Popup/PopupAuth/PopupAuth";
+import { ModalPopup } from "../../../../shared/ModalPopup";
 
 export const Product = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const [open, setOpen] = useState(false);
   const initialized = useSelector((state) => state.products.isFetching);
   const categories = useSelector((state) => state.products.categories);
   const basket = useSelector((state) => state.basket.basket);
@@ -44,6 +47,7 @@ export const Product = () => {
 
   return (
     <>
+      <ModalPopup component={PopupAuth} {...{ open, setOpen }} />
       <div className="switch">
         <NavLink to="/">Категории/</NavLink>
         <NavLink to={`/category/${actualCategory?.url}`}>
@@ -78,7 +82,7 @@ export const Product = () => {
                 <div className={s.price}>
                   Цена:&nbsp;<span>{product?.price}&nbsp;₽</span>
                 </div>
-                <LikeItem id={product?._id} />
+                <LikeItem id={product?._id} setOpen={setOpen} />
               </div>
             </div>
             <div className={s.buy}>

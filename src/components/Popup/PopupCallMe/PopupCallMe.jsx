@@ -13,12 +13,15 @@ import { MaskPhone } from "../../shared/Mask";
 import { nameValidation, phoneValidation } from "../../../common/validations";
 import { PopupToast } from "../PopupToast/PopupToast";
 import { Input } from "../../shared/Input/Input";
+import { useDispatch } from "react-redux";
+import { sendReceipt } from "../../../redux/basketReducer";
 
 const SignupSchema = yup.object().shape({
   ...phoneValidation,
   ...nameValidation,
 });
 export const PopupCallMe = () => {
+  const dispatch = useDispatch();
   const [state, setState] = useState({
     open: false,
     text: "",
@@ -47,12 +50,8 @@ export const PopupCallMe = () => {
   });
 
   const onSubmit = (values) => {
+    dispatch(sendReceipt(values));
     reset();
-    setState({
-      open: true,
-      text: "Заявка отправлена!",
-      type: "success",
-    });
   };
 
   const handleChangeCheck = (event) => {

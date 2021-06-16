@@ -6,6 +6,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { TextField } from "@material-ui/core";
 import { emailValidation } from "../../../common/validations";
+import { useDispatch } from "react-redux";
+import { sendReceipt } from "../../../redux/basketReducer";
 
 const SignupSchema = yup.object().shape({
   ...emailValidation,
@@ -13,24 +15,31 @@ const SignupSchema = yup.object().shape({
 
 export const Email = () => {
   const [success, setSuccess] = useState(false);
-
+  const dispatch = useDispatch();
   const {
     handleSubmit,
     clearErrors,
     control,
+    reset,
     formState: { errors },
   } = useForm({
     mode: "onChange",
-    defaultValues: { email: "" },
+    defaultValues: { email: "", nickname: "нет", phone: "нет" },
     resolver: yupResolver(SignupSchema),
   });
 
-  const onSubmit = (values) => {
+  const onSubmit = async (values) => {
+    await dispatch(sendReceipt(values));
     setSuccess(true);
+    reset();
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={s.email_content}>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className={s.email_content}
+      noValidate
+    >
       <div className={cn(s.email, { [s.email_center]: success })}>
         <div className={s.email_title}>Хочу быть в курсе новинок</div>
         <div className={s.email_body}>

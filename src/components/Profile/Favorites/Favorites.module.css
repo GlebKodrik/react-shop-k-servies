@@ -8,15 +8,11 @@
     color: #2d3133;
 }
 .subTitle{
+    margin-bottom: 10px;
     margin-top: 15px;
     font-size: 16px;
     font-weight: lighter;
     color: #939da3;
-}
-.wrap{
-    max-height: 1000px;
-    overflow: auto;
-    padding: 25px 24px;
 }
 .block{
     display: flex;

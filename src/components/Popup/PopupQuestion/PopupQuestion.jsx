@@ -13,6 +13,8 @@ import {
 } from "../../../common/validations";
 import { PopupToast } from "../PopupToast/PopupToast";
 import { Input } from "../../shared/Input/Input";
+import { sendReceipt } from "../../../redux/basketReducer";
+import { useDispatch } from "react-redux";
 
 const SignupSchema = yup.object().shape({
   ...emailValidation,
@@ -22,6 +24,7 @@ const SignupSchema = yup.object().shape({
 });
 
 export const PopupQuestion = () => {
+  const dispatch = useDispatch();
   const [state, setState] = useState({
     open: false,
     text: "",
@@ -34,18 +37,14 @@ export const PopupQuestion = () => {
     control,
     formState: { errors },
   } = useForm({
-    defaultValues: { nickname: "", email: "", subject: "" },
+    defaultValues: { nickname: "", email: "", subject: "", phone: "нет" },
     resolver: yupResolver(SignupSchema),
     mode: "onTouched",
   });
 
   const onSubmit = (values) => {
+    dispatch(sendReceipt(values));
     reset();
-    setState({
-      open: true,
-      text: "Заявка отправлена!",
-      type: "success",
-    });
   };
 
   return (

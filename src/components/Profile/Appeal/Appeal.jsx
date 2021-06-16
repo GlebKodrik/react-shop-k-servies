@@ -9,6 +9,8 @@ import {
   descriptionValidation,
   subjectValidation,
 } from "../../../common/validations";
+import { sendReceipt } from "../../../redux/basketReducer";
+import { useDispatch } from "react-redux";
 
 const SignupSchema = yup.object().shape({
   ...subjectValidation,
@@ -16,18 +18,20 @@ const SignupSchema = yup.object().shape({
 });
 
 export const Appeal = () => {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm({
+    defaultValues: { phone: "нет", nickname: "нет" },
     resolver: yupResolver(SignupSchema),
     mode: "onTouched",
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    dispatch(sendReceipt(data));
     reset();
   };
 
